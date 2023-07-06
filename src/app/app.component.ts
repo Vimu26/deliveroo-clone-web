@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'deliveroo-clone-web';
-
-  onClick(){
-    alert("You Clicked the Button");
-  }
 }
