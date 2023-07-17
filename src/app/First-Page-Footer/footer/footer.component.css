@@ -1,26 +1,17 @@
 .background{
   background-color: rgb(62, 59, 59);
-  display: flex;
-  height: 500px;
+  min-height: 500px;
 }
 .flex1{
-  width: 20%;
-  margin: auto;
-  display: block;
   color:aliceblue;
-  text-align: center;
   border-radius: 10px;
-  height: 450px;
+  min-height: 450px;
   border:3px;
   background-color: rgb(133, 131, 131);
-  margin-left: 120px;
+
 }
 .flex2{
-  width: 20%;
-  margin: auto;
-  display: block;
   color:aliceblue;
-  text-align: center;
   border-radius: 10px;
   height: 450px;
   border:3px;
@@ -28,11 +19,7 @@
 
 }
 .flex3{
-  width: 20%;
-  margin: auto;
-  display: block;
   color:aliceblue;
-  text-align: center;
   border-radius: 10px;
   height: 450px;
   border:3px;
@@ -40,16 +27,13 @@
 }
 
 .flex4{
-  width: 20%;
-  margin: auto;
-  display: block;
   color:aliceblue;
-  text-align: center;
   border-radius: 10px;
   height: 450px;
   border:3px;
   background-color: rgb(133, 131, 131);
-  margin-right: 120px;
+  margin-bottom: 40px
+
 }
 
 a {
@@ -71,10 +55,9 @@ li{
  color: aliceblue;
  border-width: 1px;
  border-style: solid;
- width: 150px;
+ width: 120px;
  font-size: 10px;
  margin-bottom: 5px;
  border-color:aliceblue;
- margin-left: 15px;
 
 }
