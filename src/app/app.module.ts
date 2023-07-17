@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main/main.component';
 import { MaterialModule } from './material.module';
+import { FooterComponent } from './First-Page-Footer/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
