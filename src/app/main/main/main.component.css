@@ -51,3 +51,50 @@ height: 34px;
 width: 34px;
 
 }
+.container {
+  display: flex;
+  justify-content: center;
+  --bs-gutter-x: 0;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  max-width:800px; /* Adjust the max-width as needed */
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  height: 30px;
+  flex-direction: row;
+  background-color: #fff;
+}
+
+.icon {
+  margin-right: 8px;
+  color: #00ccbc;
+}
+
+.input-container {
+  display: flex;
+  flex: 1;
+  box-sizing: content-box;
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+}
+
+.search-button {
+  margin-left: 10px;
+  flex-shrink: 0;
+  background-color: #00ccbc;
+  color: #fff;
+  border-radius: 500px;
+  height: 25px;
+  width: 80px;
+}
+*, ::after, ::before {
+   box-sizing: content-box;
+}
+
