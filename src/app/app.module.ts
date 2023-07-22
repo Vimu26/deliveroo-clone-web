@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main/main.component';
 import { MaterialModule } from './material.module';
 import { FooterComponent } from './First-Page-Footer/footer/footer.component';
+import { HeaderComponent } from './Header/header.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FooterComponent } from './First-Page-Footer/footer/footer.component';
     AppComponent,
     MainComponent,
     FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

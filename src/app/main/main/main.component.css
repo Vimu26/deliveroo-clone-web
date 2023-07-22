@@ -86,7 +86,7 @@ input {
 }
 
 .search-button {
-  margin-left: 10px;
+  margin-left: 0.25rem;
   flex-shrink: 0;
   background-color: #00ccbc;
   color: #fff;
