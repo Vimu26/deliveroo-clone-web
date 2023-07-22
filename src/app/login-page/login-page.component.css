@@ -1,0 +1,17 @@
+.login-page{
+
+  &__facebook{
+   width: 25%;
+   background-color: blue;
+   color: aliceblue;
+  }
+  &__apple{
+    width: 25%;
+    background-color: black;
+    color: aliceblue;
+  }
+  &__google{
+    width: 25%;
+    color: aliceblue;
+  }
+}
