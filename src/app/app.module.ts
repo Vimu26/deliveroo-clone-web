@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 import { FooterComponent } from './First-Page-Footer/footer/footer.component';
 import { HeaderComponent } from './Header/header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { EmailLoginComponent } from './login-page/login-email/login-email.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     AppComponent,
     MainComponent,
     FooterComponent,
-    HeaderComponent,LoginPageComponent
+    HeaderComponent,LoginPageComponent,
+    EmailLoginComponent,
   ],
   imports: [
     BrowserModule,
