@@ -1,9 +1,9 @@
-<div style="" class="">
+
   <div class="container">
-    <div class="row">
-      <div class="col justify-lg-content-start justify-content-sm-center" style="margin:auto; ">
+    <div class="row header">
+      <div class="col justify-lg-content-start justify-content-sm-center ">
         <img
-          style="width: 150px"
+          class="header__image"
           src="https://logos-world.net/wp-content/uploads/2021/02/Deliveroo-Logo.png"
           alt=" "
         />
@@ -11,13 +11,12 @@
       <div class="d-flex col align-items-center justify-content-end mb-3">
         <div class="justify-content-end row g-2 g-lg-3 mt-2 align-items-center">
           <div class="col ">
-            <div style="align-self: center">
+            <div class="header__buttons">
               <button
                mat-stroked-button
-                class="h-50 align-items-center d-inline-block pt-2 pb-2"
-                style="width: 180px; background-color: aliceblue;"
+                class="h-50 align-items-center d-inline-block pt-2 pb-2 header__partner"
               >
-                <mat-icon class="icon-color">keyboard_arrow_down</mat-icon
+                <mat-icon class="header__icon--color">keyboard_arrow_down</mat-icon
                 >&nbsp;Partner with us
               </button>
             </div>
@@ -26,8 +25,9 @@
             <div>
               <button
               (click)="goToLoginPage()"
-              mat-stroked-button class="h-25 d-inline-block p-2" style="width: 190px; background-color: aliceblue;">
-                <mat-icon class="icon-color">house</mat-icon>&nbsp;<span
+              mat-stroked-button
+              class="h-25 d-inline-block p-2 header__login">
+                <mat-icon class="header__icon--color">house</mat-icon>&nbsp;<span
                   class="btn-space"
                   >Sign up or log in</span
                 >
@@ -41,14 +41,13 @@
             >
               <button
               mat-stroked-button
-                class="h-25 align-items-center d-inline-block text-center p-2 "
-                style="width: 110px; background-color: aliceblue;"
+                class="h-25 align-items-center d-inline-block text-center p-2 header__menu "
+
               >
-                <mat-icon class="icon-color justify-content-between"
+                <mat-icon class="header__icon--color justify-content-between"
                   >menu</mat-icon
                 ><span
                   class="btn-space justify-content-between"
-                  style="margin-bottom: 4px;"
                   >Menu</span
                 >
               </button>
@@ -58,4 +57,4 @@
       </div>
     </div>
   </div>
-</div>
+  <router-outlet></router-outlet>

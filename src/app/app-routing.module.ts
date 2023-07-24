@@ -5,7 +5,7 @@ import { MainComponent } from './main/main/main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: MainComponent },
+  { path: '', component: MainComponent },
   { path: 'login', component: LoginPageComponent },
 
 ];
@@ -15,3 +15,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+// export const routingComponents = [MainComponent,LoginPageComponent]

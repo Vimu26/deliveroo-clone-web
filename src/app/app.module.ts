@@ -26,7 +26,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatButtonModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginPageComponent } from '../login-page/login-page.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 
@@ -12,6 +13,6 @@ export class HeaderComponent {
 
 
   goToLoginPage(){
-    this.router.navigate(['app/login-page/LoginPageComponent']);
+    this.router.navigate(['/login']);
   }
 }
