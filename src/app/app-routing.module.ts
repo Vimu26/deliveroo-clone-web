@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainComponent } from './main/main/main.component';
+import { EmailLoginComponent } from './login-page/login-email/login-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: MainComponent },
+  { path: '', component: MainComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'login-email', component: EmailLoginComponent },
+
 
 ];
 
@@ -15,3 +18,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+// export const routingComponents = [MainComponent,LoginPageComponent]

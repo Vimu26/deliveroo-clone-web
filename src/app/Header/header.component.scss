@@ -1,0 +1,30 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header {
+
+
+  &__image {
+    width: 40%;
+  }
+  &__buttons {
+    align-self: center;
+
+  }
+  &__partner{
+      width: 180px;
+      background-color: aliceblue;
+    }
+    &__login {
+      width: 190px;
+       background-color: aliceblue;
+    }
+    &__icon--color{
+      color:turquoise;
+    }
+    &__menu{
+      width: 110px;
+      background-color: aliceblue;
+    }
+}
