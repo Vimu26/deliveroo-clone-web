@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainComponent } from './main/main/main.component';
+import { EmailLoginComponent } from './login-page/login-email/login-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '', component: MainComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'login-email', component: EmailLoginComponent },
+
 
 ];
 
