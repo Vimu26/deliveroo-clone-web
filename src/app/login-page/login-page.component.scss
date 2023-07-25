@@ -1,6 +1,16 @@
 .login-page{
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 64px 16px;
 
-  width: 500px;
+  &__heading {
+    font-family: plex-sans,sans-serif;
+    font-size: 22px;
+    color: #2e3333;
+    line-height: 28px;
+    font-weight: 700;
+  }
 
   &__facebook{
    background-color:cornflowerblue;
@@ -15,7 +25,7 @@
     border: 5px;
   }
   &__google{
-    color: aliceblue;
+    color:black;
     height: 50px;
 
   }
