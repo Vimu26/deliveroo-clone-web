@@ -6,7 +6,7 @@
 
 
   &__image {
-    width: 40%;
+    width: 130px;
   }
   &__buttons {
     align-self: center;
@@ -27,4 +27,8 @@
       width: 110px;
       background-color: aliceblue;
     }
+}
+@media screen and (min-width: 768px) {
+  .showHide  { display: block; }
+  #leftside > button { display: none; }
 }
