@@ -9,7 +9,7 @@
     width: 130px;
   }
   &__buttons {
-    align-self: center;
+    // align-self: center;
 
   }
   &__partner{
@@ -28,7 +28,4 @@
       background-color: aliceblue;
     }
 }
-@media screen and (min-width: 768px) {
-  .showHide  { display: block; }
-  #leftside > button { display: none; }
-}
+
