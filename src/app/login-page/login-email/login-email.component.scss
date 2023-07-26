@@ -1,0 +1,30 @@
+.emailLogin {
+
+  &__heading{
+    font-family: plex-sans,sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 700;
+  }
+
+  &__paragraph{
+    font-size: 16px;
+    color: #2e3333;
+    font-family: plex-sans,sans-serif;
+  }
+
+  &__forgot{
+   color: #00ccbc;
+  }
+
+}
+
+.emailLogin__continue[disabled] {
+  background-color:lightgray;
+  color: #a9a9a9;
+}
+
+.emailLogin__continue:not([disabled]) {
+  background-color: #00ccbc;
+  color: white;
+}

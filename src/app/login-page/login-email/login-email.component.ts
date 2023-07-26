@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class EmailLoginComponent {
 
-  constructor(private router: Router) {}
+  email = new FormControl('',[Validators.required, Validators.email]);
 
+  constructor(private router: Router) {}
 
 }
