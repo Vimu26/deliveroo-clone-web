@@ -1,5 +1,4 @@
-<div style="background-color: black">
-  <app-header></app-header>
+<div>
   <div style="background-color: black; padding-bottom: 32px">
     <div class="container">
       <div>
@@ -15,7 +14,7 @@
                   style="
                     color: #fff;
                     font-size: 40px;
-                    font-family: Roboto, sans-serif;
+                    font-family: 'Roboto Condensed', sans-serif;
                     letter-spacing: normal;
                     text-align: center;
                     padding-bottom: 32px;
@@ -23,18 +22,18 @@
                     font-weight: 500;
                   "
                 >
-                  Restaurant food, takeaway and <br />
-                  groceries.
+                  <strong>Restaurant food, takeaway and <br />
+                  groceries. </strong>
                   <span
                     style="
                       font-weight: 500;
                       color: #00ccbc;
                       font-size: 40px;
-                      font-family: stratos, sans-serif;
+                      font-family: 'Roboto Condensed', sans-serif;
                       font: inherit;
                     "
                   >
-                    Delivered.
+                    <b>Delivered.</b>
                   </span>
                 </h1>
                 <p style="color: #fff; text-align: center">
@@ -43,20 +42,22 @@
               </div>
 
               <div class="container">
-                <div class="search-container w-75 p-2 d-flex">
+                <div class="row">
+                <div class="search-container d-flex">
                   <button mat-icon-button>
                     <mat-icon mat-button class="icon">near_me</mat-icon>
                   </button>
 
-                  <div class="input-container">
+                  <div class="input-container"  >
                     <input type="text" matInput placeholder="Search" />
-                    <button mat-button class="search-button">search</button>
+                    <button mat-button class="search-button"><b>search</b></button>
                   </div>
                 </div>
               </div>
+              </div>
 
               <div style="color: #fff; text-align: center; margin-top: 20px">
-                <a href="url" class="login">Log in</a> for your recent
+                <a routerLink="/login" class="login">Log in</a> for your recent
                 addresses.
               </div>
             </div>
@@ -68,4 +69,4 @@
 </div>
 <br />
 <br />
-<app-footer></app-footer>
+
