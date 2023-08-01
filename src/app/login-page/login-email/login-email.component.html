@@ -1,19 +1,18 @@
 
-<app-header></app-header>
-<mat-divider></mat-divider>
 <div class="container">
   <div class="">
     <div class="mt-5 mb-5 d-flex justify-content-center">
       <div class="d-flex flex-column emailLogin">
-        <div>
+        <div >
           <span class="emailLogin__heading"
             ><strong>Sign up or log in</strong></span
           >
         </div>
+        <div >
         <form>
           <div class="mt-3 d-flex flex-column">
             <p class="emailLogin__paragraph">Email Address</p>
-            <mat-form-field appearance="outline" style="width: 400px">
+            <mat-form-field appearance="outline" style="width: 380px">
               <input
                 class=""
                 matInput
@@ -27,7 +26,7 @@
               <button
                 class="emailLogin__continue"
                 mat-stroked-button
-                style="width: 400px; height: 50px"
+                style="width: 380px; height: 50px"
                 [disabled]="email.invalid"
               >
                 <strong>Continue</strong>
@@ -38,7 +37,7 @@
               <button
                 mat-stroked-button
                 class="emailLogin__forgot"
-                style="width: 400px; height: 50px; color: #00ccbc"
+                style="width: 380px; height: 50px; color: #00ccbc"
               >
                 Forgot Password?
               </button>
@@ -46,9 +45,9 @@
           </div>
         </form>
       </div>
+      </div>
     </div>
   </div>
 </div>
 <br>
 <br>
-<app-footer></app-footer>

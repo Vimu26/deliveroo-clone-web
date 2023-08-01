@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
         "login component created"
-    ]
+    ],
+    "livePreview.defaultPreviewPath": "/src/index.html"
 }
