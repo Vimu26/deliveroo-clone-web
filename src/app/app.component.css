@@ -18,3 +18,40 @@
   width: 390px;
   align-items: center;
  }
+
+ .close-icon{
+    color: turquoise;
+    font-size: 2rem;
+    height: 2rem;
+    width: 2rem;
+
+  }
+  .btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .loginbutton{
+    margin-top: 40px;
+    background-color : turquoise;
+    color :white;
+    width:100%;
+    font-size:16px;
+    font-family: plex-sans , sans-serif;
+    height: 50px;
+  }
+.faqbutton{
+
+}
+.faqbutton:hover{
+  border-color: turquoise;
+  background-color: white;
+ }
+.mat-form-field{
+  border-color: none;
+}
+.mat-button:hover {
+  border-color: #00ccbc;
+}
+.icncolor{
+  color: grey;
+}
