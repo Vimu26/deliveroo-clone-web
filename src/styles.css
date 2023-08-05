@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0;font-family: 'Roboto Condensed', sans-serif; }
+body { margin: 0; font-family: 'Noto Serif Vithkuqi', serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'REM', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;}
 /* font-family: 'Noto Serif Vithkuqi', serif; */
