@@ -1,6 +1,6 @@
 .background{
   background-color:#2e3333;
-  min-height: 500px;
+  height: 100%;
   width: 100%;
 }
 .flex1{
@@ -73,3 +73,16 @@ li{
   margin-top: 10px;
   margin-left: -20px;
  }
+ .insta:hover {
+  fill: rgb(186, 62, 62);
+ }
+
+ .fb:hover {
+  fill: rgb(55, 55, 238);
+ }
+ .twitter:hover {
+  fill:lightskyblue;
+ }
+ /* svg:hover {
+  fill: red;
+} */
