@@ -13,6 +13,7 @@ import { FooterComponent } from './First-Page-Footer/footer/footer.component';
 import { HeaderComponent } from './Header/header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { EmailLoginComponent } from './login-page/login-email/login-email.component';
+import { MainContentComponent } from './main/main/main-content/main-content.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { EmailLoginComponent } from './login-page/login-email/login-email.compon
     FooterComponent,
     HeaderComponent,LoginPageComponent,
     EmailLoginComponent,
+    MainContentComponent,
   ],
   imports: [
     BrowserModule,

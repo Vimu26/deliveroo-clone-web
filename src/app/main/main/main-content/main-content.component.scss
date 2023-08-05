@@ -1,0 +1,52 @@
+.content{
+
+  &__heading{
+  font-size: 40px;
+    line-height: 48px;
+    color: #2e3333;
+    width: 83.3333333333%;
+    font-family: stratos,sans-serif;
+}
+
+&__subheading{
+  font-size: 18px;
+  line-height: 24px;
+  width: 83.3333333333%;
+  margin-top: 16px;
+  font-family: plex-sans, "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei";
+
+}
+
+}
+
+.off{
+  background-color:#38b0a6;
+  height: 300px;
+  margin-bottom: 50px;
+
+  &__heading{
+    font-size: 60px;
+    line-height: 80px;
+    margin-top: 20px;
+    max-width: 726px;
+    min-width: 159px;
+    margin-bottom: 16px;
+    vertical-align: baseline;
+    color: white;
+
+  }
+  &__subheading{
+    font-size: 20px;
+    line-height: 30px;
+    font-family: plex-sans;
+    color: white;
+  }
+
+  &__subheading2{
+    font-family: plex-sans;
+    font-size: 14px;
+    line-height: 20px;
+    color: white;
+
+  }
+}
