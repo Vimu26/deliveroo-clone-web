@@ -50,3 +50,26 @@
 
   }
 }
+.wordings{
+      font-family: stratos,sans-serif;
+      font-size: 28px;
+      line-height: 36px;
+      color: #fff;
+    }
+.wordings-sub{
+  font-size: 15px;
+    line-height: 130%;
+    color: #fff;
+    font-family: plex-sans, "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", 微软雅黑体, "Hiragino Sans GB", 冬青黑体, sans-serif;
+}
+.cards{
+
+  &__card1{
+    background-image: url("/../assets/images/mapp.png");
+    background-color: #38b0a6;
+
+
+  }
+}
+
+
