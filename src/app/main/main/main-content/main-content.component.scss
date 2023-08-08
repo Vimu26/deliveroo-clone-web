@@ -23,6 +23,7 @@
   background-color:#38b0a6;
   height: 300px;
   margin-bottom: 50px;
+  min-height: 330px;
 
   &__heading{
     font-size: 60px;
@@ -65,11 +66,39 @@
 .cards{
 
   &__card1{
-    background-image: url("/../assets/images/mapp.png");
-    background-color: #38b0a6;
+    background-image: url("/../assets/images/card1.PNG");
+    width: 32rem;
+    height: 30rem;
+
+  }
+  &__card2{
+    background-image: url("/../assets/images/card2.PNG");
+    width: 32rem;
+    height: 30rem;
 
 
   }
+  &__card3{
+    background-image: url("/../assets/images/card3.PNG");
+    width: 32rem;
+    height: 30rem;
+    margin-top: 40px;
+
+
+
+  }
+  &__card4{
+    background-image: url("/../assets/images/card4.PNG");
+    width: 32rem;
+    height: 30rem;
+    margin-top: 40px;
+
+
+  }
+
 }
 
+.map{
+  background-image: url("/../assets/images/image (2).png");
+}
 
