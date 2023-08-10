@@ -1,15 +1,27 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LoginPageComponent } from '../login-page/login-page.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @Output() sidenav: EventEmitter<any> = new EventEmitter();
-  constructor(private router: Router) {}
+  showButton=true;
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {}
+
+    ngOnInit() {
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe(() => {
+          this.updateButtonVisibility();
+        });
+    }
 
 
   goToLoginPage(){
@@ -17,5 +29,10 @@ export class HeaderComponent {
   }
   toggle(){
     this.sidenav.emit()
+  }
+
+  private updateButtonVisibility() {
+    const currentRoute = this.activatedRoute.root.firstChild?.routeConfig?.path;
+    this.showButton = currentRoute == '';
   }
 }
