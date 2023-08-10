@@ -1,62 +1,119 @@
-<div >
-<div class="container" style="width: 100%; ">
-  <div class="header" style="width: 100%;">
-    <div style="display: flex; width:100%">
-    <div class=" justify-content-start ">
-      <img
-        class="header__image"
-        src="https://logos-world.net/wp-content/uploads/2021/02/Deliveroo-Logo.png"
-        alt=""
-        routerLink=""
-      />
-    </div>
+<div *ngIf="!showButton">
+  <div class="container" style="width: 100%">
+    <div class="header" style="width: 100%">
+      <div style="display: flex; width: 100%">
+        <div class="justify-content-start">
+          <img
+            class="header__image"
+            src="https://logos-world.net/wp-content/uploads/2021/02/Deliveroo-Logo.png"
+            alt=""
+            routerLink=""
+          />
+        </div>
 
-    <div class="d-flex col align-items-center justify-content-end mb-3">
-      <div class="justify-content-end row g-lg-0 mt-2 align-items-center">
-        <div class="col d-none d-md-block">
-          <div class="header__buttons">
-            <button
-              mat-stroked-button
-              class=" align-items-center d-block pt-2 pb-2 header__partner"
-            >
-              <mat-icon class="header__icon--color"
-                >keyboard_arrow_down</mat-icon
-              >&nbsp;Partner with us
-            </button>
-          </div>
-        </div>
-        <div class="col p-2 d-none d-sm-block">
-          <div>
-            <button
-              (click)="goToLoginPage()"
-              mat-stroked-button
-              class="h-25 d-inline-block p-2 header__login"
-            >
-              <mat-icon class="header__icon--color">house</mat-icon>&nbsp;<span
-                class="btn-space"
-                >Sign up or log in</span
-              >
-            </button>
-          </div>
-        </div>
-        <div class="col">
-          <div class="align-items-center justify-sm-content-end">
-            <button
-            (click)="toggle()"
-              mat-stroked-button
-              class=" h-25 align-items-center d-inline-block text-center p-2 header__menu"
-            >
-              <mat-icon class="header__icon--color"
-                >menu</mat-icon
-              ><span class="btn-space ">Menu</span>
-            </button>
+        <div class="d-flex col align-items-center justify-content-end mb-3">
+          <div class="justify-content-end row g-lg-0 mt-2 align-items-center">
+            <div class="col d-none d-md-block">
+              <div class="header__buttons">
+                <button
+                  *ngIf="showButton"
+                  mat-stroked-button
+                  class="align-items-center d-block pt-2 pb-2 header__partner"
+                >
+                  <mat-icon class="header__icon--color"
+                    >keyboard_arrow_down</mat-icon
+                  >&nbsp;Partner with us
+                </button>
+              </div>
+            </div>
+            <div class="col p-2 d-none d-sm-block">
+              <div>
+                <button
+                  (click)="goToLoginPage()"
+                  mat-stroked-button
+                  class="h-25 d-inline-block p-2 header__login"
+                >
+                  <mat-icon class="header__icon--color">house</mat-icon
+                  >&nbsp;<span class="btn-space">Sign up or log in</span>
+                </button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="align-items-center justify-sm-content-end">
+                <button
+                  (click)="toggle()"
+                  mat-stroked-button
+                  class="h-25 align-items-center d-inline-block text-center p-2 header__menu"
+                >
+                  <mat-icon class="header__icon--color">menu</mat-icon
+                  ><span class="btn-space">Menu</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div  *ngIf="showButton" style="background-color: black;">
+  <div class="container" style="width: 100%">
+    <div class="header" style="width: 100%">
+      <div style="display: flex; width: 100%">
+        <div class="justify-content-start">
+          <img
+            class="header__image"
+            src="https://logos-world.net/wp-content/uploads/2021/02/Deliveroo-Logo.png"
+            alt=""
+            routerLink=""
+          />
+        </div>
+
+        <div class="d-flex col align-items-center justify-content-end mb-3">
+          <div class="justify-content-end row g-lg-0 mt-2 align-items-center">
+            <div class="col d-none d-md-block">
+              <div class="header__buttons">
+                <button
+                  *ngIf="showButton"
+                  mat-stroked-button
+                  class="align-items-center d-block pt-2 pb-2 header__partner"
+                >
+                  <mat-icon class="header__icon--color"
+                    >keyboard_arrow_down</mat-icon
+                  >&nbsp;Partner with us
+                </button>
+              </div>
+            </div>
+            <div class="col p-2 d-none d-sm-block">
+              <div>
+                <button
+                  (click)="goToLoginPage()"
+                  mat-stroked-button
+                  class="h-25 d-inline-block p-2 header__login"
+                >
+                  <mat-icon class="header__icon--color">house</mat-icon
+                  >&nbsp;<span class="btn-space">Sign up or log in</span>
+                </button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="align-items-center justify-sm-content-end">
+                <button
+                  (click)="toggle()"
+                  mat-stroked-button
+                  class="h-25 align-items-center d-inline-block text-center p-2 header__menu"
+                >
+                  <mat-icon class="header__icon--color">menu</mat-icon
+                  ><span class="btn-space">Menu</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-<mat-divider></mat-divider>
+<mat-divider *ngIf="!showButton"></mat-divider>
 <router-outlet></router-outlet>
