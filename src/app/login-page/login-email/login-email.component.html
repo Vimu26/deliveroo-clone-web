@@ -17,8 +17,12 @@
                 placeholder="akalanka@gmail.com"
                 [formControl]="email"
               />
-              <mat-error *ngIf="email.hasError('required')">Email is Required</mat-error>
-              <mat-error *ngIf="email.hasError('email')">Email is Not Valid</mat-error>
+              <mat-error *ngIf="email.hasError('required')"
+                >Email is Required</mat-error
+              >
+              <mat-error *ngIf="email.hasError('email')"
+                >Email is Not Valid</mat-error
+              >
             </mat-form-field>
             <div>
               <button
@@ -32,11 +36,7 @@
             </div>
             <br />
             <div>
-              <button
-                mat-stroked-button
-                class="dc-email-login__forgot"
-
-              >
+              <button mat-stroked-button class="dc-email-login__forgot">
                 Forgot Password?
               </button>
             </div>
