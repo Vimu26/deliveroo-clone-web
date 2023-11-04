@@ -14,6 +14,8 @@ import { HeaderComponent } from './Header/header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { EmailLoginComponent } from './login-page/login-email/login-email.component';
 import { MainContentComponent } from './main/main/main-content/main-content.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { MainContentComponent } from './main/main/main-content/main-content.comp
     HeaderComponent,LoginPageComponent,
     EmailLoginComponent,
     MainContentComponent,
+    EmailRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { MainContentComponent } from './main/main/main-content/main-content.comp
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
