@@ -28,6 +28,7 @@
               <button
                 class="dc-email-login__continue"
                 mat-stroked-button
+                (click)="onClickContinue()"
                 style="width: 380px; height: 50px"
                 [disabled]="email.invalid"
               >
