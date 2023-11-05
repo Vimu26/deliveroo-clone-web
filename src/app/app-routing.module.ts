@@ -11,14 +11,12 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'login-email', component: EmailLoginComponent },
   { path: 'register', component: EmailRegisterComponent },
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 
 // export const routingComponents = [MainComponent,LoginPageComponent]

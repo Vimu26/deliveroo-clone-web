@@ -61,23 +61,23 @@ export class EmailRegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      let data : IUserData = {
+      let data: IUserData = {
         first_name: this.registrationForm?.get('firstName')?.value,
         last_name: this.registrationForm?.get('lastName')?.value,
         email: this.registrationForm.get('email')?.value,
         contact_number: this.registrationForm.get('contact_number')?.value,
         address: this.registrationForm.get('address')?.value,
-        password: this.registrationForm.get('password')?.value
-      }
+        password: this.registrationForm.get('password')?.value,
+      };
       this.loginService.createUser(data).subscribe({
-        next : (res: any)=>{
+        next: (res: any) => {
           console.log(res);
           this.router.navigate(['']);
         },
-        error : ()=>{
+        error: () => {
           console.error('Error:');
-        }
-      })
+        },
+      });
     }
   }
 }
