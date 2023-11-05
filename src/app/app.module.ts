@@ -16,6 +16,7 @@ import { EmailLoginComponent } from './login-page/login-email/login-email.compon
 import { MainContentComponent } from './main/main/main-content/main-content.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
+import { LoginUserComponent } from './login-page/login-email/login-user/login-user.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EmailRegisterComponent } from './login-page/email-register/email-regist
     EmailLoginComponent,
     MainContentComponent,
     EmailRegisterComponent,
+    LoginUserComponent,
   ],
   imports: [
     BrowserModule,

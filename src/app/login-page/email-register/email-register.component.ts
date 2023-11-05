@@ -55,8 +55,7 @@ export class EmailRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const email = this.loginDataService.getEmailData();
-    console.log(email);
+//
   }
 
   onSubmit() {

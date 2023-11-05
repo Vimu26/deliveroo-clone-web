@@ -1,21 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IUserData, IUserLogin } from 'src/app/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginDataService {
-  private emailData: string = '';
+  loginData!: IUserData
 
   constructor(private http: HttpClient) {}
 
-  setEmail(email: string) {
-    console.log(email);
-    this.emailData = email;
-    console.log(this.emailData);
+  setData(data : IUserLogin) {
+    console.log(data);
+    data = this.loginData
+
   }
 
-  getEmailData(): string {
-    return this.emailData;
+  getData(): IUserData {
+    return this.loginData;
   }
 }

@@ -1,18 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUserData } from 'src/app/interfaces';
+import { IUserData, IUserLogin } from 'src/app/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  readonly apiURL = 'http://localhost:8080/users';
+  readonly apiURL = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) {}
 
   public createUser(userData: IUserData) {
-    const data = userData;
-    console.log(data);
-    return this.http.post<IUserData>(this.apiURL + '/', data);
+    return this.http.post<IUserData>(this.apiURL + 'users/', userData);
+  }
+
+  public loginUser(userData: IUserLogin) {
+    return this.http.post<IUserLogin>(this.apiURL + 'oauth/login', userData)
   }
 }
