@@ -67,7 +67,9 @@
         >Password is Required</mat-error
       >
     </mat-form-field>
-    <mat-error *ngIf="registrationForm.hasError('passwordMismatch', 'confirm_password')">
+    <mat-error
+      *ngIf="registrationForm.hasError('passwordMismatch', 'confirm_password')"
+    >
       Password And Confirm Password is Mismatch
     </mat-error>
     <button

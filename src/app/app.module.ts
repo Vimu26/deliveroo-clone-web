@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main/main.component';
@@ -17,13 +17,13 @@ import { MainContentComponent } from './main/main/main-content/main-content.comp
 import { HttpClientModule } from '@angular/common/http';
 import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     FooterComponent,
-    HeaderComponent,LoginPageComponent,
+    HeaderComponent,
+    LoginPageComponent,
     EmailLoginComponent,
     MainContentComponent,
     EmailRegisterComponent,
@@ -37,9 +37,9 @@ import { EmailRegisterComponent } from './login-page/email-register/email-regist
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
