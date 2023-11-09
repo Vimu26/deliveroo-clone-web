@@ -6,15 +6,15 @@ import { IUserData, IUserLogin } from 'src/app/interfaces';
   providedIn: 'root',
 })
 export class LoginService {
-  readonly apiURL = 'http://localhost:8080/';
+  readonly apiURL = 'http://localhost:8080/oauth';
 
   constructor(private http: HttpClient) {}
 
   public createUser(userData: IUserData) {
-    return this.http.post<IUserData>(this.apiURL + 'users/', userData);
+    return this.http.post<IUserData>(this.apiURL + '/register', userData);
   }
 
   public loginUser(userData: IUserLogin) {
-    return this.http.post<IUserLogin>(this.apiURL + 'oauth/login', userData)
+    return this.http.post<IUserLogin>(this.apiURL + '/login', userData)
   }
 }

@@ -10,6 +10,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUserData } from 'src/app/interfaces';
 import { LoginService } from '../service/login.component.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const passwordMatchValidator = (
   control: AbstractControl
@@ -35,31 +36,38 @@ export class EmailRegisterComponent implements OnInit {
     private loginService: LoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
-    this.registrationForm = this.fb.group(
-      {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        contact_number: [
-          '',
-          [Validators.required, Validators.pattern('^\\d{10}$')],
-        ],
-        address: ['', [Validators.required]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirm_password: ['', Validators.required],
-      },
-      { validator: passwordMatchValidator }
-    );
+    this.registrationForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contact_number: [
+        '',
+        [Validators.required, Validators.pattern('^\\d{10}$')],
+      ],
+      address: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      confirm_password: ['', [Validators.required]],
+    });
   }
 
   ngOnInit(): void {
-//
+    //
   }
 
   onSubmit() {
     if (this.registrationForm.valid) {
+      const password = this.registrationForm?.get('password')?.value;
+      const confirmPassword =
+        this.registrationForm?.get('confirm_password')?.value;
+      if (password !== confirmPassword) {
+        this.registrationForm
+          .get('confirm_password')
+          ?.setErrors({ passwordMismatch: true });
+        return;
+      }
       let data: IUserData = {
         first_name: this.registrationForm?.get('firstName')?.value,
         last_name: this.registrationForm?.get('lastName')?.value,
@@ -71,12 +79,23 @@ export class EmailRegisterComponent implements OnInit {
       this.loginService.createUser(data).subscribe({
         next: (res: any) => {
           console.log(res);
-          this.router.navigate(['']);
+          setTimeout(() => {
+            this.router.navigate(['login-email']);
+          }, 1500);
         },
-        error: () => {
-          console.error('Error:');
+        error: (err) => {
+          console.log(err);
+          if (err.status !== 409) {
+            console.error('Internal Server Error:');
+          }
+          this.registrationForm
+            .get('email')
+            ?.setErrors({ emailConflict: true });
         },
       });
     }
   }
+  onCancel() {
+   this.router.navigate(['login-email']);
+}
 }

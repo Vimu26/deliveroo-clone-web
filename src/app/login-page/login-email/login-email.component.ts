@@ -31,7 +31,7 @@ export class EmailLoginComponent {
       this.loginService.loginUser(data).subscribe({
         next : (res: any)=> {
           console.log(res);
-          this.router.navigate([''])
+          this.router.navigate(['menu'])
         },
         error : ()=>{
           console.log("error")
@@ -45,6 +45,6 @@ export class EmailLoginComponent {
     setTimeout(() => {
       this.router.navigate(['register']);
       this.isLoading = false;
-    }, 500);
+    }, 1500);
   }
 }

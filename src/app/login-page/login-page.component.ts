@@ -10,7 +10,7 @@ export class LoginPageComponent {
   constructor(private router: Router) {}
 
   emailLogin(){
-    this.router.navigate(['login-email'])
+    this.router.navigate(['login-email']);
   }
 
 }
