@@ -17,6 +17,7 @@ import { MainContentComponent } from './main/main/main-content/main-content.comp
 import { HttpClientModule } from '@angular/common/http';
 import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
 import { LoginUserComponent } from './login-page/login-email/login-user/login-user.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LoginUserComponent } from './login-page/login-email/login-user/login-us
     MainContentComponent,
     EmailRegisterComponent,
     LoginUserComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

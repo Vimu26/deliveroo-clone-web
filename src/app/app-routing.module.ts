@@ -4,6 +4,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { MainComponent } from './main/main/main.component';
 import { EmailLoginComponent } from './login-page/login-email/login-email.component';
 import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'login-email', component: EmailLoginComponent },
   { path: 'register', component: EmailRegisterComponent },
+  { path: 'menu', component: MenuComponent },
 ];
 
 @NgModule({
