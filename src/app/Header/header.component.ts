@@ -6,33 +6,38 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   @Output() sidenav: EventEmitter<any> = new EventEmitter();
-  showButton=true;
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {}
+  showButton = true;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
-    ngOnInit() {
-      this.router.events
-        .pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe(() => {
-          this.updateButtonVisibility();
-        });
-    }
+  ngOnInit() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.updateButtonVisibility();
+      });
+  }
 
-
-  goToLoginPage(){
+  goToLoginPage() {
     this.router.navigate(['/login']);
   }
-  toggle(){
-    this.sidenav.emit()
+  toggle() {
+    this.sidenav.emit();
   }
 
   private updateButtonVisibility() {
     const currentRoute = this.activatedRoute.root.firstChild?.routeConfig?.path;
     this.showButton = currentRoute == '';
+  }
+
+  isLoggedIn(): boolean {
+    return !(
+      this.router.url.includes('/login') ||
+      this.router.url.includes('/register') ||
+      this.router.url.includes('/menu')
+    );
   }
 }

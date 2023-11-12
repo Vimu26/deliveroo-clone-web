@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormControlName } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,13 @@ export class AppComponent {
   showFiller = false;
   sidenav: any;
 
-  // onClick(){
-  //   alert("You Clicked the Button");
-  // }
+  constructor(private router: Router) {}
+
+  isLoggedIn(): boolean {
+    return !(
+      this.router.url.includes('/login') ||
+      this.router.url.includes('/register') ||
+      this.router.url.includes('/menu')
+    );
+  }
 }
