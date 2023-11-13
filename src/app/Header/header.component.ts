@@ -40,4 +40,8 @@ export class HeaderComponent implements OnInit {
       this.router.url.includes('/menu')
     );
   }
+
+  shouldShowFormField(): boolean {
+    return this.router.url.includes('/menu');
+  }
 }
