@@ -11,7 +11,6 @@ export class LoginDataService {
   constructor(private http: HttpClient) {}
 
   setData(data : IUserLogin) {
-    console.log(data);
     data = this.loginData
 
   }

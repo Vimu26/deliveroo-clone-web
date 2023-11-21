@@ -8,13 +8,14 @@
             class="header__image"
             src="https://logos-world.net/wp-content/uploads/2021/02/Deliveroo-Logo.png"
             alt=""
+            (click)="navigateToHome()"
           />
         </div>
         <div class="mt-3" *ngIf="shouldShowFormField()">
           <mat-form-field appearance="outline" style="width: 600px">
             <mat-icon matPrefix>search</mat-icon>
             <input
-              formControlName="search"
+              [formControl]="search"
               matInput
               placeholder="Restaurants, Cuisines, Dishes"
               style="border-color: #ccc"
