@@ -12,32 +12,33 @@ import { LoginService } from '../service/login.component.service';
 })
 export class EmailLoginComponent {
   isLoading = false;
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
 
   constructor(
     private router: Router,
     private loginDataService: LoginDataService,
-    private loginService: LoginService,
+    private loginService: LoginService
   ) {}
 
   onClickContinue() {
-    if (this.email.value && this.password.value) {
+    if (this.form.controls.email.value && this.form.controls.password.value) {
       const data: IUserLogin = {
-        email: this.email.value,
-        password: this.password.value,
+        email: this.form.controls.email.value ,
+        password: this.form.controls.password.value
       };
       this.loginDataService.setData(data);
       this.loginService.loginUser(data).subscribe({
-        next : (res: any)=> {
-          console.log(res);
-          this.router.navigate(['menu'])
+        next: () => {
+          this.router.navigate(['menu']);
         },
-        error : ()=>{
-          console.log("error")
-        }
-      })
-
+        error: () => {
+          console.log('error');
+        },
+      });
     }
   }
   onClickSignUp() {

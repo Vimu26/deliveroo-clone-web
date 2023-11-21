@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { filter } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,8 @@ import { filter } from 'rxjs';
 export class HeaderComponent implements OnInit {
   @Output() sidenav: EventEmitter<any> = new EventEmitter();
   showButton = true;
+  search = new FormControl('');
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
@@ -26,6 +29,9 @@ export class HeaderComponent implements OnInit {
   }
   toggle() {
     this.sidenav.emit();
+  }
+  navigateToHome() {
+    this.router.navigate(['/']);
   }
 
   private updateButtonVisibility() {
