@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDataService } from '../service/login-data.component.service';
 import { IUserLogin } from 'src/app/interfaces';
@@ -12,10 +18,19 @@ import { LoginService } from '../service/login.component.service';
 })
 export class EmailLoginComponent {
   isLoading = false;
+  passwordBeingEdited = false;
+
+  customPasswordValidator(control: AbstractControl): ValidationErrors | null {
+    const hasInvalidPassword = control.hasError('invalidPassword');
+    return hasInvalidPassword ? { invalidPassword: true } : null;
+  }
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [
+      Validators.required,
+      this.customPasswordValidator,
+    ]),
   });
 
   constructor(
@@ -25,18 +40,25 @@ export class EmailLoginComponent {
   ) {}
 
   onClickContinue() {
+    this.passwordBeingEdited = false;
     if (this.form.controls.email.value && this.form.controls.password.value) {
       const data: IUserLogin = {
-        email: this.form.controls.email.value ,
-        password: this.form.controls.password.value
+        email: this.form.controls.email.value,
+        password: this.form.controls.password.value,
       };
       this.loginDataService.setData(data);
       this.loginService.loginUser(data).subscribe({
-        next: () => {
+        next: (res) => {
+          const token = res.data.token;
+          localStorage.setItem('token', token);
           this.router.navigate(['menu']);
         },
-        error: () => {
-          console.log('error');
+        error: (error) => {
+          if (error.status === 401) {
+            this.form.controls.password.setErrors({ invalidPassword: true });
+          } else {
+            alert('Invalid Credential');
+          }
         },
       });
     }
@@ -47,5 +69,17 @@ export class EmailLoginComponent {
       this.router.navigate(['register']);
       this.isLoading = false;
     }, 1500);
+  }
+  resetPasswordError() {
+    this.passwordBeingEdited = true;
+    const passwordControl = this.form.controls.password;
+    const currentValidators = passwordControl?.validator
+      ? [passwordControl?.validator]
+      : [];
+    const updatedValidators = currentValidators.filter(
+      (validator) => validator !== this.customPasswordValidator
+    );
+    passwordControl?.setValidators(updatedValidators);
+    passwordControl?.updateValueAndValidity();
   }
 }

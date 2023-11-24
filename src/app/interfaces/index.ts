@@ -8,6 +8,14 @@ export interface IUserData {
 }
 
 export interface IUserLogin {
-  email : string;
-  password : string;
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  status: boolean;
+  message: string;
+  data: {
+    token: string;
+  };
 }
