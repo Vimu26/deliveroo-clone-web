@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUserData, IUserLogin } from 'src/app/interfaces';
+import { Observable } from 'rxjs';
+import { IUserData, IUserLogin, LoginResponse } from 'src/app/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class LoginService {
     return this.http.post<IUserData>(this.apiURL + '/register', userData);
   }
 
-  public loginUser(userData: IUserLogin) {
-    return this.http.post<IUserLogin>(this.apiURL + '/login', userData)
+  public loginUser(userData: IUserLogin): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.apiURL + '/login', userData);
   }
 }

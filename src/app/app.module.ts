@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
 import { LoginUserComponent } from './login-page/login-email/login-user/login-user.component';
 import { MenuComponent } from './menu/menu.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MenuComponent } from './menu/menu.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
