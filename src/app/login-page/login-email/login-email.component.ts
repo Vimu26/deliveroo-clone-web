@@ -54,6 +54,7 @@ export class EmailLoginComponent {
           this.router.navigate(['menu']);
         },
         error: (error) => {
+          console.log(error)
           if (error.status === 401) {
             this.form.controls.password.setErrors({ invalidPassword: true });
           } else {
