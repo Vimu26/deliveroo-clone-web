@@ -50,4 +50,8 @@ export class HeaderComponent implements OnInit {
   shouldShowFormField(): boolean {
     return this.router.url.includes('/menu');
   }
+
+  onclickCart(){
+    //
+  }
 }
