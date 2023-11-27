@@ -1,11 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDataService } from '../service/login-data.component.service';
 import { IUserLogin } from 'src/app/interfaces';
@@ -16,21 +10,13 @@ import { LoginService } from '../service/login.component.service';
   templateUrl: './login-email.component.html',
   styleUrls: ['./login-email.component.scss'],
 })
-export class EmailLoginComponent {
+export class EmailLoginComponent implements OnInit {
   isLoading = false;
   passwordBeingEdited = false;
 
-  customPasswordValidator(control: AbstractControl): ValidationErrors | null {
-    const hasInvalidPassword = control.hasError('invalidPassword');
-    return hasInvalidPassword ? { invalidPassword: true } : null;
-  }
-
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      this.customPasswordValidator,
-    ]),
+    password: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -38,6 +24,13 @@ export class EmailLoginComponent {
     private loginDataService: LoginDataService,
     private loginService: LoginService
   ) {}
+
+  ngOnInit(): void {
+    this.form.controls.password.valueChanges.subscribe((value) => {
+      this.form.controls.password.setErrors({ invalidPassword: false });
+      this.form.controls.password.updateValueAndValidity();
+    });
+  }
 
   onClickContinue() {
     this.passwordBeingEdited = false;
@@ -54,7 +47,7 @@ export class EmailLoginComponent {
           this.router.navigate(['menu']);
         },
         error: (error) => {
-          console.log(error)
+          console.log(error);
           if (error.status === 401) {
             this.form.controls.password.setErrors({ invalidPassword: true });
           } else {
@@ -70,17 +63,5 @@ export class EmailLoginComponent {
       this.router.navigate(['register']);
       this.isLoading = false;
     }, 1500);
-  }
-  resetPasswordError() {
-    this.passwordBeingEdited = true;
-    const passwordControl = this.form.controls.password;
-    const currentValidators = passwordControl?.validator
-      ? [passwordControl?.validator]
-      : [];
-    const updatedValidators = currentValidators.filter(
-      (validator) => validator !== this.customPasswordValidator
-    );
-    passwordControl?.setValidators(updatedValidators);
-    passwordControl?.updateValueAndValidity();
   }
 }
