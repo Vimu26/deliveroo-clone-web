@@ -26,7 +26,7 @@ export class EmailLoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form.controls.password.valueChanges.subscribe((value) => {
+    this.form.controls.password.valueChanges.subscribe(() => {
       this.form.controls.password.setErrors({ invalidPassword: false });
       this.form.controls.password.updateValueAndValidity();
     });
