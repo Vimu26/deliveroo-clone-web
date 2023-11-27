@@ -33,16 +33,12 @@
               type="password"
               placeholder="*******"
               formControlName="password"
-              (input)="resetPasswordError()"
             />
             <mat-error *ngIf="form.controls.password.hasError('required')"
               >Password is Required</mat-error
             >
             <mat-error
-              *ngIf="
-                form.controls.password.hasError('invalidPassword') &&
-                !passwordBeingEdited
-              "
+              *ngIf="form.controls.password.hasError('invalidPassword')"
               >Password Mismatch</mat-error
             >
           </mat-form-field>
