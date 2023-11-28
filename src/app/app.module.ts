@@ -19,6 +19,7 @@ import { EmailRegisterComponent } from './login-page/email-register/email-regist
 import { LoginUserComponent } from './login-page/login-email/login-user/login-user.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     EmailRegisterComponent,
     LoginUserComponent,
     MenuComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
