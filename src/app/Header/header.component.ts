@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
   private updateButtonVisibility() {
     const currentRoute = this.activatedRoute.root.firstChild?.routeConfig?.path;
-    this.showButton = currentRoute == '';
+    this.showButton = currentRoute == 'home';
   }
 
   isLoggedIn(): boolean {
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     return this.router.url.includes('/menu');
   }
 
-  onclickCart(){
+  onclickCart() {
     //
   }
 }

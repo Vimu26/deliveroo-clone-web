@@ -11,27 +11,6 @@
             (click)="navigateToHome()"
           />
         </div>
-        <!-- <div class="mt-3" *ngIf="shouldShowFormField()">
-          <mat-form-field appearance="outline" style="width: 600px">
-            <mat-icon matPrefix>search</mat-icon>
-            <input
-              [formControl]="search"
-              matInput
-              placeholder="Restaurants, Cuisines, Dishes"
-              style="border-color: #ccc"
-            />
-          </mat-form-field>
-          <div class="d-flex" *ngIf="shouldShowFormField()">
-            <button
-              (click)="toggle()"
-              mat-stroked-button
-              class="h-25 align-items-center d-inline-block text-center p-2 header__menu"
-            >
-              <mat-icon class="header__icon--color">cart</mat-icon
-              ><span class="btn-space">Cart</span>
-            </button>
-          </div>
-        </div> -->
         <div
           class="mt-3 d-flex align-items-center d-none d-lg-flex"
           *ngIf="shouldShowFormField()"
@@ -51,9 +30,15 @@
           </mat-form-field>
         </div>
 
-        <div *ngIf="shouldShowFormField()" class="d-flex align-items-center d-md-none">
-          <button mat-stroked-button class="align-items-center pt-2 pb-2 header__search">
-            <mat-icon style="margin:0;">search</mat-icon>
+        <div
+          *ngIf="shouldShowFormField()"
+          class="d-flex align-items-center d-md-none"
+        >
+          <button
+            mat-stroked-button
+            class="align-items-center pt-2 pb-2 header__search"
+          >
+            <mat-icon style="margin: 0">search</mat-icon>
           </button>
         </div>
 

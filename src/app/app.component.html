@@ -1,7 +1,6 @@
 <mat-drawer-container>
-  <app-header (sidenav)="drawer.toggle()"></app-header>
+  <app-header *ngIf="!isNotFoundRoute" (sidenav)="drawer.toggle()"></app-header>
   <!-- navbar inside in -->
-
   <mat-drawer
     #drawer
     class="navBar justify-content-center"
@@ -123,5 +122,5 @@
 
   <!-- navbar inside out -->
   <router-outlet></router-outlet>
-  <app-footer></app-footer>
+  <app-footer *ngIf="!isNotFoundRoute"></app-footer>
 </mat-drawer-container>
