@@ -2,3 +2,26 @@
   color: turquoise;
 
 }
+// .error-icon {
+//   display: flex;
+//   align-items: center;
+// }
+
+.info {
+  text-align: left !important;
+}
+
+.custom-button.active {
+  border-color: turquoise;
+}
+
+.icon {
+  align-items: center;
+  display: grid;
+}
+.turquoise-border {
+  border: 2px solid turquoise;
+}
+.turquoise-border2 {
+  border: 2px solid turquoise;
+}
