@@ -20,6 +20,7 @@ import { LoginUserComponent } from './login-page/login-email/login-user/login-us
 import { MenuComponent } from './menu/menu.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ClickDirective } from './custom-directives/click.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoginUserComponent,
     MenuComponent,
     NotFoundComponent,
+    ClickDirective,
   ],
   imports: [
     BrowserModule,
