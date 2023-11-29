@@ -2,5 +2,8 @@
     "conventionalCommits.scopes": [
         "login component created"
     ],
-    "livePreview.defaultPreviewPath": "/src/index.html"
+    "livePreview.defaultPreviewPath": "/src/index.html",
+    "cSpell.words": [
+        "deliveroo"
+    ]
 }

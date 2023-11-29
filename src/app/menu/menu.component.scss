@@ -1,11 +1,6 @@
 .back {
   color: turquoise;
-
 }
-// .error-icon {
-//   display: flex;
-//   align-items: center;
-// }
 
 .info {
   text-align: left !important;
@@ -19,9 +14,15 @@
   align-items: center;
   display: grid;
 }
-.turquoise-border {
-  border: 2px solid turquoise;
+.title {
+  color: #2e3333;
+  font-size: 38px;
+  line-height: 48px;
+  font-family: stratos, sans-serif;
 }
-.turquoise-border2 {
-  border: 2px solid turquoise;
+p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #585c5c;
+  font-family: plex-sans, sans-serif;
 }

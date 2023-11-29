@@ -14,7 +14,7 @@
     </button>
   </div>
 </div>
-<div class="container mt-4 mb-3">
+<div class="container-fluid mt-4 mb-3">
   <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-12">
       <img
@@ -26,67 +26,138 @@
 
     <div class="col-lg-8 col-md-6 col-sm-12">
       <div class="row">
-        <div class="col-lg-8 col-md-12 col-sm-12 col-12">
-          <h1 class="mb-2">Tossed - St Martin's Lane</h1>
+        <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+          <strong class="mb-2 title">Tossed - St Martin's Lane</strong>
           <p>10 - 20 min· Chicken·Salads·Healthy</p>
           <p>0.20 miles away·Closes at 21:00·£7.00 minimum·£0.49 delivery</p>
           <button
             mat-button
-            class="mt-2 mb-2"
+            class="mt-1 mb-1"
             style="width: 330px; height: 50px"
-            [ngClass]="{'turquoise-border': isButtonClicked}"
-            (document:click)="onButtonClick()"
-            #buttonRef
+            appClick
           >
             <div class="row">
               <div class="col-1 icon">
                 <mat-icon matPrefix class="error-icon">error_outline</mat-icon>
               </div>
               <div class="col-10 pr-0" style="padding-right: 0">
-                <div class="info" style="text-align: left; margin-left: 10px">
-                  Info
+                <div
+                  class="info"
+                  style="
+                    text-align: left;
+                    margin-left: 10px;
+                    color: #2e3333;
+                    font-size: 16px;
+                    line-height: 22px;
+                    font-family: plex-sans, sans-serif;
+                  "
+                >
+                  <b>Info</b>
                 </div>
-                <div style="text-align: left; margin-left: 10px">
+                <div
+                  style="
+                    text-align: left;
+                    margin-left: 10px;
+                    font-size: 14px;
+                    line-height: 19px;
+                    color: #585c5c;
+                  "
+                >
                   Map, allergens and hygiene rating
                 </div>
               </div>
               <div class="col-1 p-0 icon">
-                <mat-icon style="color: turquoise;">keyboard_arrow_right</mat-icon>
+                <mat-icon style="color: turquoise"
+                  >keyboard_arrow_right</mat-icon
+                >
               </div>
             </div>
           </button>
           <button
-          mat-button
-          class="mt-2"
-          style="width: 239px; height: 60px"
-          [ngClass]="{'turquoise-border2': isButton2Clicked}"
-          (document:click)="onButton2Click()"
-          #button2Ref
-        >
-          <div class="row" style="display: flex; align-items: center;">
-            <div class="col-1 icon">
-              <mat-icon matPrefix class="error-icon" style="color: green;">star</mat-icon>
-            </div>
-            <div class="col-9 pr-0" style="padding-right: 0">
-              <div class="info" style="text-align: left; margin-left: 10px; color: green">
-                4.8 Excellent
+            appClick
+            mat-button
+            class="mt-2"
+            style="width: 239px; height: 60px"
+          >
+            <div class="row" style="display: flex; align-items: center">
+              <div class="col-1 icon">
+                <mat-icon matPrefix class="error-icon" style="color: green"
+                  >star</mat-icon
+                >
               </div>
-              <div style="text-align: left; margin-left: 10px">
-                See all 500 reviews
+              <div class="col-9 pr-0" style="padding-right: 0">
+                <div
+                  class="info"
+                  style="
+                    text-align: left;
+                    margin-left: 10px;
+                    color: green;
+                    font-size: 16px;
+                    line-height: 22px;
+                    font-family: plex-sans, sans-serif;
+                  "
+                >
+                  <b>4.8 Excellent</b>
+                </div>
+                <div
+                  style="
+                    text-align: left;
+                    margin-left: 10px;
+                    font-size: 14px;
+                    line-height: 19px;
+                    color: #585c5c;
+                  "
+                >
+                  See all 500 reviews
+                </div>
+              </div>
+              <div class="col-1 p-0">
+                <mat-icon matSuffix style="color: turquoise"
+                  >keyboard_arrow_right</mat-icon
+                >
               </div>
             </div>
-            <div class="col-1 p-0 ">
-              <mat-icon matSuffix style="color: turquoise;">keyboard_arrow_right</mat-icon>
-            </div>
-          </div>
-        </button>
-
+          </button>
         </div>
-        <div
-          class="col-lg-4 col-md-12 col-sm-12 col-12 d-flex justify-content-center"
-        >
-          <!-- content2 -->
-          content2
+        <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+          <div class="d-flex justify-content-end">
+            <button
+              mat-button
+              appClick
+              style="
+                width: 100%;
+                font-size: 14px;
+                line-height: 19px;
+                color: #585c5c;
+              "
+            >
+              <mat-icon
+                matPrefix
+                style="color: brown; font-size: 20px; overflow: visible"
+              >
+                directions_bike</mat-icon
+              >
+              Deliver in 10-20 min &nbsp;<span style="color: turquoise"
+                >Change</span
+              ></button
+            ><br />
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button
+              appClick
+              mat-stroked-button
+              class="mt-4"
+              style="
+                font-size: 16px;
+                line-height: 20px;
+                font-family: plex-sans, sans-serif;
+              "
+            >
+              <mat-icon class="back">group</mat-icon>
+              Start group order
+            </button>
+          </div>
         </div>
       </div>
     </div>
