@@ -181,13 +181,16 @@
 
     <!-- Use responsive classes to move the menu chip to the end on large screens -->
     <div class="d-flex justify-content-end align-items-end flex-grow-1">
-      <div class="d-none d-lg-block flex-grow-1"></div> <!-- Add a spacer for large screens -->
+      <div class="d-none d-lg-block flex-grow-1"></div>
+      <!-- Add a spacer for large screens -->
 
       <div>
         <mat-chip [matMenuTriggerFor]="menu" class="custom-chip">
           <span class="chip2-text turquoise-text">
             More
-            <mat-icon matSuffix class="chip-icon turquoise-text">keyboard_arrow_down</mat-icon>
+            <mat-icon matSuffix class="chip-icon turquoise-text"
+              >keyboard_arrow_down</mat-icon
+            >
           </span>
         </mat-chip>
       </div>
@@ -208,8 +211,17 @@
         </div>
       </mat-menu>
     </div>
-
   </div>
   <mat-divider></mat-divider>
 </div>
 
+<div class="container-fluid">
+  <div class="row d-flex">
+    <div class="col-12 col-lg-7 col-md-7 d-flex justify-content-center">
+      <app-menu-items></app-menu-items>
+    </div>
+    <div class="col-12 col-lg-5 col-md-5 d-flex justify-content-center">
+      <app-basket></app-basket>
+    </div>
+  </div>
+</div>

@@ -21,6 +21,8 @@ import { MenuComponent } from './menu/menu.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClickDirective } from './custom-directives/click.directive';
+import { MenuItemsComponent } from './menu/menu-items/menu-items.component';
+import { BasketComponent } from './menu/basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ClickDirective } from './custom-directives/click.directive';
     MenuComponent,
     NotFoundComponent,
     ClickDirective,
+    MenuItemsComponent,
+    BasketComponent,
   ],
   imports: [
     BrowserModule,
