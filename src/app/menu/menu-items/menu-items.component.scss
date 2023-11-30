@@ -1,0 +1,24 @@
+.border {
+  width : 500px !important;
+  border : 2px solid rgb(135, 135, 135);
+  text-align: center;
+}
+
+::ng-deep {
+  .checkout-button {
+    background-color: #00ccbc;
+    color: white;
+
+    &:not([disabled]) {
+      background-color: #00ccbc;
+      color: white;
+    }
+
+    &[disabled] {
+      background-color: lightgray;
+      color: #a9a9a9;
+    }
+  }
+}
+
+
