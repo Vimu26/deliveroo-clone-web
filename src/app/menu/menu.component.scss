@@ -26,3 +26,38 @@ p {
   color: #585c5c;
   font-family: plex-sans, sans-serif;
 }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 5px;
+  color: turquoise;
+  cursor: pointer;
+}
+
+.chip-text {
+  margin: 0; /* Reset default margin for the span element */
+}
+
+.chip.selected {
+  background-color: turquoise;
+  color: rgb(255, 255, 255);
+}
+.custom-chip {
+  margin: 5px;
+}
+
+.turquoise-text {
+  color: turquoise;
+}
+
+.chip2-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.chip-icon {
+  vertical-align: middle;
+  margin-left: 4px; /* Adjust this margin as needed */
+}
