@@ -166,8 +166,8 @@
 
 <div class="mt-5 mb-5">
   <mat-divider></mat-divider>
-  <div class="container-fluid d-flex mt-4 mb-4">
-    <div class="col-9 d-flex justify-content-start">
+  <div class="container-fluid d-flex mt-4 mb-4 overflow-auto">
+    <div class="d-flex justify-content-start">
       <mat-chip
         *ngFor="let chip of chips; let i = index"
         class="chip p-0"
@@ -178,15 +178,17 @@
         <span class="chip-text">{{ chip }}</span>
       </mat-chip>
     </div>
-    <div class="col-3 d-flex justify-content-end align-items-end">
+
+    <!-- Use responsive classes to move the menu chip to the end on large screens -->
+    <div class="d-flex justify-content-end align-items-end flex-grow-1">
+      <div class="d-none d-lg-block flex-grow-1"></div> <!-- Add a spacer for large screens -->
+
       <div>
         <mat-chip [matMenuTriggerFor]="menu" class="custom-chip">
-          <span class="chip2-text turquoise-text"
-            >More
-            <mat-icon matSuffix class="chip-icon turquoise-text"
-              >keyboard_arrow_down</mat-icon
-            ></span
-          >
+          <span class="chip2-text turquoise-text">
+            More
+            <mat-icon matSuffix class="chip-icon turquoise-text">keyboard_arrow_down</mat-icon>
+          </span>
         </mat-chip>
       </div>
 
@@ -206,6 +208,8 @@
         </div>
       </mat-menu>
     </div>
+
   </div>
   <mat-divider></mat-divider>
 </div>
+
