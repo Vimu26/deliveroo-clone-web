@@ -18,8 +18,6 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentRoute = this.route.snapshot.firstChild?.routeConfig?.path;
-        console.log('Current route:', currentRoute);
-
         this.isNotFoundRoute = currentRoute === '**';
       }
     });

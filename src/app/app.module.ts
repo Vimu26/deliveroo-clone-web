@@ -23,6 +23,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ClickDirective } from './custom-directives/click.directive';
 import { MenuItemsComponent } from './menu/menu-items/menu-items.component';
 import { BasketComponent } from './menu/basket/basket.component';
+import { DailySpecialsComponent } from './menu/menu-items/daily-specials/daily-specials.component';
+import { SaladsComponent } from './menu/menu-items/salads/salads.component';
+import { HotPowerBowlsComponent } from './menu/menu-items/hot-power-bowls/hot-power-bowls.component';
+import { GymFoodComponent } from './menu/menu-items/gym-food/gym-food.component';
+import { BundlesComponent } from './menu/menu-items/bundles/bundles.component';
+import { RainbowWrapsComponent } from './menu/menu-items/rainbow-wraps/rainbow-wraps.component';
+import { VeganComponent } from './menu/menu-items/vegan/vegan.component';
+import { SnacksComponent } from './menu/menu-items/snacks/snacks.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +48,14 @@ import { BasketComponent } from './menu/basket/basket.component';
     ClickDirective,
     MenuItemsComponent,
     BasketComponent,
+    DailySpecialsComponent,
+    SaladsComponent,
+    HotPowerBowlsComponent,
+    GymFoodComponent,
+    BundlesComponent,
+    RainbowWrapsComponent,
+    VeganComponent,
+    SnacksComponent,
   ],
   imports: [
     BrowserModule,
