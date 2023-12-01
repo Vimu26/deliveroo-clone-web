@@ -19,3 +19,14 @@ export interface LoginResponse {
     token: string;
   };
 }
+
+export interface IDish {
+  restaurant_id: string;
+  order_id?: string;
+  dish_category_id?: string;
+  name: string;
+  dish_code: string;
+  price: number;
+  image: string;
+  calories: number;
+}
