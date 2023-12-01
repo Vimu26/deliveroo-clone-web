@@ -31,6 +31,7 @@ import { BundlesComponent } from './menu/menu-items/bundles/bundles.component';
 import { RainbowWrapsComponent } from './menu/menu-items/rainbow-wraps/rainbow-wraps.component';
 import { VeganComponent } from './menu/menu-items/vegan/vegan.component';
 import { SnacksComponent } from './menu/menu-items/snacks/snacks.component';
+import { DishCategoryComponent } from './menu/dish-category/dish-category.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SnacksComponent } from './menu/menu-items/snacks/snacks.component';
     RainbowWrapsComponent,
     VeganComponent,
     SnacksComponent,
+    DishCategoryComponent,
   ],
   imports: [
     BrowserModule,

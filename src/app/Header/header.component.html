@@ -1,3 +1,4 @@
+<div class="fixed-header">
 <div *ngIf="!showButton">
   <div class="container" style="width: 100%">
     <div class="header" style="width: 100%">
@@ -156,4 +157,7 @@
   </div>
 </div>
 <mat-divider *ngIf="!showButton"></mat-divider>
-<router-outlet></router-outlet>
+</div>
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+</div>
