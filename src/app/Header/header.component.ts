@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { LoginPageComponent } from '../login-page/login-page.component';
 import { filter } from 'rxjs';
 import { FormControl } from '@angular/forms';
 
@@ -21,11 +20,16 @@ export class HeaderComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.updateButtonVisibility();
+        this.isHomeRoute();
       });
   }
 
   goToLoginPage() {
     this.router.navigate(['/login']);
+  }
+
+  isHomeRoute(): boolean {
+    return this.router.url === '/home';
   }
   toggle() {
     this.sidenav.emit();
