@@ -1,4 +1,4 @@
-<div class="fixed-header">
+<div [ngClass]="{'fixed-header': !isHomeRoute()}">
 <div *ngIf="!showButton">
   <div class="container" style="width: 100%">
     <div class="header" style="width: 100%">
@@ -158,6 +158,6 @@
 </div>
 <mat-divider *ngIf="!showButton"></mat-divider>
 </div>
-<div class="content-wrapper">
+<div [ngClass]="{'content-wrapper': !isHomeRoute()}">
   <router-outlet></router-outlet>
 </div>
