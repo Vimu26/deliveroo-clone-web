@@ -26,3 +26,9 @@ p {
   color: #585c5c;
   font-family: plex-sans, sans-serif;
 }
+::ng-deep {
+  .dish {
+    position: sticky;
+     top: 100px;
+  }
+}

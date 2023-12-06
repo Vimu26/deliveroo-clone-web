@@ -4,7 +4,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'deliveroo-clone-web';
@@ -17,8 +17,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.isHomeRoute();
         const currentRoute = this.route.snapshot.firstChild?.routeConfig?.path;
         this.isNotFoundRoute = currentRoute === '**';
+
       }
     });
   }
@@ -30,4 +32,12 @@ export class AppComponent implements OnInit {
       this.router.url.includes('/menu')
     );
   }
+
+  isHomeRoute(): boolean {
+      return this.router.url === '/' ;
+  }
 }
+
+
+
+

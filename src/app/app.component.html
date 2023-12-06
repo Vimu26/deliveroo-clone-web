@@ -119,8 +119,12 @@
       </div>
     </div>
   </mat-drawer>
-
   <!-- navbar inside out -->
-  <router-outlet></router-outlet>
+
+
+  <div [ngClass]="{'content-wrapper': !isHomeRoute(),'home-content-wrapper': isHomeRoute()}" >
+    <router-outlet></router-outlet>
+  </div>
+
   <app-footer *ngIf="!isNotFoundRoute"></app-footer>
 </mat-drawer-container>

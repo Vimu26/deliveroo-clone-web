@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isHomeRoute(): boolean {
-    return this.router.url === '/home';
+    return this.router.url === '';
   }
   toggle() {
     this.sidenav.emit();
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
 
   private updateButtonVisibility() {
     const currentRoute = this.activatedRoute.root.firstChild?.routeConfig?.path;
-    this.showButton = currentRoute == 'home';
+    this.showButton = currentRoute == '';
   }
 
   isLoggedIn(): boolean {
