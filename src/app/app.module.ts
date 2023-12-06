@@ -6,32 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header-component/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainComponent } from './main/main/main.component';
+import { MainComponent } from './components/main/main.component';
 import { MaterialModule } from './material.module';
-import { FooterComponent } from './First-Page-Footer/footer/footer.component';
-import { HeaderComponent } from './Header/header.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { EmailLoginComponent } from './login-page/login-email/login-email.component';
-import { MainContentComponent } from './main/main/main-content/main-content.component';
+import { FooterComponent } from '../../src/app/components/footer/footer.component';
+import { LoginPageComponent } from './features/auth/components/login-page/login-page.component';
+import { EmailLoginComponent } from './features/auth/components/email-login/login-email.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
-import { LoginUserComponent } from './login-page/login-email/login-user/login-user.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './features/menu/components/menu-page/menu.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClickDirective } from './custom-directives/click.directive';
-import { MenuItemsComponent } from './menu/menu-items/menu-items.component';
-import { BasketComponent } from './menu/basket/basket.component';
-import { DailySpecialsComponent } from './menu/menu-items/daily-specials/daily-specials.component';
-import { SaladsComponent } from './menu/menu-items/salads/salads.component';
-import { HotPowerBowlsComponent } from './menu/menu-items/hot-power-bowls/hot-power-bowls.component';
-import { GymFoodComponent } from './menu/menu-items/gym-food/gym-food.component';
-import { BundlesComponent } from './menu/menu-items/bundles/bundles.component';
-import { RainbowWrapsComponent } from './menu/menu-items/rainbow-wraps/rainbow-wraps.component';
-import { VeganComponent } from './menu/menu-items/vegan/vegan.component';
-import { SnacksComponent } from './menu/menu-items/snacks/snacks.component';
-import { DishCategoryComponent } from './menu/dish-category/dish-category.component';
+import { MenuItemsComponent } from './features/menu/components/menu-page/dish-items/menu-items.component';
+import { BasketComponent } from './features/menu/components/menu-page/basket/basket.component';
+import { DishCategoryComponent } from './features/menu/components/menu-page/dish-category/dish-category.component';
+import { EmailRegisterComponent } from './features/auth/components/email-register/email-register.component';
 
 @NgModule({
   declarations: [
@@ -43,20 +34,11 @@ import { DishCategoryComponent } from './menu/dish-category/dish-category.compon
     EmailLoginComponent,
     MainContentComponent,
     EmailRegisterComponent,
-    LoginUserComponent,
     MenuComponent,
     NotFoundComponent,
     ClickDirective,
     MenuItemsComponent,
     BasketComponent,
-    DailySpecialsComponent,
-    SaladsComponent,
-    HotPowerBowlsComponent,
-    GymFoodComponent,
-    BundlesComponent,
-    RainbowWrapsComponent,
-    VeganComponent,
-    SnacksComponent,
     DishCategoryComponent,
   ],
   imports: [

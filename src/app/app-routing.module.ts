@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { MainComponent } from './main/main/main.component';
-import { EmailLoginComponent } from './login-page/login-email/login-email.component';
-import { EmailRegisterComponent } from './login-page/email-register/email-register.component';
-import { MenuComponent } from './menu/menu.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginPageComponent } from './features/auth/components/login-page/login-page.component';
+import { MainComponent } from './components/main/main.component';
+import { EmailLoginComponent } from './features/auth/components/email-login/login-email.component';
+import { EmailRegisterComponent } from './features/auth/components/email-register/email-register.component';
+import { MenuComponent } from './features/menu/components/menu-page/menu.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // auth module
 // auth module routes
