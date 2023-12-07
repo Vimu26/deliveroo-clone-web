@@ -5,6 +5,7 @@
 .header {
   &__image {
     width: 130px;
+    margin-top: 10px
   }
   &__partner {
     width: 180px;
@@ -19,7 +20,7 @@
     background-color: aliceblue;
   }
   &__icon--color {
-    color: turquoise;
+    color: rgb(224, 64, 64);
   }
   &__menu {
     width: 110px;
