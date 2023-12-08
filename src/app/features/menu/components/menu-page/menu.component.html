@@ -1,4 +1,4 @@
-<div class="container-fluid mb-2">
+<div class="container mb-2">
   <div class="d-flex mt-3">
     <mat-icon
       mat-icon-button
@@ -14,7 +14,8 @@
     </button>
   </div>
 </div>
-<div class="container-fluid mt-4 mb-3">
+
+<div class="container mt-4 mb-3">
   <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-12">
       <img
@@ -67,7 +68,7 @@
                 </div>
               </div>
               <div class="col-1 p-0 icon">
-                <mat-icon style="color: turquoise"
+                <mat-icon style="color: #FF355E"
                   >keyboard_arrow_right</mat-icon
                 >
               </div>
@@ -112,7 +113,7 @@
                 </div>
               </div>
               <div class="col-1 p-0">
-                <mat-icon matSuffix style="color: turquoise"
+                <mat-icon matSuffix style="color: #FF355E"
                   >keyboard_arrow_right</mat-icon
                 >
               </div>
@@ -133,11 +134,11 @@
             >
               <mat-icon
                 matPrefix
-                style="color: brown; font-size: 20px; overflow: visible"
+                style="color: brown; font-size: 20px;"
               >
                 directions_bike</mat-icon
               >
-              Deliver in 10-20 min &nbsp;<span style="color: turquoise"
+              Deliver in 10-20 min &nbsp;<span style="color: #FF355E"
                 >Change</span
               ></button
             ><br />
@@ -163,12 +164,14 @@
     </div>
   </div>
 </div>
-<div style="position: relative;">
-  <app-dish-category class="dish" style="position: sticky; top: 100px"></app-dish-category>
+
+<div class="d-grid">
+  <div class="dish">
+    <app-dish-category></app-dish-category>
+  </div>
 </div>
 
-
-<div class="container-fluid">
+<div class="container">
   <div class="row d-flex">
     <div class="col-12 col-lg-7 col-md-7 d-flex">
       <app-menu-items></app-menu-items>
@@ -177,9 +180,9 @@
       class="col-12 col-lg-5 col-md-5 d-flex justify-content-center"
       style="margin-bottom: 800rem"
     >
-    <div style="position: relative; height: 100vh;">
-      <app-basket></app-basket>
-    </div>
+      <div>
+        <app-basket></app-basket>
+      </div>
     </div>
   </div>
 </div>

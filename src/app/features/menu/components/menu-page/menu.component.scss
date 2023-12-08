@@ -1,5 +1,5 @@
 .back {
-  color: turquoise;
+  color: #FF355E;
 }
 
 .info {
@@ -7,7 +7,7 @@
 }
 
 .custom-button.active {
-  border-color: turquoise;
+  border-color: #FF355E;
 }
 
 .icon {
@@ -26,9 +26,10 @@ p {
   color: #585c5c;
   font-family: plex-sans, sans-serif;
 }
-::ng-deep {
-  .dish {
-    position: sticky;
-     top: 100px;
-  }
+.dish {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  /* Additional styling as needed */
 }

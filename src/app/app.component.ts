@@ -7,7 +7,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'deliveroo-clone-web';
+  title = 'foodie-clone-web';
   showFiller = false;
   sidenav: any;
   isNotFoundRoute = false;

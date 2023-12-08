@@ -10,7 +10,7 @@ export class ClickDirective {
     this.renderer.setStyle(
       this.element.nativeElement,
       'border',
-      '2px solid turquoise'
+      '2px solid #FF355E'
     );
   }
 
