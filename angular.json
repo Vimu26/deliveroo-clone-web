@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "deliveroo-clone-web": {
+    "foodie-clone-web": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/deliveroo-clone-web",
+            "outputPath": "dist/foodie-clone-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "deliveroo-clone-web:build:production"
+              "browserTarget": "foodie-clone-web:build:production"
             },
             "development": {
-              "browserTarget": "deliveroo-clone-web:build:development"
+              "browserTarget": "foodie-clone-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "deliveroo-clone-web:build"
+            "browserTarget": "foodie-clone-web:build"
           }
         },
         "test": {

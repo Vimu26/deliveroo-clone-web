@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isHomeRoute(): boolean {
-    return this.router.url === '';
+    return this.router.url === '/';
   }
   toggle() {
     this.sidenav.emit();

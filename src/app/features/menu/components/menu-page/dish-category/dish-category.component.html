@@ -1,12 +1,12 @@
-<div class="mt-5 mb-5 fixed-content"  style="position: sticky; top: 100px;">
+<div class="mt-5 mb-5 " >
   <mat-divider></mat-divider>
-  <div class="container-fluid d-flex mt-4 mb-4 overflow-auto " style="position: sticky; top: 100px;">
+  <div class="container d-flex mt-4 mb-4 overflow-auto " >
     <div class="d-flex justify-content-start">
       <mat-chip
         *ngFor="let chip of chips; let i = index"
         class="chip p-0"
         [ngClass]="{ selected: selectedChipIndex === i }"
-        [ngStyle]="{ color: selectedChipIndex === i ? 'white' : 'turquoise' }"
+        [ngStyle]="{ color: selectedChipIndex === i ? 'white' : '#FF355Ee' }"
         (click)="selectChip(i)"
       >
         <span class="chip-text">{{ chip }}</span>
@@ -19,15 +19,15 @@
       <!-- Add a spacer for large screens -->
         <div>
           <mat-chip [matMenuTriggerFor]="menu" class="custom-chip">
-            <span *ngIf="!isOptionSelected" class="chip2-text turquoise-text">
+            <span *ngIf="!isOptionSelected" class="chip2-text #FF355Ee-text">
               More
-              <mat-icon matSuffix class="chip-icon turquoise-text"
+              <mat-icon matSuffix class="chip-icon #FF355Ee-text"
                 >keyboard_arrow_down</mat-icon
               >
             </span>
-            <span *ngIf="isOptionSelected" class="chip2-text turquoise-text">
+            <span *ngIf="isOptionSelected" class="chip2-text #FF355Ee-text">
               {{ optionSelected }}
-              <mat-icon matSuffix class="chip-icon turquoise-text"
+              <mat-icon matSuffix class="chip-icon #FF355Ee-text"
                 >keyboard_arrow_down</mat-icon
               >
             </span>
@@ -52,4 +52,4 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-</div>
+

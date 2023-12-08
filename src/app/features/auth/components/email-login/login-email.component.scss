@@ -13,18 +13,18 @@
   }
 
   &__forgot {
-    color: #00ccbc;
+    color: #FF355E;
     width: 380px !important;
     height: 50px !important;
-    color: #00ccbc !important;
+    color: #FF355E !important;
   }
   &__login {
-    background-color: #00946f;
+    background-color: #FF355E;
     color: white;
   }
 
   &__continue:not([disabled]) {
-    background-color: #00ccbc;
+    background-color: #FF355E;
     color: white;
   }
   &__continue[disabled] {

@@ -27,7 +27,6 @@
   border-radius: 100px;
   border: none;
   color: #fff;
-  background: aqua;
   margin-left: -110px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -39,7 +38,7 @@
   margin-left: 33%;
 }
 .login {
-  color: #00ccbc;
+  color: #FF355E;
   text-decoration: none;
 }
 .icn-btn {
@@ -65,7 +64,7 @@
   margin-top: 18px;
   margin-left: 16px;
   overflow: visible;
-  color: #00ccbc;
+  color: #FF355E;
 }
 
 .input-container {
@@ -74,7 +73,7 @@
   box-sizing: content-box;
 }
 .container-button {
-  background-color: #00ccbc;
+  background-color: #FF355E;
   margin-right: 4px;
   border-radius: 50px;
   height: 52px;
@@ -97,7 +96,7 @@ input {
 .search-button {
   margin-left: 0.25rem;
   flex-shrink: 0;
-  background-color: #00ccbc;
+  background-color: #FF355E;
   color: #fff;
   border-radius: 500px;
   height: 52px;
@@ -110,3 +109,12 @@ input {
 ::before {
   box-sizing: content-box;
 }
+.background-image {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcslfnpzuJXekW-38vfL8NfsTBZ7fn8PPaPp1oa31XzxkUnALnzc-PZteBsmF79V9YdOc&usqp=CAU');
+ z-index: -5;
+ background-size: cover;
+ opacity: 1.8;
+}
+ .contentOf {
+  z-index: 2;
+ }
