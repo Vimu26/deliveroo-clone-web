@@ -30,3 +30,22 @@ export interface IDish {
   image: string;
   calories: number;
 }
+
+export interface IRestaurant {
+  name : string;
+  email: string;
+  contact_number:string;
+  location: string;
+  distance: string;
+  closesAt:string;
+  minimumPrice : string;
+  deliveryFee : string;
+  _id : string;
+}
+export interface IDishCategory {
+  restaurant_id : string;
+  dish_category_name: string;
+}
+export interface DishCategory {
+  dish_category_name: string;
+}
