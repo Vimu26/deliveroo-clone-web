@@ -47,3 +47,19 @@
 //   top: 0;
 //   z-index: 900; /* Optional: Add a z-index to ensure it appears above other elements */
 // }
+
+.custom-chip1 {
+  padding: 8px 16px;
+  margin: 4px;
+  color: #FF355E;
+  cursor: pointer;
+  border-radius: 50px;
+  min-width: auto; /* Allow the chip to adjust its width based on content */
+  display: inline-block; /* Make the chip expand to fit its content */
+  white-space: nowrap;
+}
+
+.custom-chip1.selected {
+  background-color: #FF355E;
+  color: white;
+}
