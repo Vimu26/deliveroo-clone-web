@@ -1,7 +1,7 @@
-<div class="mt-5 mb-5 " >
+<div class="mt-5 mb-5">
   <mat-divider></mat-divider>
-  <div class="container d-flex mt-4 mb-4 overflow-auto " >
-    <div class="d-flex justify-content-start">
+  <div class="container d-flex mt-4 mb-4 overflow-auto">
+    <!-- <div class="d-flex justify-content-start">
       <mat-chip
         *ngFor="let chip of chips; let i = index"
         class="chip p-0"
@@ -12,9 +12,7 @@
         <span class="chip-text">{{ chip }}</span>
       </mat-chip>
     </div>
-
-    <!-- this is the more Button do it later #TODO -->
-    <!-- <div class="d-flex justify-content-end align-items-end flex-grow-1">
+    <div class="d-flex justify-content-end align-items-end flex-grow-1">
       <div class="d-none d-lg-block flex-grow-1"></div>
         <div>
           <mat-chip [matMenuTriggerFor]="menu" class="custom-chip">
@@ -47,8 +45,14 @@
           >
             {{ option }}
           </div>
-        </mat-menu>
-    </div> -->
+        </mat-menu>  <mat-divider></mat-divider> -->
+    <span
+    *ngFor="let chip of chips; let i = index"
+      class="custom-chip1"
+      [ngClass]="{ selected: selectedChipIndex === i }"
+      (click)="selectChip(i)"
+    >
+      {{ chip }}
+    </span>
   </div>
-  <mat-divider></mat-divider>
-
+</div>
