@@ -1,54 +1,9 @@
-<div class="mt-5 mb-5">
-  <mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<div class="chips-container">
   <div class="container d-flex mt-4 mb-4 overflow-auto">
-    <!-- <div class="d-flex justify-content-start">
-      <mat-chip
-        *ngFor="let chip of chips; let i = index"
-        class="chip p-0"
-        [ngClass]="{ selected: selectedChipIndex === i }"
-        [ngStyle]="{ color: selectedChipIndex === i ? 'white' : '#FF355Ee' }"
-        (click)="selectChip(i)"
-      >
-        <span class="chip-text">{{ chip }}</span>
-      </mat-chip>
-    </div>
-    <div class="d-flex justify-content-end align-items-end flex-grow-1">
-      <div class="d-none d-lg-block flex-grow-1"></div>
-        <div>
-          <mat-chip [matMenuTriggerFor]="menu" class="custom-chip">
-            <span *ngIf="!isOptionSelected" class="chip2-text #FF355Ee-text">
-              More
-              <mat-icon matSuffix class="chip-icon #FF355Ee-text"
-                >keyboard_arrow_down</mat-icon
-              >
-            </span>
-            <span *ngIf="isOptionSelected" class="chip2-text #FF355Ee-text">
-              {{ optionSelected }}
-              <mat-icon matSuffix class="chip-icon #FF355Ee-text"
-                >keyboard_arrow_down</mat-icon
-              >
-            </span>
-          </mat-chip>
-        </div>
-
-        <mat-menu #menu="matMenu">
-          <div
-            *ngFor="let option of options"
-            mat-menu-item
-            (click)="selectOption(option)"
-            style="
-              font-family: plex-sans, sans-serif;
-              margin: 0;
-              font-weight: 400;
-              -webkit-font-smoothing: subpixel-antialiased;
-            "
-          >
-            {{ option }}
-          </div>
-        </mat-menu>  <mat-divider></mat-divider> -->
     <span
-    *ngFor="let chip of chips; let i = index"
-      class="custom-chip1"
+      *ngFor="let chip of chips; let i = index"
+      class="custom-chip"
       [ngClass]="{ selected: selectedChipIndex === i }"
       (click)="selectChip(i)"
     >
@@ -56,3 +11,5 @@
     </span>
   </div>
 </div>
+
+<mat-divider></mat-divider>

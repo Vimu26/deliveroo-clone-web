@@ -10,14 +10,8 @@ import { DishCategory } from 'src/app/interfaces';
 })
 export class DishCategoryComponent implements OnInit {
   restaurantId: string = '';
-  showDropdown = false;
-  isOptionSelected = false;
   chips: DishCategory[] = [];
   selectedChipIndex = 0;
-  isDropdownOpen: boolean = false;
-  optionSelected = '';
-  isContentFixed = false;
-  headerHeight = 0;
 
   constructor(
     private dishCategoriesService: DishCategoriesService,
@@ -26,7 +20,6 @@ export class DishCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.getRestaurantId();
-    this.isOptionSelected = false;
   }
 
   private getRestaurantId() {
@@ -39,15 +32,6 @@ export class DishCategoryComponent implements OnInit {
 
   selectChip(index: number) {
     this.selectedChipIndex = index;
-  }
-
-  toggleDropdown(): void {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  selectOption(option: string): void {
-    this.optionSelected = option;
-    this.isOptionSelected = true;
   }
 
   getAllDishCategories(id: string) {

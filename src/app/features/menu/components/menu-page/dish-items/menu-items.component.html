@@ -1,4 +1,13 @@
 <div class="container">
-<p class="mb-3">Adults need around 2000 kcal a day</p>
+<div class="row">
+  <div *ngFor="let item of dataArray; let i = index" class="col-lg-6 col-md-6 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <span class="card-title">Card {{ item }}</span>
+        <!-- Add your card content here -->
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 

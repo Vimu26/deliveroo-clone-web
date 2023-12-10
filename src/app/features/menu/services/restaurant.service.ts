@@ -4,19 +4,19 @@ import { IDish, IRestaurant } from '../../../interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RestaurantsService {
   readonly apiURL = 'http://localhost:8080/restaurants/';
   public $restaurantId = new BehaviorSubject<string>('');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   setRestaurantId(restaurantId: string) {
     this.$restaurantId.next(restaurantId);
   }
 
   getAllRestaurants(): Observable<IRestaurant[]> {
-   return this.http.get<IRestaurant[]>(this.apiURL+'')
+    return this.http.get<IRestaurant[]>(this.apiURL + '');
   }
 }
