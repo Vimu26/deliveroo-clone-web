@@ -23,6 +23,17 @@ import { MenuItemsComponent } from './features/menu/components/menu-page/dish-it
 import { BasketComponent } from './features/menu/components/menu-page/basket/basket.component';
 import { DishCategoryComponent } from './features/menu/components/menu-page/dish-category/dish-category.component';
 import { EmailRegisterComponent } from './features/auth/components/email-register/email-register.component';
+import { NewDailySpecialsComponent } from './features/menu/components/menu-page/dish-items/new-daily-specials/new-daily-specials.component';
+import { SaladsComponent } from './features/menu/components/menu-page/dish-items/salads/salads.component';
+import { HotPowerBowlsComponent } from './features/menu/components/menu-page/dish-items/hot-power-bowls/hot-power-bowls.component';
+import { GymFoodComponent } from './features/menu/components/menu-page/dish-items/gym-food/gym-food.component';
+import { BundlesComponent } from './features/menu/components/menu-page/dish-items/bundles/bundles.component';
+import { RainbowWrapsComponent } from './features/menu/components/menu-page/dish-items/rainbow-wraps/rainbow-wraps.component';
+import { VeganMenuComponent } from './features/menu/components/menu-page/dish-items/vegan-menu/vegan-menu.component';
+import { SnacksSidesComponent } from './features/menu/components/menu-page/dish-items/snacks-sides/snacks-sides.component';
+import { YoghurtFruitsComponent } from './features/menu/components/menu-page/dish-items/yoghurt-fruits/yoghurt-fruits.component';
+import { ColdDrinksComponent } from './features/menu/components/menu-page/dish-items/cold-drinks/cold-drinks.component';
+import { SmoothiesShakesJuiceComponent } from './features/menu/components/menu-page/dish-items/smoothies-shakes-juice/smoothies-shakes-juice.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +51,17 @@ import { EmailRegisterComponent } from './features/auth/components/email-registe
     MenuItemsComponent,
     BasketComponent,
     DishCategoryComponent,
+    NewDailySpecialsComponent,
+    SaladsComponent,
+    HotPowerBowlsComponent,
+    GymFoodComponent,
+    BundlesComponent,
+    RainbowWrapsComponent,
+    VeganMenuComponent,
+    SnacksSidesComponent,
+    YoghurtFruitsComponent,
+    ColdDrinksComponent,
+    SmoothiesShakesJuiceComponent,
   ],
   imports: [
     BrowserModule,
