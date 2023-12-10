@@ -28,9 +28,14 @@
     <div class="col-lg-8 col-md-6 col-sm-12">
       <div class="row">
         <div class="col-lg-7 col-md-12 col-sm-12 col-12">
-          <strong class="mb-2 title">{{name}} - {{location}}</strong>
+          <strong class="mb-2 title">{{ name }} - {{ location }}</strong>
           <p>10 - 20 min· Chicken·Salads·Healthy</p>
-          <p>{{distance}} miles away·Closes at {{closesAt}}·£{{minimumPrice}} minimum·£{{deliveryFee}} delivery</p>
+          <p>
+            {{ distance }} miles away·Closes at {{ closesAt }}·£{{
+              minimumPrice
+            }}
+            minimum·£{{ deliveryFee }} delivery
+          </p>
           <button
             mat-button
             class="mt-1 mb-1"
@@ -68,9 +73,7 @@
                 </div>
               </div>
               <div class="col-1 p-0 icon">
-                <mat-icon style="color: #FF355E"
-                  >keyboard_arrow_right</mat-icon
-                >
+                <mat-icon style="color: #ff355e">keyboard_arrow_right</mat-icon>
               </div>
             </div>
           </button>
@@ -113,7 +116,7 @@
                 </div>
               </div>
               <div class="col-1 p-0">
-                <mat-icon matSuffix style="color: #FF355E"
+                <mat-icon matSuffix style="color: #ff355e"
                   >keyboard_arrow_right</mat-icon
                 >
               </div>
@@ -134,11 +137,11 @@
             >
               <mat-icon
                 matPrefix
-                style="color: brown; font-size: 20px; overflow: visible;"
+                style="color: brown; font-size: 20px; overflow: visible"
               >
                 directions_bike</mat-icon
               >
-              Deliver in 10-20 min &nbsp;<span style="color: #FF355E"
+              Deliver in 10-20 min &nbsp;<span style="color: #ff355e"
                 >Change</span
               ></button
             ><br />
@@ -165,21 +168,17 @@
   </div>
 </div>
 
-<div class="d-grid">
-  <div class="dish">
-    <app-dish-category></app-dish-category>
-  </div>
+<app-dish-category></app-dish-category>
+<div class="container" style="margin-left: 6%">
+  <p class="mb-5 mt-5">Adults need around 2000 kcal a day</p>
 </div>
 
 <div class="container">
-  <div class="row d-flex">
-    <div class="col-12 col-lg-7 col-md-7 d-flex">
+  <div class="row">
+    <div class="col-12 col-lg-8 col-md-8 order-2 order-lg-1 order-md-1">
       <app-menu-items></app-menu-items>
     </div>
-    <div
-      class="col-12 col-lg-5 col-md-5 d-flex justify-content-center"
-      style="margin-bottom: 800rem"
-    >
+    <div class="col-12 col-lg-4 col-md-4 order-1 order-lg-2 order-md-2">
       <div>
         <app-basket></app-basket>
       </div>
