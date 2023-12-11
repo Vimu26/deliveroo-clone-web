@@ -23,12 +23,12 @@ export interface LoginResponse {
 export interface IDish {
   restaurant_id: string;
   order_id?: string;
-  dish_category_id?: string;
+  dish_category_id: string;
   name: string;
-  dish_code: string;
-  price: number;
+  description: string;
+  price: string;
   image: string;
-  calories: number;
+  calories: string;
 }
 
 export interface IRestaurant {
@@ -47,5 +47,8 @@ export interface IDishCategory {
   dish_category_name: string;
 }
 export interface DishCategory {
-  dish_category_name: string;
+  dishCategoryName: string;
+  index : number;
+  restaurantId: string;
+  dishCategoryId: string;
 }

@@ -26,10 +26,9 @@ export class DishCategoryComponent implements OnInit {
     this.restaurantsService.$restaurantId.subscribe((restaurantId) => {
       this.restaurantId = restaurantId;
     });
-    console.log(this.restaurantId);
     this.getAllDishCategories(this.restaurantId);
   }
-
+  // this.dishCategoriesService.setIds(this.restaurantId,)
   selectChip(index: number) {
     this.selectedChipIndex = index;
   }
@@ -38,10 +37,15 @@ export class DishCategoryComponent implements OnInit {
     this.dishCategoriesService.getRestaurantDishCategories(id).subscribe({
       next: (res: any) => {
         res.data.forEach((item: any) => {
-          console.log(item);
-          this.chips.push(item?.dish_category_name);
+          this.chips.push({
+            dishCategoryName: item?.dish_category_name,
+            index: this.chips.length,
+            restaurantId: item?.restaurant_id,
+            dishCategoryId: item?._id,
+          });
+
         });
-        console.log(this.chips);
+        this.dishCategoriesService.setChipData(this.chips)
       },
       error: () => {
         //

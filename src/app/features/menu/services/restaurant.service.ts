@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IDish, IRestaurant } from '../../../interfaces';
+import { IRestaurant } from '../../../interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
