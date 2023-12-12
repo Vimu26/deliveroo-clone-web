@@ -121,8 +121,12 @@
   </mat-drawer>
   <!-- navbar inside out -->
 
-
-  <div [ngClass]="{'content-wrapper': !isHomeRoute(),'home-content-wrapper': isHomeRoute()}" >
+  <div
+    [ngClass]="{
+      'content-wrapper': !isHomeRoute(),
+      'home-content-wrapper': isHomeRoute()
+    }"
+  >
     <router-outlet></router-outlet>
   </div>
 

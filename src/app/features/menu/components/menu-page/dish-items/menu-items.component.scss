@@ -1,11 +1,26 @@
 .add-icon {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 .button-class {
-    width: 100% !important;
-    min-width: unset!important;
+  width: 100% !important;
+  min-width: unset !important;
 }
-
-
-
+.dish-card {
+  // max-height: 3em; /* Adjust this based on the height you want for three lines */
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // display: -webkit-box;
+  // -webkit-line-clamp: 3; /* Limit to three lines */
+  // -webkit-box-orient: vertical;
+  // white-space: pre-line;
+}
+card-title {
+  font-size: 20px;
+}
+.card-content {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.75);
+  color: #585c5c;
+  font-family: plex-sans, sans-serif;
+}

@@ -1,31 +1,29 @@
-.content{
-
-  &__heading{
-  font-size: 40px;
+.content {
+  &__heading {
+    font-size: 40px;
     line-height: 48px;
     color: #2e3333;
     width: 83.3333333333%;
-    font-family: stratos,sans-serif;
+    font-family: stratos, sans-serif;
+  }
+
+  &__subheading {
+    font-size: 18px;
+    line-height: 24px;
+    width: 83.3333333333%;
+    margin-top: 16px;
+    font-family: plex-sans, 'Helvetica Neue', Helvetica, Arial,
+      'Microsoft YaHei';
+  }
 }
 
-&__subheading{
-  font-size: 18px;
-  line-height: 24px;
-  width: 83.3333333333%;
-  margin-top: 16px;
-  font-family: plex-sans, "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei";
-
-}
-
-}
-
-.off{
-  background-color:#bb3a54;
+.off {
+  background-color: #bb3a54;
   min-height: 300px;
   margin-bottom: 50px;
   min-height: 330px;
 
-  &__heading{
+  &__heading {
     font-size: 60px;
     line-height: 80px;
     margin-top: 20px;
@@ -34,72 +32,62 @@
     margin-bottom: 16px;
     vertical-align: baseline;
     color: white;
-
   }
-  &__subheading{
+  &__subheading {
     font-size: 20px;
     line-height: 30px;
     font-family: plex-sans;
     color: white;
   }
 
-  &__subheading2{
+  &__subheading2 {
     font-family: plex-sans;
     font-size: 14px;
     line-height: 20px;
     color: white;
-
   }
 }
-.wordings{
-      font-family: stratos,sans-serif;
-      font-size: 28px;
-      line-height: 36px;
-      color: #fff;
-    }
-.wordings-sub{
-  font-size: 15px;
-    line-height: 130%;
-    color: #fff;
-    font-family: plex-sans, "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", 微软雅黑体, "Hiragino Sans GB", 冬青黑体, sans-serif;
+.wordings {
+  font-family: stratos, sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: #fff;
 }
-.cards{
-
-  &__card1{
-    background-image: url("/../assets/images/card1.PNG");
+.wordings-sub {
+  font-size: 15px;
+  line-height: 130%;
+  color: #fff;
+  font-family: plex-sans, 'Helvetica Neue', Helvetica, Arial, 'Microsoft YaHei',
+    微软雅黑体, 'Hiragino Sans GB', 冬青黑体, sans-serif;
+}
+.cards {
+  &__card1 {
+    background-image: url('/../assets/images/card1.PNG');
     width: 32rem;
     height: 30rem;
     margin-top: 32px;
     background-size: cover;
   }
-  &__card2{
-    background-image: url("/../assets/images/card2.PNG");
+  &__card2 {
+    background-image: url('/../assets/images/card2.PNG');
     width: 32rem;
     height: 30rem;
     margin-top: 35px;
-
   }
-  &__card3{
-    background-image: url("/../assets/images/card3.PNG");
+  &__card3 {
+    background-image: url('/../assets/images/card3.PNG');
     width: 32rem;
     height: 30rem;
     margin-top: 32px;
-
-
-
   }
-  &__card4{
-    background-image: url("/../assets/images/card4.PNG");
+  &__card4 {
+    background-image: url('/../assets/images/card4.PNG');
     width: 32rem;
     height: 30rem;
     margin-top: 35px;
-
-
   }
-
 }
 
-.map{
-  background-image: url("/../assets/images/image (2).png");
+.map {
+  background-image: url('/../assets/images/image (2).png');
 }
-

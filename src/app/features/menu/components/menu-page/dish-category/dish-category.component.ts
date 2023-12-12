@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DishCategoriesService } from '../../../services/dish-categories.service';
-import { RestaurantsService } from '../../../services/restaurant.service';
-import { DishCategory } from 'src/app/interfaces';
+import { Component, OnInit } from '@angular/core'
+import { DishCategoriesService } from '../../../services/dish-categories.service'
+import { RestaurantsService } from '../../../services/restaurant.service'
+import { DishCategory } from 'src/app/interfaces'
 
 @Component({
   selector: 'app-dish-category',
@@ -9,28 +9,27 @@ import { DishCategory } from 'src/app/interfaces';
   styleUrls: ['./dish-category.component.scss'],
 })
 export class DishCategoryComponent implements OnInit {
-  restaurantId: string = '';
-  chips: DishCategory[] = [];
-  selectedChipIndex = 0;
+  restaurantId: any = ''
+  chips: DishCategory[] = []
+  selectedChipIndex = 0
 
   constructor(
     private dishCategoriesService: DishCategoriesService,
-    private restaurantsService: RestaurantsService
+    private restaurantsService: RestaurantsService,
   ) {}
 
   ngOnInit() {
-    this.getRestaurantId();
+    this.getRestaurantId()
   }
 
   private getRestaurantId() {
-    this.restaurantsService.$restaurantId.subscribe((restaurantId) => {
-      this.restaurantId = restaurantId;
-    });
-    this.getAllDishCategories(this.restaurantId);
+    this.restaurantId = localStorage.getItem('RESTAURANT_ID')
+    if (this.restaurantId) {
+      this.getAllDishCategories(this.restaurantId)
+    }
   }
-  // this.dishCategoriesService.setIds(this.restaurantId,)
   selectChip(index: number) {
-    this.selectedChipIndex = index;
+    this.selectedChipIndex = index
   }
 
   getAllDishCategories(id: string) {
@@ -42,14 +41,13 @@ export class DishCategoryComponent implements OnInit {
             index: this.chips.length,
             restaurantId: item?.restaurant_id,
             dishCategoryId: item?._id,
-          });
-
-        });
+          })
+        })
         this.dishCategoriesService.setChipData(this.chips)
       },
       error: () => {
         //
       },
-    });
+    })
   }
 }

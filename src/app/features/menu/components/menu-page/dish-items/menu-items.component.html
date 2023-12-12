@@ -1,19 +1,7 @@
-<!-- <app-new-daily-specials></app-new-daily-specials>
-<app-salads></app-salads>
-<app-hot-power-bowls></app-hot-power-bowls>
-<app-gym-food></app-gym-food>
-<app-bundles></app-bundles>
-<app-rainbow-wraps></app-rainbow-wraps>
-<app-vegan-menu></app-vegan-menu>
-<app-snacks-sides></app-snacks-sides>
-<app-yoghurt-fruits></app-yoghurt-fruits>
-<app-cold-drinks></app-cold-drinks>
-<app-smoothies-shakes-juice></app-smoothies-shakes-juice> -->
-
-<div *ngFor="let category of categoryData">
+<div *ngFor="let category of dishCategoryData">
   <mat-card
     class="mt-5"
-    style="width: 100%; height: 100%; background-color: blueviolet"
+    style="width: 100%; height: 100%; background-color: rgb(241, 241, 241)"
   >
     <mat-card-header
       style="
@@ -28,25 +16,42 @@
       <div class="container mt-3 mb-3">
         <div class="row">
           <div
-            *ngFor="let dish of dishList; let i = index"
-            class="col-lg-6 col-md-6 mb-3"
+            *ngFor="let dish of category.data; let i = index"
+            class="col-12 col-lg-6 mb-3"
           >
             <div class="card">
               <div class="card-body d-flex flex-column">
-                <div class="row">
-                  <div class="col-6">
-                    <span class="card-title"> {{ dish.name }}</span
+                <div class="row pr-0">
+                  <div class="col-7" style="padding-right: 0">
+                    <span>
+                      <b
+                        class="card-title"
+                        style="
+                          font-size: 18px;
+                          font-family: plex-sans, sans-serif;
+                        "
+                        >{{ dish.name }}</b
+                      ></span
                     ><br />
-                    <span>{{ dish.description }}</span
+                    <span class="card-content">{{ dish.description }}</span
                     ><br />
-                    <span>{{ dish.calories }} Kcal</span><br />
-                    <span>£ {{ dish.price }} Kcal</span>
-                  </div>
-                  <div class="col-4">
-                    <img  [src]="dish.image" style="width: 100%; height: 100%;">
+                    <span class="card-content">{{ dish.calories }} Kcal</span
+                    ><br />
+                    <span class="card-content">£ {{ dish.price }}</span>
                   </div>
                   <div
-                    class="col-2 add-icon d-flex flex-grow-1 justify-content-center"
+                    class="col-4 d-flex"
+                    style="align-items: center; padding: 5px"
+                  >
+                    <img
+                      [src]="dish.image"
+                      alt=""
+                      style="width: 90px; height: 90px; object-fit: cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div
+                    class="col-1 add-icon d-flex flex-grow-1 justify-content-center"
                     style="
                       align-items: center;
                       display: flex;
@@ -60,7 +65,7 @@
                     >
                       <mat-icon
                         class="d-flex justify-content-center button-class"
-                        style="margin: 0; padding: 0"
+                        style="margin: 0; padding: 0; overflow: visible"
                         >add</mat-icon
                       >
                     </button>

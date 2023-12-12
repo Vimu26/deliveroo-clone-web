@@ -38,7 +38,7 @@
   margin-left: 33%;
 }
 .login {
-  color: #FF355E;
+  color: #ff355e;
   text-decoration: none;
 }
 .icn-btn {
@@ -64,7 +64,7 @@
   margin-top: 18px;
   margin-left: 16px;
   overflow: visible;
-  color: #FF355E;
+  color: #ff355e;
 }
 
 .input-container {
@@ -73,7 +73,7 @@
   box-sizing: content-box;
 }
 .container-button {
-  background-color: #FF355E;
+  background-color: #ff355e;
   margin-right: 4px;
   border-radius: 50px;
   height: 52px;
@@ -96,7 +96,7 @@ input {
 .search-button {
   margin-left: 0.25rem;
   flex-shrink: 0;
-  background-color: #FF355E;
+  background-color: #ff355e;
   color: #fff;
   border-radius: 500px;
   height: 52px;
@@ -111,11 +111,10 @@ input {
 }
 .background-image {
   background-image: url('https://media.zenfs.com/en/insidermonkey.com/64a63f085247830169a35b5b3d279198');
- z-index: -5;
-//  background-size: cover;
- opacity: 1.8;
-
+  z-index: -5;
+  //  background-size: cover;
+  opacity: 1.8;
 }
- .contentOf {
+.contentOf {
   z-index: 2;
- }
+}

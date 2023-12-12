@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -7,22 +7,24 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'foodie-clone-web';
-  showFiller = false;
-  sidenav: any;
-  isNotFoundRoute = false;
+  title = 'foodie-clone-web'
+  showFiller = false
+  sidenav: any
+  isNotFoundRoute = false
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isHomeRoute();
-        const currentRoute = this.route.snapshot.firstChild?.routeConfig?.path;
-        this.isNotFoundRoute = currentRoute === '**';
-
+        this.isHomeRoute()
+        const currentRoute = this.route.snapshot.firstChild?.routeConfig?.path
+        this.isNotFoundRoute = currentRoute === '**'
       }
-    });
+    })
   }
 
   isLoggedIn(): boolean {
@@ -30,14 +32,10 @@ export class AppComponent implements OnInit {
       this.router.url.includes('/login') ||
       this.router.url.includes('/register') ||
       this.router.url.includes('/menu')
-    );
+    )
   }
 
   isHomeRoute(): boolean {
-      return this.router.url === '/' ;
+    return this.router.url === '/'
   }
 }
-
-
-
-
