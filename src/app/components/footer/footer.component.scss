@@ -1,75 +1,72 @@
-.background{
-  background-color:#2e3333;
+.background {
+  background-color: #2e3333;
   height: 100%;
   width: 100%;
 }
-.flex1{
-  color:aliceblue;
+.flex1 {
+  color: aliceblue;
   min-height: 450px;
-  border:3px;
+  border: 3px;
   background-color: rgb(75, 75, 75);
-
 }
-.flex2{
-  color:aliceblue;
+.flex2 {
+  color: aliceblue;
   height: 450px;
-  border:3px;
-  background-color:  rgb(75, 75, 75);
-
+  border: 3px;
+  background-color: rgb(75, 75, 75);
 }
-.flex3{
-  color:aliceblue;
+.flex3 {
+  color: aliceblue;
   height: 450px;
-  border:3px;
+  border: 3px;
   background-color: rgb(75, 75, 75);
 }
 
-.flex4{
-  color:aliceblue;
+.flex4 {
+  color: aliceblue;
   height: 450px;
-  border:3px;
-  background-color:  rgb(75, 75, 75);
-  margin-bottom: 40px
-
+  border: 3px;
+  background-color: rgb(75, 75, 75);
+  margin-bottom: 40px;
 }
 
 a {
   color: aliceblue;
-  text-decoration: none;}
+  text-decoration: none;
+}
 
 a:hover {
-  color:#FF355E;
+  color: #ff355e;
 }
-li{
+li {
   font-size: 14px;
   text-decoration: none;
-  list-style-type:none;
+  list-style-type: none;
   text-align: left;
   font-family: sans-serif;
 }
-.btn-background{
- background-color: rgba(0 ,0 ,0 ,0.85);
- color: aliceblue;
- border-width: 1px;
- border-style: solid;
- width: 180px;
- height: 60px;
- font-size: 10px;
- margin-bottom: 5px;
- border-color:aliceblue;
-
+.btn-background {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: aliceblue;
+  border-width: 1px;
+  border-style: solid;
+  width: 180px;
+  height: 60px;
+  font-size: 10px;
+  margin-bottom: 5px;
+  border-color: aliceblue;
 }
- .btn-background-google{
+.btn-background-google {
   margin-top: 10px;
   margin-left: -20px;
- }
- .insta:hover {
+}
+.insta:hover {
   fill: rgb(186, 62, 62);
- }
+}
 
- .fb:hover {
+.fb:hover {
   fill: rgb(55, 55, 238);
- }
- .twitter:hover {
-  fill:lightskyblue;
- }
+}
+.twitter:hover {
+  fill: lightskyblue;
+}

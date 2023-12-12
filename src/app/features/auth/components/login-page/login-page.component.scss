@@ -1,36 +1,34 @@
-.login-page{
+.login-page {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
   padding: 64px 16px;
 
   &__heading {
-    font-family: plex-sans,sans-serif;
+    font-family: plex-sans, sans-serif;
     font-size: 22px;
     color: #2e3333;
     line-height: 28px;
     font-weight: 700;
   }
 
-  &__facebook{
-   background-color:cornflowerblue;
-   color: aliceblue;
-   height: 50px;
-   border-width: 5px;
+  &__facebook {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    height: 50px;
+    border-width: 5px;
   }
-  &__apple{
+  &__apple {
     background-color: black;
     color: aliceblue;
     height: 50px;
     border: 5px;
   }
-  &__google{
-    color:black;
+  &__google {
+    color: black;
     height: 50px;
-
   }
-  &__email{
+  &__email {
     height: 50px;
-
   }
 }

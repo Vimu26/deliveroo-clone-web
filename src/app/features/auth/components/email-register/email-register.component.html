@@ -26,9 +26,10 @@
       <mat-error *ngIf="registrationForm.get('email')?.hasError('email')"
         >Email is Invalid</mat-error
       >
-      <mat-error *ngIf="registrationForm.get('email')?.hasError('emailConflict')"
-      >Email has already Taken!!</mat-error
-    >
+      <mat-error
+        *ngIf="registrationForm.get('email')?.hasError('emailConflict')"
+        >Email has already Taken!!</mat-error
+      >
     </mat-form-field>
     <mat-form-field appearance="outline" class="form-group">
       <mat-label for="contact_number">Contact Number</mat-label>
@@ -74,7 +75,11 @@
         *ngIf="registrationForm.get('confirm_password')?.hasError('required')"
         >Password is Required</mat-error
       >
-      <mat-error *ngIf="registrationForm.get('confirm_password')?.hasError('passwordMismatch')">
+      <mat-error
+        *ngIf="
+          registrationForm.get('confirm_password')?.hasError('passwordMismatch')
+        "
+      >
         Password And Confirm Password is Mismatch
       </mat-error>
     </mat-form-field>

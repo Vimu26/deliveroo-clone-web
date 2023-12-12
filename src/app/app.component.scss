@@ -14,50 +14,48 @@
 .example-sidenav {
   padding: 20px;
 } */
- .navBar {
+.navBar {
   width: 390px;
   align-items: center;
- }
-
- .close-icon{
-    color: #FF355E;
-    font-size: 2rem;
-    height: 2rem;
-    width: 2rem;
-
-  }
-  .btn:focus {
-    outline: none;
-    box-shadow: none;
-  }
-  .loginbutton{
-    margin-top: 40px;
-    background-color : #FF355E;
-    color :white;
-    width:100%;
-    font-size:16px;
-    font-family: plex-sans , sans-serif;
-    height: 50px;
-  }
-.faqbutton{
-
 }
-.faqbutton:hover{
-  border-color: #FF355E;
+
+.close-icon {
+  color: #ff355e;
+  font-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+.loginbutton {
+  margin-top: 40px;
+  background-color: #ff355e;
+  color: white;
+  width: 100%;
+  font-size: 16px;
+  font-family: plex-sans, sans-serif;
+  height: 50px;
+}
+.faqbutton {
+}
+.faqbutton:hover {
+  border-color: #ff355e;
   background-color: white;
- }
-.mat-form-field{
+}
+.mat-form-field {
   border-color: none;
 }
 .mat-button:hover {
   border-color: #00ccbc;
 }
-.icncolor{
+.icncolor {
   color: grey;
 }
 .content-wrapper {
   margin-top: 110px;
 }
 .home-content-wrapper {
-  margin-top:0;
+  margin-top: 0;
 }
