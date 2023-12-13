@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { DishCategoriesService } from '../../../services/dish-categories.service'
 import { RestaurantsService } from '../../../services/restaurant.service'
 import { DishCategory, IDishCategory } from 'src/app/interfaces'
+import { HttpParams } from '@angular/common/http'
 
 @Component({
   selector: 'app-dish-category',
@@ -20,7 +21,6 @@ export class DishCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.restaurantId)
     this.getAllDishCategories()
   }
 
@@ -29,13 +29,12 @@ export class DishCategoryComponent implements OnInit {
   }
 
   getAllDishCategories() {
-    this.dishCategoriesService
-      .getAllDishCategories(this.restaurantId)
-      .subscribe({
-        next: (res) => {
-          this.CategoryChips.push(...res.data)
-        },
-      })
+    const params = new HttpParams().append('restaurantId', this.restaurantId)
+    this.dishCategoriesService.getAllDishCategories(params).subscribe({
+      next: (res) => {
+        this.CategoryChips.push(...res.data)
+      },
+    })
   }
 
   // getAllDishCategories(id: string) {

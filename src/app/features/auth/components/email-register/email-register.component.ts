@@ -79,13 +79,11 @@ export class EmailRegisterComponent implements OnInit {
       }
       this.loginService.createUser(data).subscribe({
         next: (res: any) => {
-          console.log(res)
           setTimeout(() => {
             this.router.navigate(['login-email'])
           }, 1500)
         },
         error: (err) => {
-          console.log(err)
           if (err.status !== 409) {
             console.error('Internal Server Error:')
           }
