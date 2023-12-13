@@ -59,3 +59,8 @@ export interface DishCategoryData {
   dishCategoryId: string
   data: IDish[]
 }
+export interface CommonResponse<T> {
+  data: T
+  message: string
+  status: boolean
+}

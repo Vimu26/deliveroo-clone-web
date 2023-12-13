@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { DishCategoriesService } from '../../../services/dish-categories.service'
 import { RestaurantsService } from '../../../services/restaurant.service'
-import { DishCategory } from 'src/app/interfaces'
+import { DishCategory, IDishCategory } from 'src/app/interfaces'
 
 @Component({
   selector: 'app-dish-category',
@@ -9,8 +9,9 @@ import { DishCategory } from 'src/app/interfaces'
   styleUrls: ['./dish-category.component.scss'],
 })
 export class DishCategoryComponent implements OnInit {
-  restaurantId: any = ''
+  @Input() restaurantId: string = ''
   chips: DishCategory[] = []
+  CategoryChips: IDishCategory[] = []
   selectedChipIndex = 0
 
   constructor(
@@ -19,35 +20,40 @@ export class DishCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getRestaurantId()
+    console.log(this.restaurantId)
+    this.getAllDishCategories()
   }
 
-  private getRestaurantId() {
-    this.restaurantId = localStorage.getItem('RESTAURANT_ID')
-    if (this.restaurantId) {
-      this.getAllDishCategories(this.restaurantId)
-    }
-  }
   selectChip(index: number) {
     this.selectedChipIndex = index
   }
 
-  getAllDishCategories(id: string) {
-    this.dishCategoriesService.getRestaurantDishCategories(id).subscribe({
-      next: (res: any) => {
-        res.data.forEach((item: any) => {
-          this.chips.push({
-            dishCategoryName: item?.dish_category_name,
-            index: this.chips.length,
-            restaurantId: item?.restaurant_id,
-            dishCategoryId: item?._id,
-          })
-        })
-        this.dishCategoriesService.setChipData(this.chips)
-      },
-      error: () => {
-        //
-      },
-    })
+  getAllDishCategories() {
+    this.dishCategoriesService
+      .getAllDishCategories(this.restaurantId)
+      .subscribe({
+        next: (res) => {
+          this.CategoryChips.push(...res.data)
+        },
+      })
   }
+
+  // getAllDishCategories(id: string) {
+  //   this.dishCategoriesService.getRestaurantDishCategories(id).subscribe({
+  //     next: (res: any) => {
+  //       res.data.forEach((item: any) => {
+  //         this.chips.push({
+  //           dishCategoryName: item?.dish_category_name,
+  //           index: this.chips.length,
+  //           restaurantId: item?.restaurant_id,
+  //           dishCategoryId: item?._id,
+  //         })
+  //       })
+  //       this.dishCategoriesService.setChipData(this.chips)
+  //     },
+  //     error: () => {
+  //       //
+  //     },
+  //   })
+  // }
 }

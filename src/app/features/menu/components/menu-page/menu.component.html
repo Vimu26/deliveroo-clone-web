@@ -28,13 +28,17 @@
     <div class="col-lg-8 col-md-6 col-sm-12">
       <div class="row">
         <div class="col-lg-7 col-md-12 col-sm-12 col-12">
-          <strong class="mb-2 title">{{ name }} - {{ location }}</strong>
+          <strong class="mb-2 title"
+            >{{ selectedRestaurant?.name }} -
+            {{ selectedRestaurant?.location }}</strong
+          >
           <p>10 - 20 min· Chicken·Salads·Healthy</p>
           <p>
-            {{ distance }} miles away·Closes at {{ closesAt }}·£{{
-              minimumPrice
+            {{ selectedRestaurant?.distance }} miles away·Closes at
+            {{ selectedRestaurant?.closesAt }}·£{{ minimumPrice }} minimum·£{{
+              selectedRestaurant?.deliveryFee
             }}
-            minimum·£{{ deliveryFee }} delivery
+            delivery
           </p>
           <button
             mat-button
@@ -168,7 +172,7 @@
   </div>
 </div>
 
-<app-dish-category></app-dish-category>
+<app-dish-category [restaurantId]="RESTAURANT_ID"></app-dish-category>
 <div class="container" style="margin-left: 6%">
   <p class="mt-5">Adults need around 2000 kcal a day</p>
 </div>
