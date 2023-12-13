@@ -33,7 +33,6 @@ export class DishCategoryComponent implements OnInit {
       .getAllDishCategories(this.restaurantId)
       .subscribe({
         next: (res) => {
-          console.log(res)
           this.CategoryChips.push(...res.data)
         },
       })
