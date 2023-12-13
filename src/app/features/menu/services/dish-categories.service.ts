@@ -16,12 +16,7 @@ export class DishCategoriesService {
   setChipData(categoryData: DishCategory[]) {
     this.chipData.push(...categoryData)
     this.$chipData.next(this.chipData)
-    console.log(this.chipData)
   }
-
-  // getChipData(){
-  // return [...this.chipData]
-  // }
 
   //get All dish categories
   getAllDishCategories(): Observable<IDishCategory[]> {
