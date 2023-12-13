@@ -7,18 +7,6 @@ import { EmailRegisterComponent } from './features/auth/components/email-registe
 import { MenuComponent } from './features/menu/components/menu-page/menu.component'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 
-// auth module
-// auth module routes
-// auth/ - select the login type
-// auth/register
-// auth/login - email and password
-
-// menu module
-// menu module routes
-// menu/  - menu
-
-// menu module
-
 const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'login', component: LoginPageComponent },
