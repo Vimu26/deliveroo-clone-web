@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
-import { DishCategory, IDishCategory } from '../../../interfaces'
-import { HttpClient } from '@angular/common/http'
+import {
+  CommonResponse,
+  DishCategory,
+  IDishCategory,
+} from '../../../interfaces'
+import { HttpClient, HttpParams } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +13,7 @@ import { HttpClient } from '@angular/common/http'
 export class DishCategoriesService {
   chipData: DishCategory[] = []
   public $chipData = new BehaviorSubject<DishCategory[]>([])
-  readonly apiURL = 'http://localhost:8080/dish-categories/'
-  readonly apiURL2 = 'http://localhost:8080/dish-categories/restaurant/'
+
   constructor(private http: HttpClient) {}
 
   setChipData(categoryData: DishCategory[]) {
@@ -19,12 +22,13 @@ export class DishCategoriesService {
   }
 
   //get All dish categories
-  getAllDishCategories(): Observable<IDishCategory[]> {
-    return this.http.get<IDishCategory[]>(this.apiURL + '')
-  }
-
-  //get all dish categories by restaurant ID
-  getRestaurantDishCategories(id: any): Observable<IDishCategory[]> {
-    return this.http.get<IDishCategory[]>(this.apiURL2 + id)
+  getAllDishCategories(
+    restaurantId: string,
+  ): Observable<CommonResponse<IDishCategory[]>> {
+    const params = new HttpParams().append('restaurantId', restaurantId)
+    const url = 'http://localhost:8080/dish-categories/'
+    return this.http.get<CommonResponse<IDishCategory[]>>(url + '', {
+      params,
+    })
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
-import { IRestaurant } from '../../../interfaces'
+import { CommonResponse, IRestaurant } from '../../../interfaces'
 import { HttpClient } from '@angular/common/http'
 
 @Injectable({
@@ -18,5 +18,9 @@ export class RestaurantsService {
 
   getAllRestaurants(): Observable<IRestaurant[]> {
     return this.http.get<IRestaurant[]>(this.apiURL + '')
+  }
+
+  getSingleRestaurant(id: string): Observable<CommonResponse<IRestaurant>> {
+    return this.http.get<CommonResponse<IRestaurant>>(this.apiURL + id)
   }
 }

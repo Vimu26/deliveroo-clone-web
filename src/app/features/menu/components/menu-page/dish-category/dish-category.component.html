@@ -2,12 +2,12 @@
 <div class="chips-container">
   <div class="container d-flex mt-4 mb-4 overflow-auto">
     <span
-      *ngFor="let chip of chips; let i = index"
+      *ngFor="let chip of CategoryChips; let i = index"
       class="custom-chip"
       [ngClass]="{ selected: selectedChipIndex === i }"
       (click)="selectChip(i)"
     >
-      {{ chip.dishCategoryName }}
+      {{ chip.dish_category_name }}
     </span>
   </div>
 </div>

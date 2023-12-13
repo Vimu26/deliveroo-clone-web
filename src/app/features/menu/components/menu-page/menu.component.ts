@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { RestaurantsService } from '../../services/restaurant.service'
 import { IRestaurant } from 'src/app/interfaces'
 
@@ -8,7 +8,9 @@ import { IRestaurant } from 'src/app/interfaces'
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  RESTAURANT_ID: string
   restaurantList: IRestaurant[] = []
+  selectedRestaurant: IRestaurant | undefined
   name: string = ''
   location: string = ''
   contact_number: string = ''
@@ -18,10 +20,23 @@ export class MenuComponent implements OnInit {
   deliveryFee: string = ''
   restaurantId: string = ''
 
-  constructor(private restaurantsService: RestaurantsService) {}
+  constructor(private restaurantsService: RestaurantsService) {
+    this.RESTAURANT_ID = '65748b45716aa07063f0ebf0'
+  }
 
   ngOnInit() {
-    this.getAllRestaurants()
+    this.getRestaurant(this.RESTAURANT_ID)
+  }
+
+  getRestaurant(data: string) {
+    this.restaurantsService.getSingleRestaurant(data).subscribe({
+      next: (res) => {
+        this.selectedRestaurant = res.data
+      },
+      error: () => {
+        //
+      },
+    })
   }
 
   getAllRestaurants() {
