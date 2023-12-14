@@ -33,14 +33,12 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((data) => {
         this.categoryData.push(...data)
-        console.log(this.categoryData)
       })
   }
 
   getAllDishes() {
     this.dishesService.getAllDishes().subscribe({
       next: (res) => {
-        console.log(res)
       },
     })
   }
