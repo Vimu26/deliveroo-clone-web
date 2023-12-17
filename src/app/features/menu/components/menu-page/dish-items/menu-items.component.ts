@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { DishesServiceService } from '../../../services/dishes-service.service'
 import { DishCategoriesService } from '../../../services/dish-categories.service'
 import { RestaurantsService } from '../../../services/restaurant.service'
 import { DishCategory, DishCategoryData, IDish } from 'src/app/interfaces'
 import { Subject, takeUntil } from 'rxjs'
+import { HttpParams } from '@angular/common/http'
 
 @Component({
   selector: 'app-menu-items',
@@ -15,6 +16,7 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
   dishCategoryData: DishCategoryData[] = []
   dishList: IDish[] = []
   private onDestroy$ = new Subject<void>()
+  @Input() restaurantId: string = ''
 
   constructor(
     private dishesService: DishesServiceService,
@@ -23,7 +25,6 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    // this.getRelevantDishes()
     this.getDishCategories()
     this.getAllDishes()
   }
@@ -37,45 +38,13 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
   }
 
   getAllDishes() {
-    this.dishesService.getAllDishes().subscribe({
+    const params = new HttpParams().append('restaurantId', this.restaurantId)
+    this.dishesService.getAllDishes(params).subscribe({
       next: (res) => {
+        console.log(res)
       },
     })
   }
-  // getRelevantDishes() {
-  //   this.dishCategoriesService.$chipData.subscribe({
-  //     next: (res) => {
-  //       res.forEach((dish) => {
-  //         this.categoryData.push(dish)
-  //         this.dishesService
-  //           .getAllCategoryDishes({
-  //             restId: dish.restaurantId,
-  //             catId: dish.dishCategoryId,
-  //           })
-  //           .subscribe({
-  //             next: (res: any) => {
-  //               // res.data.forEach((item: IDish)=>{
-  //               //   this.dishList.push(item);
-  //               // })
-  //               this.dishCategoryData.push({
-  //                 dishCategoryName: dish.dishCategoryName,
-  //                 index: dish.index,
-  //                 restaurantId: dish.restaurantId,
-  //                 dishCategoryId: dish.dishCategoryId,
-  //                 data: res.data as IDish[],
-  //               })
-  //             },
-  //             error: (err) => {
-  //               //
-  //             },
-  //           })
-  //       })
-  //     },
-  //     error: (err) => {
-  //       console.log(err)
-  //     },
-  //   })
-  // }
 
   ngOnDestroy() {
     this.onDestroy$.next()

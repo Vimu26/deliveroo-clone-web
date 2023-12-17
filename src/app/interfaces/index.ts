@@ -23,7 +23,7 @@ export interface LoginResponse {
 export interface IDish {
   restaurant_id: string
   order_id?: string
-  dish_category_id: string
+  dish_category_id: IDishCategory
   name: string
   description: string
   price: string
