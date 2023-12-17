@@ -11,17 +11,9 @@ export class MenuComponent implements OnInit {
   RESTAURANT_ID: string
   restaurantList: IRestaurant[] = []
   selectedRestaurant: IRestaurant | undefined
-  name: string = ''
-  location: string = ''
-  contact_number: string = ''
-  closesAt: string = ''
-  distance: string = ''
-  minimumPrice: string = ''
-  deliveryFee: string = ''
-  restaurantId: string = ''
 
   constructor(private restaurantsService: RestaurantsService) {
-    this.RESTAURANT_ID = '657ee67630ff89a1ce48113c'
+    this.RESTAURANT_ID = '657efd66af295827d530ef3b'
   }
 
   ngOnInit() {
@@ -39,19 +31,21 @@ export class MenuComponent implements OnInit {
       },
     })
   }
-  getStatusAndTime(): { status: string, time: string } {
-    if (this.selectedRestaurant?.opens_at && this.selectedRestaurant?.closes_at) {
-      const currentTime = new Date();
-      const opensAt = new Date(this.selectedRestaurant?.opens_at);
-      const closesAt = new Date(this.selectedRestaurant?.closes_at);
-  
+  getStatusAndTime(): { status: string; time: string } {
+    if (
+      this.selectedRestaurant?.opens_at &&
+      this.selectedRestaurant?.closes_at
+    ) {
+      const currentTime = new Date()
+      const opensAt = new Date(this.selectedRestaurant?.opens_at)
+      const closesAt = new Date(this.selectedRestaurant?.closes_at)
+
       if (currentTime >= opensAt && currentTime <= closesAt) {
-        return { status: 'Closes', time: this.selectedRestaurant?.closes_at };
+        return { status: 'Closes', time: this.selectedRestaurant?.closes_at }
       } else {
-        return { status: 'Opens', time: this.selectedRestaurant?.opens_at };
+        return { status: 'Opens', time: this.selectedRestaurant?.opens_at }
       }
     }
-    return { status: 'Unavailable', time: 'N/A' };
+    return { status: 'Unavailable', time: 'N/A' }
   }
-
 }

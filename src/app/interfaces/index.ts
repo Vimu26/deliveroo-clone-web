@@ -32,25 +32,25 @@ export interface IDish {
 }
 
 export interface IRestaurant {
-  _id: string;
-  name: string;
-  email: string;
-  contact_number: string;
-  location: string;
-  distance: string;
-  opens_at: string;
-  closes_at: string;
-  minimumPrice: string;
-  deliveryFee: string;
+  _id: string
+  name: string
+  email: string
+  contact_number: string
+  location: string
+  distance: string
+  opens_at: string
+  closes_at: string
+  minimumPrice: string
+  deliveryFee: string
   tags: {
     delivery_time: {
-      from: number;
-      to: number;
-    };
-    tag1: string;
-    tag2: string;
-    tag3: string;
-  };
+      from: number
+      to: number
+    }
+    tag1: string
+    tag2: string
+    tag3: string
+  }
 }
 export interface IDishCategory {
   restaurant_id: string
