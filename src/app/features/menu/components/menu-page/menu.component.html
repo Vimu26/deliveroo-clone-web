@@ -32,12 +32,21 @@
             >{{ selectedRestaurant?.name }} -
             {{ selectedRestaurant?.location }}</strong
           >
-          <p>10 - 20 min· Chicken·Salads·Healthy</p>
           <p>
-            {{ selectedRestaurant?.distance }} miles away·Closes at
-            {{ selectedRestaurant?.closesAt }}·£{{ minimumPrice }} minimum·£{{
-              selectedRestaurant?.deliveryFee
+            {{ selectedRestaurant?.tags?.delivery_time?.from }} -
+            {{ selectedRestaurant?.tags?.delivery_time?.to }} min·
+            {{ selectedRestaurant?.tags?.tag1 }}·{{
+              selectedRestaurant?.tags?.tag2
+            }}·{{ selectedRestaurant?.tags?.tag3 }}
+          </p>
+          <p>
+            {{ selectedRestaurant?.distance }} miles away·{{
+              getStatusAndTime().status
             }}
+            at {{ getStatusAndTime().time }}·£{{
+              selectedRestaurant?.minimumPrice
+            }}
+            minimum·£{{ selectedRestaurant?.deliveryFee }}
             delivery
           </p>
           <button
@@ -145,7 +154,9 @@
               >
                 directions_bike</mat-icon
               >
-              Deliver in 10-20 min &nbsp;<span style="color: #ff355e"
+              Deliver in {{ selectedRestaurant?.tags?.delivery_time?.from }} -
+              {{ selectedRestaurant?.tags?.delivery_time?.to }} min &nbsp;<span
+                style="color: #ff355e"
                 >Change</span
               ></button
             ><br />

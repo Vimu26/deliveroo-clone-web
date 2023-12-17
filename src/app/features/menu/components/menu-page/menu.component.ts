@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { RestaurantsService } from '../../services/restaurant.service'
 import { IRestaurant } from 'src/app/interfaces'
 
@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   restaurantId: string = ''
 
   constructor(private restaurantsService: RestaurantsService) {
-    this.RESTAURANT_ID = '65748b45716aa07063f0ebf0'
+    this.RESTAURANT_ID = '657ee67630ff89a1ce48113c'
   }
 
   ngOnInit() {
@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit {
   getRestaurant(data: string) {
     this.restaurantsService.getSingleRestaurant(data).subscribe({
       next: (res) => {
+        console.log(res)
         this.selectedRestaurant = res.data
       },
       error: () => {
@@ -38,25 +39,19 @@ export class MenuComponent implements OnInit {
       },
     })
   }
-
-  getAllRestaurants() {
-    this.restaurantsService.getAllRestaurants().subscribe({
-      next: (res: any) => {
-        this.restaurantList.push(...res.data)
-        this.name = this.restaurantList[0].name
-        this.location = this.restaurantList[0].location
-        this.contact_number = this.restaurantList[0].contact_number
-        this.closesAt = this.restaurantList[0].closesAt
-        this.distance = this.restaurantList[0].distance
-        this.minimumPrice = this.restaurantList[0].minimumPrice
-        this.deliveryFee = this.restaurantList[0].deliveryFee
-        this.restaurantId = this.restaurantList[0]._id
-        this.restaurantsService.setRestaurantId(this.restaurantId)
-        localStorage.setItem('RESTAURANT_ID', this.restaurantId)
-      },
-      error: () => {
-        //
-      },
-    })
+  getStatusAndTime(): { status: string, time: string } {
+    if (this.selectedRestaurant?.opens_at && this.selectedRestaurant?.closes_at) {
+      const currentTime = new Date();
+      const opensAt = new Date(this.selectedRestaurant?.opens_at);
+      const closesAt = new Date(this.selectedRestaurant?.closes_at);
+  
+      if (currentTime >= opensAt && currentTime <= closesAt) {
+        return { status: 'Closes', time: this.selectedRestaurant?.closes_at };
+      } else {
+        return { status: 'Opens', time: this.selectedRestaurant?.opens_at };
+      }
+    }
+    return { status: 'Unavailable', time: 'N/A' };
   }
+
 }
