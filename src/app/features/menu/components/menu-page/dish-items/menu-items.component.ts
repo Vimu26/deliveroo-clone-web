@@ -38,8 +38,7 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
 
   getAllDishes() {
     this.dishesService.getAllDishes().subscribe({
-      next: (res) => {
-      },
+      next: (res) => {},
     })
   }
   // getRelevantDishes() {
