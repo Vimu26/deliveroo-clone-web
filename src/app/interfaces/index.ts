@@ -76,6 +76,6 @@ export interface DishCategoryData {
   data: IDish[]
 }
 export interface CategorizedDishes {
-  category: IDishCategory; 
-  dishes: IDish[]; 
+  category: IDishCategory
+  dishes: IDish[]
 }

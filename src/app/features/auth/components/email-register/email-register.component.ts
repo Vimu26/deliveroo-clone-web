@@ -80,7 +80,7 @@ export class EmailRegisterComponent implements OnInit {
       this.loginService.createUser(data).subscribe({
         next: (res: any) => {
           setTimeout(() => {
-            this.router.navigate(['login-email'])
+            this.router.navigate(['/auth/login-email'])
           }, 1500)
         },
         error: (err) => {
@@ -93,6 +93,6 @@ export class EmailRegisterComponent implements OnInit {
     }
   }
   onCancel() {
-    this.router.navigate(['login-email'])
+    this.router.navigate(['/auth/login-email'])
   }
 }
