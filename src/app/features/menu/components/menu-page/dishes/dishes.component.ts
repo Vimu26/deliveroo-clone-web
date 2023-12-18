@@ -12,11 +12,11 @@ import { Subject, takeUntil } from 'rxjs'
 import { HttpParams } from '@angular/common/http'
 
 @Component({
-  selector: 'app-menu-items',
-  templateUrl: './menu-items.component.html',
-  styleUrls: ['./menu-items.component.scss'],
+  selector: 'app-dishes',
+  templateUrl: './dishes.component.html',
+  styleUrls: ['./dishes.component.scss'],
 })
-export class MenuItemsComponent implements OnInit, OnDestroy {
+export class DishesComponent implements OnInit, OnDestroy {
   categoryData: IDishCategory[] = []
   dishCategoryData: DishCategoryData[] = []
   dishList: IDish[] = []
