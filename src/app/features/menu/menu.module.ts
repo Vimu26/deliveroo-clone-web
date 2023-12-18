@@ -1,0 +1,33 @@
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { MaterialModule } from 'src/app/material.module'
+import { AppModule } from 'src/app/app.module'
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { BasketComponent } from './components/menu-page/basket/basket.component'
+import { DishCategoryComponent } from './components/menu-page/dish-category/dish-category.component'
+import { MenuItemsComponent } from './components/menu-page/dish-items/menu-items.component'
+import { MenuComponent } from './components/menu-page/menu.component'
+import { MenuRoutingModule } from './menu-routing.module'
+import { ClickDirective } from 'src/app/custom-directives/click.directive'
+import { TruncatePipe } from 'src/app/pipes/truncate.pipe'
+
+@NgModule({
+  declarations: [
+    MenuComponent,
+    MenuItemsComponent,
+    BasketComponent,
+    DishCategoryComponent,
+    ClickDirective,
+    TruncatePipe,
+  ],
+  imports: [
+    CommonModule,
+    MenuRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+})
+export class MenuModule {}

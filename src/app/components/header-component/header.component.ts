@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goToLoginPage() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['auth/login'])
   }
 
   isHomeRoute(): boolean {
