@@ -4,7 +4,6 @@ import { DishCategoriesService } from '../../../services/dish-categories.service
 import { RestaurantsService } from '../../../services/restaurant.service'
 import {
   CategorizedDishes,
-  DishCategory,
   DishCategoryData,
   IDish,
   IDishCategory,
@@ -34,14 +33,12 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.getDishCategories()
     this.getAllDishes()
-    console.log(this.dishCategoryData)
   }
 
   getDishCategories() {
     this.dishCategoriesService.$chipData
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((data) => {
-        console.log(data)
         this.categoryData.push(...data)
       })
   }
@@ -59,7 +56,6 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
             dishes: dishes,
           }
         })
-        console.log(this.categorizedDishes)
       },
     })
   }
