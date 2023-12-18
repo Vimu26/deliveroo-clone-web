@@ -23,6 +23,7 @@ import { MenuItemsComponent } from './features/menu/components/menu-page/dish-it
 import { BasketComponent } from './features/menu/components/menu-page/basket/basket.component'
 import { DishCategoryComponent } from './features/menu/components/menu-page/dish-category/dish-category.component'
 import { EmailRegisterComponent } from './features/auth/components/email-register/email-register.component'
+import { TruncatePipe } from './pipes/truncate.pipe'
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EmailRegisterComponent } from './features/auth/components/email-registe
     MenuItemsComponent,
     BasketComponent,
     DishCategoryComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
