@@ -33,6 +33,7 @@ export class DishCategoryComponent implements OnInit {
     this.dishCategoriesService.getAllDishCategories(params).subscribe({
       next: (res) => {
         this.CategoryChips.push(...res.data)
+        this.dishCategoriesService.setChipData(this.CategoryChips)
       },
     })
   }

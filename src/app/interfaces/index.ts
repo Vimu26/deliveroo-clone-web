@@ -1,3 +1,8 @@
+export interface CommonResponse<T> {
+  data: T
+  message: string
+  status: boolean
+}
 export interface IUserData {
   first_name: string
   last_name: string
@@ -70,8 +75,7 @@ export interface DishCategoryData {
   dishCategoryId: string
   data: IDish[]
 }
-export interface CommonResponse<T> {
-  data: T
-  message: string
-  status: boolean
+export interface CategorizedDishes {
+  category: IDishCategory; 
+  dishes: IDish[]; 
 }

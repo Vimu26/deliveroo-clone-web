@@ -11,12 +11,12 @@ import { HttpClient, HttpParams } from '@angular/common/http'
   providedIn: 'root',
 })
 export class DishCategoriesService {
-  chipData: DishCategory[] = []
-  public $chipData = new BehaviorSubject<DishCategory[]>([])
+  chipData: IDishCategory[] = []
+  public $chipData = new BehaviorSubject<IDishCategory[]>([])
 
   constructor(private http: HttpClient) {}
 
-  setChipData(categoryData: DishCategory[]) {
+  setChipData(categoryData: IDishCategory[]) {
     this.chipData.push(...categoryData)
     this.$chipData.next(this.chipData)
   }
