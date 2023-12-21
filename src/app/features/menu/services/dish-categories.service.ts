@@ -25,8 +25,8 @@ export class DishCategoriesService {
   getAllDishCategories(
     params: HttpParams,
   ): Observable<CommonResponse<IDishCategory[]>> {
-    const url = 'http://localhost:8080/dish-categories/'
-    return this.http.get<CommonResponse<IDishCategory[]>>(url + '', {
+    const url = 'http://localhost:8080/dish-categories'
+    return this.http.get<CommonResponse<IDishCategory[]>>(url , {
       params,
     })
   }

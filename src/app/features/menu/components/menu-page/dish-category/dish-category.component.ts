@@ -29,7 +29,7 @@ export class DishCategoryComponent implements OnInit {
   }
 
   getAllDishCategories() {
-    const params = new HttpParams().append('restaurantId', this.restaurantId)
+    const params = new HttpParams().append('restaurant', this.restaurantId)
     this.dishCategoriesService.getAllDishCategories(params).subscribe({
       next: (res) => {
         this.CategoryChips.push(...res.data)
@@ -38,22 +38,4 @@ export class DishCategoryComponent implements OnInit {
     })
   }
 
-  // getAllDishCategories(id: string) {
-  //   this.dishCategoriesService.getRestaurantDishCategories(id).subscribe({
-  //     next: (res: any) => {
-  //       res.data.forEach((item: any) => {
-  //         this.chips.push({
-  //           dishCategoryName: item?.dish_category_name,
-  //           index: this.chips.length,
-  //           restaurantId: item?.restaurant_id,
-  //           dishCategoryId: item?._id,
-  //         })
-  //       })
-  //       this.dishCategoriesService.setChipData(this.chips)
-  //     },
-  //     error: () => {
-  //       //
-  //     },
-  //   })
-  // }
 }
