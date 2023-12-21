@@ -26,9 +26,9 @@ export interface LoginResponse {
 }
 
 export interface IDish {
-  restaurant_id: string
-  order_id?: string
-  dish_category_id: IDishCategory
+  restaurant: string
+  order?: string
+  dish_category: IDishCategory
   name: string
   description: string
   price: string
@@ -58,8 +58,8 @@ export interface IRestaurant {
   }
 }
 export interface IDishCategory {
-  restaurant_id: string
-  dish_category_name: string
+  restaurant: string
+  name: string
   _id: string
 }
 export interface DishCategory {
