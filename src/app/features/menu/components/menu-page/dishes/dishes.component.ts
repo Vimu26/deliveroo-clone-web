@@ -10,13 +10,22 @@ import {
 } from 'src/app/interfaces'
 import { Subject, takeUntil } from 'rxjs'
 import { HttpParams } from '@angular/common/http'
+import { trigger, state, style, transition, animate } from '@angular/animations'
 
 @Component({
   selector: 'app-dishes',
   templateUrl: './dishes.component.html',
   styleUrls: ['./dishes.component.scss'],
+  animations: [
+    trigger('zoom', [
+      state('normal', style({ transform: 'scale(1)' })),
+      state('hovered', style({ transform: 'scale(1.02)' })),
+      transition('normal <=> hovered', animate('200ms ease-in-out')),
+    ]),
+  ],
 })
 export class DishesComponent implements OnInit, OnDestroy {
+  hoveredIndex: number | null = null
   categoryData: IDishCategory[] = []
   dishCategoryData: DishCategoryData[] = []
   dishList: IDish[] = []
@@ -39,7 +48,7 @@ export class DishesComponent implements OnInit, OnDestroy {
     this.dishCategoriesService.$chipData
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((data) => {
-        this.categoryData = data;
+        this.categoryData = data
       })
   }
 
@@ -64,5 +73,8 @@ export class DishesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.onDestroy$.next()
     this.onDestroy$.complete()
+  }
+  setHoveredState(index: number | null) {
+    this.hoveredIndex = index
   }
 }
