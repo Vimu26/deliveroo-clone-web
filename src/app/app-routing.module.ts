@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { MainComponent } from './components/pages/landing-component/main/main.component'
 import { NotFoundComponent } from './components/pages/not-found/not-found.component'
+import { AuthGuard } from './features/auth/auth.guard'
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'menu',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/menu/menu.module').then((m) => m.MenuModule),
   },
