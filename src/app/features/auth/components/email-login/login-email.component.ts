@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth.service'
 export class EmailLoginComponent implements OnInit {
   isLoading = false
   passwordBeingEdited = false
+  hidePassword = true
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -67,5 +68,8 @@ export class EmailLoginComponent implements OnInit {
       this.router.navigate(['register'])
       this.isLoading = false
     }, 1500)
+  }
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword
   }
 }
