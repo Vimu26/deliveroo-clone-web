@@ -56,7 +56,6 @@ export class DishesComponent implements OnInit, OnDestroy {
     const params = new HttpParams().append('restaurant', this.restaurantId)
     this.dishesService.getAllDishes(params).subscribe({
       next: (res) => {
-        console.log(res)
         this.categorizedDishes = this.categoryData.map((item) => {
           const dishes = res.data.filter((data) => {
             return item._id.toString() === data.dish_category._id.toString()
