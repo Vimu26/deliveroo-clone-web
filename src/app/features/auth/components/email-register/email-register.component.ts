@@ -85,7 +85,7 @@ export class EmailRegisterComponent implements OnInit {
         },
         error: (err) => {
           if (err.status !== 409) {
-            console.error('Internal Server Error:')
+            alert('Internal Server Error')
           }
           this.registrationForm.get('email')?.setErrors({ emailConflict: true })
         },
