@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { CommonResponse, IDish } from '../../../interfaces'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,11 @@ export class DishesServiceService {
 
   getAllDishes(params: HttpParams): Observable<CommonResponse<IDish[]>> {
     const url = 'http://localhost:8080/dishes/'
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders().append('Authorization', `Bearer ${token}`);
     return this.http.get<CommonResponse<IDish[]>>(url + '', {
       params,
+      headers,
     })
   }
 }
