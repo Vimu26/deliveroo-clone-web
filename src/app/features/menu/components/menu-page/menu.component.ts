@@ -23,7 +23,6 @@ export class MenuComponent implements OnInit {
   getRestaurant(data: string) {
     this.restaurantsService.getSingleRestaurant(data).subscribe({
       next: (res) => {
-        console.log(res)
         this.selectedRestaurant = res.data
       },
       error: () => {
