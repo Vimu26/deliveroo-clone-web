@@ -64,7 +64,7 @@ export class EmailLoginComponent implements OnInit {
   onClickSignUp() {
     this.isLoading = true
     setTimeout(() => {
-      this.router.navigate(['register'])
+      this.router.navigate(['auth/register'])
       this.isLoading = false
     }, 1500)
   }
