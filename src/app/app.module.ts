@@ -10,8 +10,9 @@ import { MainComponent } from './components/pages/landing-component/main/main.co
 import { MaterialModule } from './material.module'
 import { FooterComponent } from './components/pages/footer/footer.component'
 import { MainContentComponent } from './components/pages/landing-component/main-content/main-content.component'
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NotFoundComponent } from './components/pages/not-found/not-found.component'
+import { TokenInterceptor } from './services/token-inteceptor.service'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,13 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

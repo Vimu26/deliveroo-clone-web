@@ -11,11 +11,18 @@ export class DishesServiceService {
 
   getAllDishes(params: HttpParams): Observable<CommonResponse<IDish[]>> {
     const url = 'http://localhost:8080/dishes/'
-    const token = localStorage.getItem('token')
-    const headers = new HttpHeaders().append('Authorization', `Bearer ${token}`);
     return this.http.get<CommonResponse<IDish[]>>(url + '', {
       params,
-      headers,
     })
   }
 }
+//send token manually
+// getAllDishes(params: HttpParams): Observable<CommonResponse<IDish[]>> {
+//   const url = 'http://localhost:8080/dishes/'
+//   const token = localStorage.getItem('token')
+//   const headers = new HttpHeaders().append('Authorization', `Bearer ${token}`);
+//   return this.http.get<CommonResponse<IDish[]>>(url + '', {
+//     params,
+//     headers,
+//   })
+// }
