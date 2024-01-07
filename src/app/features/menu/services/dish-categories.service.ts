@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
-import {
-  CommonResponse,
-  DishCategory,
-  IDishCategory,
-} from '../../../interfaces'
+import { CommonResponse, IDishCategory } from '../../../interfaces'
 import { HttpClient, HttpParams } from '@angular/common/http'
 
 @Injectable({
