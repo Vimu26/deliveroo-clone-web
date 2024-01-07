@@ -5,7 +5,6 @@ import { EmailLoginComponent } from './components/email-login/login-email.compon
 import { EmailRegisterComponent } from './components/email-register/email-register.component'
 import { LoginPageComponent } from './components/login-page/login-page.component'
 import { MaterialModule } from 'src/app/material.module'
-import { AppModule } from 'src/app/app.module'
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
