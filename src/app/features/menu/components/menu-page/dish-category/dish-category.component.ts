@@ -3,6 +3,7 @@ import { DishCategoriesService } from '../../../services/dish-categories.service
 import { RestaurantsService } from '../../../services/restaurant.service'
 import { DishCategory, IDishCategory } from 'src/app/interfaces'
 import { HttpParams } from '@angular/common/http'
+import { MenuCommunicationService } from '../../../services/menu-communication.service'
 
 @Component({
   selector: 'app-dish-category',
@@ -17,7 +18,7 @@ export class DishCategoryComponent implements OnInit {
 
   constructor(
     private dishCategoriesService: DishCategoriesService,
-    private restaurantsService: RestaurantsService,
+    private menuCommunicationService: MenuCommunicationService,
   ) {}
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class DishCategoryComponent implements OnInit {
 
   selectChip(index: number) {
     this.selectedChipIndex = index
+    this.menuCommunicationService.setSelectedCategoryIndex(index)
   }
 
   getAllDishCategories() {

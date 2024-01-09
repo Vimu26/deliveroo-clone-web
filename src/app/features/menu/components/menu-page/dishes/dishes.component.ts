@@ -11,6 +11,7 @@ import {
 import { Subject, takeUntil } from 'rxjs'
 import { HttpParams } from '@angular/common/http'
 import { trigger, state, style, transition, animate } from '@angular/animations'
+import { MenuCommunicationService } from '../../../services/menu-communication.service'
 
 @Component({
   selector: 'app-dishes',
@@ -35,13 +36,27 @@ export class DishesComponent implements OnInit, OnDestroy {
 
   constructor(
     private dishesService: DishesServiceService,
-    private restaurantsService: RestaurantsService,
+    private menuCommunicationService: MenuCommunicationService,
     private dishCategoriesService: DishCategoriesService,
   ) {}
 
   async ngOnInit() {
     this.getDishCategories()
     this.getAllDishes()
+    this.subscribeToSelectedCategory()
+  }
+
+  private subscribeToSelectedCategory() {
+    this.menuCommunicationService.selectedCategoryIndex$.subscribe((index) => {
+      this.scrollToCategory(index)
+    })
+  }
+
+  scrollToCategory(index: number) {
+    const categoryElement = document.getElementById(`category-${index - 1}`)
+    if (categoryElement) {
+      categoryElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   getDishCategories() {
