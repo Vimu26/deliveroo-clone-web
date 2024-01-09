@@ -1,6 +1,6 @@
 <div
   *ngFor="let category of categorizedDishes; let i = index"
-  class="mt-5 card shadow-bottom"
+  class="mt-5 card shadow-bottom" [attr.id]="'category-' + i " 
 >
   <div class="card-body bg-light rounded">
     <div
