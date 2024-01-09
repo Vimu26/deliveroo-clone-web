@@ -24,12 +24,12 @@ export class AuthService {
     return !!token
   }
   isTokenExpired(): boolean {
-    const token = this.getToken();
+    const token = this.getToken()
     if (token) {
-      const tokenData = JSON.parse(atob(token.split('.')[1]));
-      const expirationTime = tokenData.exp * 1000;
-      return Date.now() >= expirationTime;
+      const tokenData = JSON.parse(atob(token.split('.')[1]))
+      const expirationTime = tokenData.exp * 1000
+      return Date.now() >= expirationTime
     }
-    return true; 
+    return true
   }
 }
