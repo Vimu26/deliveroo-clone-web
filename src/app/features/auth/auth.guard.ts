@@ -20,10 +20,13 @@ export class AuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): boolean | UrlTree | Promise<boolean | UrlTree> {
-    if (this.authService.isAuthenticated()) {
+    if (
+      this.authService.isAuthenticated() &&
+      !this.authService.isTokenExpired()
+    ) {
       return true
     } else {
-      this.router.navigate(['auth/login'])
+      this.router.navigate(['auth/login-email'])
       return false
     }
   }
