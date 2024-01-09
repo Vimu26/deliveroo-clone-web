@@ -19,8 +19,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('zoom', [
       state('normal', style({ transform: 'scale(1)' })),
-      state('hovered', style({ transform: 'scale(1.02)' })),
-      transition('normal <=> hovered', animate('200ms ease-in-out')),
+      state('hovered', style({ transform: 'scale(1.04)' })),
+      transition('normal <=> hovered', animate('200ms linear')),
     ]),
   ],
 })
