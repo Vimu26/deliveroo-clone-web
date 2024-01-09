@@ -20,7 +20,7 @@ import { MenuCommunicationService } from '../../../services/menu-communication.s
   animations: [
     trigger('zoom', [
       state('normal', style({ transform: 'scale(1)' })),
-      state('hovered', style({ transform: 'scale(1.04)' })),
+      state('hovered', style({ transform: 'scale(1.08)' })),
       transition('normal <=> hovered', animate('200ms linear')),
     ]),
   ],
