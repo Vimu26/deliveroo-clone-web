@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { DishesServiceService } from '../../../services/dishes-service.service'
 import { DishCategoriesService } from '../../../services/dish-categories.service'
-import { RestaurantsService } from '../../../services/restaurant.service'
 import {
   CategorizedDishes,
   DishCategoryData,
@@ -32,6 +31,7 @@ export class DishesComponent implements OnInit, OnDestroy {
   dishList: IDish[] = []
   categorizedDishes: CategorizedDishes[] = []
   private onDestroy$ = new Subject<void>()
+  hoveredIndices: { [categoryIndex: number]: number | null } = {};
   @Input() restaurantId: string = ''
 
   constructor(
@@ -53,9 +53,9 @@ export class DishesComponent implements OnInit, OnDestroy {
   }
 
   scrollToCategory(index: number) {
-    const categoryElement = document.getElementById(`category-${index - 1}`)
+    const categoryElement = document.getElementById(`category-${index}`)
     if (categoryElement) {
-      categoryElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      categoryElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
   }
 
@@ -88,7 +88,9 @@ export class DishesComponent implements OnInit, OnDestroy {
     this.onDestroy$.next()
     this.onDestroy$.complete()
   }
-  setHoveredState(index: number | null) {
-    this.hoveredIndex = index
+  
+  setHoveredState(categoryIndex: number, dishIndex: number | null) {
+    this.hoveredIndices[categoryIndex] = dishIndex;
   }
+
 }
