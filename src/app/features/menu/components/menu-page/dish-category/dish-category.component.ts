@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { DishCategoriesService } from '../../../services/dish-categories.service'
-import { RestaurantsService } from '../../../services/restaurant.service'
 import { DishCategory, IDishCategory } from 'src/app/interfaces'
 import { HttpParams } from '@angular/common/http'
 import { MenuCommunicationService } from '../../../services/menu-communication.service'
