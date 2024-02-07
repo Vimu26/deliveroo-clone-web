@@ -22,7 +22,10 @@
             class="col-12 col-lg-6 mb-3"
             (mouseenter)="setHoveredState(categoryIndex, dishIndex)"
             (mouseleave)="setHoveredState(categoryIndex, null)"
-            [@zoom]="hoveredIndices[categoryIndex] === dishIndex ? 'hovered' : 'normal'"
+            [@zoom]="
+              hoveredIndices[categoryIndex] === dishIndex ? 'hovered' : 'normal'
+            "
+            (click)="onClickDish(categoryIndex, dishIndex, dish)"
           >
             <div class="card border-1 rounded shadow-sm">
               <div class="card-body d-flex flex-column">

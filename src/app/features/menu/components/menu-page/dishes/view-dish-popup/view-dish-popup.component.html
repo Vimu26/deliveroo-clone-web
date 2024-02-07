@@ -1,0 +1,46 @@
+<div>
+  <img [src]="imgUrl" alt="" class="dish-image" />
+</div>
+<div class="container-fluid mt-2">
+  <h1>{{ dish.name }}</h1>
+  <h4>{{ dish.description }}</h4>
+  <h4>{{ dish.calories }} Kcal</h4>
+  <mat-divider></mat-divider>
+</div>
+
+<!-- Addons -->
+<div class="container mb-4 mt-3">
+  <h2><b>Extra Add-Ons</b></h2>
+  <div *ngFor="let add of dish.addOns">
+    <div class="d-flex d-flex justify-content-between">
+      <div class="d-flex">
+        <mat-checkbox>{{ add.name }}</mat-checkbox>
+      </div>
+      <div>
+        <span class="addon-price">£&nbsp;{{ add.price }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-center mb-4">
+    <button mat-mini-fab style="background-color: #ff355e">
+      <mat-icon>remove</mat-icon>
+    </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="margin-top: 2%">{{ quantity }}</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-mini-fab style="background-color: #ff355e">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <button
+    class="add mb-3"
+    mat-stroked-button
+    (click)="onClickAdd()"
+    style="width: 100%; height: 50px"
+  >
+    <strong>Add for £ {{ dish.price }}</strong>
+  </button>
+</div>

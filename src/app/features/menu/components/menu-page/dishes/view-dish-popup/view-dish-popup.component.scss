@@ -1,0 +1,29 @@
+.dish-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.container {
+  bottom: 0;
+  width: 100%;
+}
+
+.add {
+  background-color: #ff355e;
+  color: white;
+}
+
+.addon {
+  width: 100%;
+  display: flex;
+}
+
+//   :host{
+//     ::ng-deep{
+//     .popup {
+//     overflow-y: scroll;
+//     scrollbar-width: thin;
+//   }
+//   }
+//   }

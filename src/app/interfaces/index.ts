@@ -34,6 +34,12 @@ export interface IDish {
   price: string
   image: string
   calories: string
+  addOns: DishAddOns[]
+}
+
+export interface DishAddOns {
+  name: string
+  price: number
 }
 
 export interface IRestaurant {

@@ -11,6 +11,8 @@ import { Subject, takeUntil } from 'rxjs'
 import { HttpParams } from '@angular/common/http'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { MenuCommunicationService } from '../../../services/menu-communication.service'
+import { MatDialog } from '@angular/material/dialog'
+import { ViewDishPopupComponent } from './view-dish-popup/view-dish-popup.component'
 
 @Component({
   selector: 'app-dishes',
@@ -31,13 +33,14 @@ export class DishesComponent implements OnInit, OnDestroy {
   dishList: IDish[] = []
   categorizedDishes: CategorizedDishes[] = []
   private onDestroy$ = new Subject<void>()
-  hoveredIndices: { [categoryIndex: number]: number | null } = {};
+  hoveredIndices: { [categoryIndex: number]: number | null } = {}
   @Input() restaurantId: string = ''
 
   constructor(
     private dishesService: DishesServiceService,
     private menuCommunicationService: MenuCommunicationService,
     private dishCategoriesService: DishCategoriesService,
+    public dialog: MatDialog,
   ) {}
 
   async ngOnInit() {
@@ -88,9 +91,20 @@ export class DishesComponent implements OnInit, OnDestroy {
     this.onDestroy$.next()
     this.onDestroy$.complete()
   }
-  
+
   setHoveredState(categoryIndex: number, dishIndex: number | null) {
-    this.hoveredIndices[categoryIndex] = dishIndex;
+    this.hoveredIndices[categoryIndex] = dishIndex
   }
 
+  onClickDish(categoryIndex: number, dishIndex: number, dish: IDish) {
+    const dialogRef = this.dialog.open(ViewDishPopupComponent, {
+      width: '500px',
+      height: '650px',
+      data: { dish },
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Dialog closed:', result)
+    })
+  }
 }
