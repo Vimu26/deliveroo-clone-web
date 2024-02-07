@@ -10,6 +10,7 @@ import { MenuComponent } from './components/menu-page/menu.component'
 import { MenuRoutingModule } from './menu-routing.module'
 import { ClickDirective } from 'src/app/directives/click.directive'
 import { TruncatePipe } from 'src/app/pipes/truncate.pipe'
+import { ViewDishPopupComponent } from './components/menu-page/dishes/view-dish-popup/view-dish-popup.component'
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TruncatePipe } from 'src/app/pipes/truncate.pipe'
     DishCategoryComponent,
     ClickDirective,
     TruncatePipe,
+    ViewDishPopupComponent,
   ],
   imports: [
     CommonModule,
