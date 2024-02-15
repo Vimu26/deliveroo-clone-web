@@ -14,7 +14,11 @@
   <div *ngFor="let add of dish.addOns">
     <div class="d-flex d-flex justify-content-between">
       <div class="d-flex">
-        <mat-checkbox>{{ add.name }}</mat-checkbox>
+        <mat-checkbox
+          [(ngModel)]="add.checked"
+          (ngModelChange)="onCheckboxChange(add)"
+          >{{ add.name }}</mat-checkbox
+        >
       </div>
       <div>
         <span class="addon-price">£&nbsp;{{ add.price }}</span>
@@ -25,13 +29,13 @@
 
 <div class="container">
   <div class="d-flex justify-content-center mb-4">
-    <button mat-mini-fab style="background-color: #ff355e">
+    <button mat-mini-fab style="background-color: #ff355e" (click)="onRemove()">
       <mat-icon>remove</mat-icon>
     </button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span style="margin-top: 2%">{{ quantity }}</span>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button mat-mini-fab style="background-color: #ff355e">
+    <button mat-mini-fab style="background-color: #ff355e" (click)="onAdd()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -41,6 +45,6 @@
     (click)="onClickAdd()"
     style="width: 100%; height: 50px"
   >
-    <strong>Add for £ {{ dish.price }}</strong>
+    <strong>Add for £ {{ additionPrice }}</strong>
   </button>
 </div>

@@ -31,7 +31,7 @@ export interface IDish {
   dish_category: IDishCategory
   name: string
   description: string
-  price: string
+  price: number
   image: string
   calories: string
   addOns: DishAddOns[]
@@ -40,6 +40,7 @@ export interface IDish {
 export interface DishAddOns {
   name: string
   price: number
+  checked: boolean
 }
 
 export interface IRestaurant {
