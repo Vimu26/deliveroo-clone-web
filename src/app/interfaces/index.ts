@@ -86,3 +86,9 @@ export interface CategorizedDishes {
   category: IDishCategory
   dishes: IDish[]
 }
+
+export interface IAddedDishData {
+  dish: IDish
+  dishTotal: number
+  selectedAddons: DishAddOns[]
+}

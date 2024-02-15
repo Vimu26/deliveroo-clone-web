@@ -1,5 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { DishesServiceService } from 'src/app/features/menu/services/dishes-service.service'
 import { DishAddOns, IDish } from 'src/app/interfaces'
 
 @Component({
@@ -17,6 +18,7 @@ export class ViewDishPopupComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { dish: IDish },
     public dialogRef: MatDialogRef<ViewDishPopupComponent>,
+    private dishService: DishesServiceService,
   ) {
     this.dish = data.dish
     this.imgUrl = data.dish.image
@@ -25,14 +27,20 @@ export class ViewDishPopupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.dish.calories)
     this.dialogRef.beforeClosed().subscribe(() => {
       this.resetCheckboxValues()
     })
   }
 
   onClickAdd() {
-    //
+    const selectedAddons = this.dish.addOns.filter(
+      (addon) => addon.checked === true,
+    )
+    this.dialogRef.close({
+      dish: this.dish,
+      selectedAddons,
+      dishTotal: this.additionPrice,
+    })
   }
 
   updateAdditionPrice() {
@@ -70,7 +78,7 @@ export class ViewDishPopupComponent implements OnInit {
 
   onCheckboxChange(addon: DishAddOns) {
     if (addon.checked) {
-      this.additionPrice +=  addon.price
+      this.additionPrice += addon.price
     } else {
       this.additionPrice -= addon.price
     }

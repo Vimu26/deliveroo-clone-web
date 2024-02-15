@@ -25,7 +25,7 @@
 
 <div class="container-fluid mb-5 border" style="width: 100%">
   <div style="max-width: 340px; height: 200px; margin: 0 auto">
-    <div *ngIf="collectionElements.length === 0" class="text-center mt-5">
+    <div *ngIf="addedToCart.length === 0" class="text-center mt-5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="45"
@@ -42,12 +42,15 @@
         Your Basket is Empty
       </div>
     </div>
+    <div *ngIf="addedToCart.length > 0" class="text-center mt-5">
+      <div>Data</div>
+    </div>
 
     <div class="text-center mt-5">
       <button
         mat-flat-button
         (click)="onClickCheckout()"
-        [disabled]="collectionElements.length === 0"
+        [disabled]="addedToCart.length === 0"
         style="width: 100%; max-width: 340px"
       >
         <strong>Go to Checkout</strong>

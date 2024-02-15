@@ -4,6 +4,7 @@ import { DishCategoriesService } from '../../../services/dish-categories.service
 import {
   CategorizedDishes,
   DishCategoryData,
+  IAddedDishData,
   IDish,
   IDishCategory,
 } from 'src/app/interfaces'
@@ -13,6 +14,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { MenuCommunicationService } from '../../../services/menu-communication.service'
 import { MatDialog } from '@angular/material/dialog'
 import { ViewDishPopupComponent } from './view-dish-popup/view-dish-popup.component'
+import { BasketService } from '../basket/services/basket.service'
 
 @Component({
   selector: 'app-dishes',
@@ -31,6 +33,7 @@ export class DishesComponent implements OnInit, OnDestroy {
   categoryData: IDishCategory[] = []
   dishCategoryData: DishCategoryData[] = []
   dishList: IDish[] = []
+  AddedToCart: IAddedDishData[] = []
   categorizedDishes: CategorizedDishes[] = []
   private onDestroy$ = new Subject<void>()
   hoveredIndices: { [categoryIndex: number]: number | null } = {}
@@ -41,18 +44,27 @@ export class DishesComponent implements OnInit, OnDestroy {
     private menuCommunicationService: MenuCommunicationService,
     private dishCategoriesService: DishCategoriesService,
     public dialog: MatDialog,
+    public basketService: BasketService,
   ) {}
 
   async ngOnInit() {
     this.getDishCategories()
     this.getAllDishes()
     this.subscribeToSelectedCategory()
+    this.getDataToAddToCart()
   }
 
   private subscribeToSelectedCategory() {
     this.menuCommunicationService.selectedCategoryIndex$.subscribe((index) => {
       this.scrollToCategory(index)
     })
+  }
+  getDataToAddToCart() {
+    //   this.dishesService.dishData$.subscribe((data) => {
+    //   console.log('Dish details:', data.dish);
+    //   console.log('Selected addons:', data.selectedAddons);
+    //   // Handle the data as needed in your main component
+    // });
   }
 
   scrollToCategory(index: number) {
@@ -96,15 +108,18 @@ export class DishesComponent implements OnInit, OnDestroy {
     this.hoveredIndices[categoryIndex] = dishIndex
   }
 
-  onClickDish(categoryIndex: number, dishIndex: number, dish: IDish) {
+  onClickDish(dish: IDish) {
     const dialogRef = this.dialog.open(ViewDishPopupComponent, {
       width: '500px',
       height: '650px',
       data: { dish },
     })
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('Dialog closed:', result)
+    dialogRef.afterClosed().subscribe((result: IAddedDishData) => {
+      if (result) {
+        this.AddedToCart.push(result)
+        this.basketService.addToCart(result)
+      }
     })
   }
 }
