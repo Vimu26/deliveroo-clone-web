@@ -17,4 +17,15 @@ export class BasketService {
     const newData = [...currentData, data]
     this.addedToCartSubject.next(newData)
   }
+
+  removeFromCart(index: number) {
+    const currentData = this.addedToCartSubject.value;
+    const updatedData = [...currentData];
+    updatedData.splice(index, 1);
+    this.addedToCartSubject.next(updatedData);
+  }
+
+  getAddedToCart(): Observable<IAddedDishData[]> {
+    return this.addedToCart$;
+  }
 }
