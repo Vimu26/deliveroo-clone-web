@@ -15,14 +15,18 @@ export class BasketComponent implements OnInit, OnDestroy {
   constructor(private basketService: BasketService) {}
 
   ngOnInit() {
-    this.subscription = this.basketService.addedToCart$.subscribe((data) => {
-      this.addedToCart = data
+    this.subscription = this.basketService.getAddedToCart().subscribe((data) => {
+      this.addedToCart = data;
       console.log(this.addedToCart)
-    })
+    });
   }
 
   onClickCheckout() {
     //
+  }
+
+  removeDish(index: number) {
+    this.basketService.removeFromCart(index);
   }
 
   ngOnDestroy() {

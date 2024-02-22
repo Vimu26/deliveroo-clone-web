@@ -1,30 +1,5 @@
-<!-- <div class="container border mb-5" style="margin: 0px; border: 1px solid #000;">
-  <div style="max-width: 340px; height: 200px;" class="d-flex flex-column align-items-center justify-content-center">
-   <div *ngIf="collectionElements.length === 0">
-     <div class="text-center mt-4">
-      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#a9a9a9" class="bi bi-basket" viewBox="0 0 16 16">
-        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"/>
-      </svg>
-    </div>
-    <div class="text-center mt-3" style="color: #a9a9a9;">Your Basket is Empty</div>
-   </div>
-
-    <div class="text-center mt-4 ">
-      <button
-      class="checkout-button"
-      mat-stroked-button
-      (click)="onClickCheckout()"
-      style="width: 340px; height: 50px; "
-      [disabled]="collectionElements.length === 0"
-    >
-      <strong style="color: #ffffff;">Go to Checkout</strong>
-    </button>
-    </div>
-  </div>
-</div> -->
-
 <div class="container-fluid mb-5 border" style="width: 100%">
-  <div style="max-width: 340px; height: 200px; margin: 0 auto">
+  <div style="max-width: 340px; min-height: 200px; margin: 0 auto">
     <div *ngIf="addedToCart.length === 0" class="text-center mt-5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -42,11 +17,31 @@
         Your Basket is Empty
       </div>
     </div>
-    <div *ngIf="addedToCart.length > 0" class="text-center mt-5">
-      <div>Data</div>
+    <div *ngIf="addedToCart.length > 0" class="text-center mt-2">
+      <h3 style="margin-bottom: 5px;">Added Dishes</h3>
+      <div *ngFor="let item of addedToCart let i = index"  class="mb-2">
+        <mat-card>
+          <mat-card-content>
+            <div class="row" style="width: 100%">
+              <div class="col-7 d-flex align-items-center text-left">
+                {{ item.dish.name | truncate: 14 }}
+              </div>
+              <div class="col-3 d-flex align-items-center text-left">
+                £ {{ item.dishTotal }}
+              </div>
+              <div class="col-1 text-left" style="text-align: center">
+                <button mat-icon-button (click)="removeDish(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        
+      </div>
     </div>
 
-    <div class="text-center mt-5">
+    <div class="text-center mt-5 mb-4">
       <button
         mat-flat-button
         (click)="onClickCheckout()"
