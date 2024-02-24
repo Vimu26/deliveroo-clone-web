@@ -45,7 +45,9 @@ export class ViewDishPopupComponent implements OnInit {
 
   updateAdditionPrice() {
     const addonTotal = this.getAdditionsTotal()
-    this.additionPrice = this.price * this.quantity + addonTotal
+    this.additionPrice = parseFloat(
+      (this.price * this.quantity + addonTotal).toFixed(2),
+    )
   }
 
   onAdd() {
@@ -70,7 +72,7 @@ export class ViewDishPopupComponent implements OnInit {
         return accumulator + currentAddOn.price
       }, 0)
 
-      return total
+      return parseFloat(total.toFixed(2))
     } else {
       return 0
     }
@@ -78,9 +80,13 @@ export class ViewDishPopupComponent implements OnInit {
 
   onCheckboxChange(addon: DishAddOns) {
     if (addon.checked) {
-      this.additionPrice += addon.price
+      this.additionPrice = parseFloat(
+        (this.additionPrice + addon.price).toFixed(2),
+      )
     } else {
-      this.additionPrice -= addon.price
+      this.additionPrice = parseFloat(
+        (this.additionPrice - addon.price).toFixed(2),
+      )
     }
   }
 
