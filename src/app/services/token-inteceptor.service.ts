@@ -16,7 +16,8 @@ export class TokenInterceptor implements HttpInterceptor {
     if (
       request.url.includes('dish-categories') ||
       request.url.includes('dishes') ||
-      request.url.includes('restaurants')
+      request.url.includes('restaurants') ||
+      request.url.includes('cart')
     ) {
       const token = localStorage.getItem('token')
       if (token) {
