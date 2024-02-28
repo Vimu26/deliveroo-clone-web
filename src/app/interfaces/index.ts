@@ -88,8 +88,8 @@ export interface CategorizedDishes {
 }
 
 export interface IAddedDishData {
-  dish: IDish;
-  dishTotal: number;
-  selectedAddons: DishAddOns[];
-  quantity : number;
+  dish: IDish
+  dishTotal: number
+  selectedAddons: DishAddOns[]
+  quantity: number
 }
