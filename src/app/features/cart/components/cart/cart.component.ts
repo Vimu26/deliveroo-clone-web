@@ -11,6 +11,7 @@ import { BasketService } from 'src/app/features/menu/components/menu-page/basket
 export class CartComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription()
   order: any
+  orderTotal: number = 0
 
   constructor(
     private basketService: BasketService,
@@ -22,6 +23,11 @@ export class CartComponent implements OnInit, OnDestroy {
       .getAddedToCart()
       .subscribe((data) => {
         this.order = data
+        this.orderTotal = this.order.reduce(
+          (total: number, item: { dishTotal: number }) =>
+            total + item.dishTotal,
+          0,
+        )
         if (this.order.length === 0) {
           this.router.navigate(['menu'])
         }

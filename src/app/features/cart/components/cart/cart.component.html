@@ -65,13 +65,35 @@
         </div>
         <mat-divider class="mt-2"></mat-divider>
       </div>
+
+      <div class="container mt-5 font-size-Medium">
+        <a routerLink="/menu" class="d-flex align-items-center">
+          <mat-icon>keyboard_backspace</mat-icon>
+          <span class="ml-2">Shop More</span>
+        </a>
+      </div>
     </div>
-    <div class="col-12 col-md-4 col-lg-4 text-center">Column</div>
+    <div class="col-12 col-md-4 col-lg-4 text-center pl-4">
+      <div
+        class="w-80 p-2 align-items-center"
+        style="
+          height: 500px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          background-color: #a8a8a8;
+          margin-left: 10%;
+          margin-right: 10%;
+        "
+      >
+        <h3>Payment Details</h3>
+        <!-- Add your payment-related content here -->
+        <p>Payment method: Credit Card</p>
+        <p>Total Amount: £{{ orderTotal }}</p>
+        <!-- You can add more payment details as needed -->
+
+        <button class="btn btn-primary mt-3">Proceed to Payment</button>
+      </div>
+    </div>
   </div>
 </div>
-<div class="container mt-5 font-size-Medium">
-  <a routerLink="/menu" class="d-flex align-items-center">
-    <mat-icon>keyboard_backspace</mat-icon>
-    <span class="ml-2">Shop More</span>
-  </a>
-</div>
+
