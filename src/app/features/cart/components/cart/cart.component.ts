@@ -22,7 +22,7 @@ export class CartComponent implements OnInit, OnDestroy {
       .getAddedToCart()
       .subscribe((data) => {
         this.order = data
-        if (this.order.length === 0) { 
+        if (this.order.length === 0) {
           this.router.navigate(['menu'])
         }
       })
