@@ -44,9 +44,10 @@
     <div class="text-center mt-5 mb-4">
       <button
         mat-flat-button
+        class="checkout"
         (click)="onClickCheckout()"
         [disabled]="addedToCart.length === 0"
-        style="width: 100%; max-width: 340px"
+        style="width: 100%; max-width: 340px"   
       >
         <strong>Go to Checkout</strong>
       </button>

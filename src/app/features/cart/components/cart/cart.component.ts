@@ -19,6 +19,7 @@ export class CartComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.order = data
       })
+      console.log(this.order)
   }
 
   ngOnDestroy() {

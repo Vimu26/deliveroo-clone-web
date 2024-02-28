@@ -27,7 +27,6 @@ export class BasketComponent implements OnInit, OnDestroy {
   }
 
   onClickCheckout() {
-    console.log(this.addedToCart)
     this.router.navigate(['cart'])
   }
 
