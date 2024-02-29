@@ -33,3 +33,14 @@ p {
   z-index: 900;
   /* Additional styling as needed */
 }
+app-dish-category {
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+app-dish-category.sticky {
+  position: fixed;
+  top: 95px;
+  width: 100%;
+  z-index: 100;
+}
