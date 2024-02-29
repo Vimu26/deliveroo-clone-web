@@ -17,6 +17,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/menu/menu.module').then((m) => m.MenuModule),
   },
+  {
+    path: 'cart',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./features/cart/cart.module').then((m) => m.CartModule),
+  },
   { path: '**', component: NotFoundComponent },
 ]
 

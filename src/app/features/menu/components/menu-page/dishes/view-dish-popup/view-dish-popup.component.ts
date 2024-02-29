@@ -40,6 +40,7 @@ export class ViewDishPopupComponent implements OnInit {
       dish: this.dish,
       selectedAddons,
       dishTotal: this.additionPrice,
+      quantity: this.quantity,
     })
   }
 

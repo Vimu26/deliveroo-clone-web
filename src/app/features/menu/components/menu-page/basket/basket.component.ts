@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { BasketService } from './services/basket.service'
 import { IAddedDishData } from 'src/app/interfaces'
 import { Subscription } from 'rxjs'
+import { Router, NavigationExtras } from '@angular/router'
 
 @Component({
   selector: 'app-basket',
@@ -12,7 +13,10 @@ export class BasketComponent implements OnInit, OnDestroy {
   addedToCart: IAddedDishData[] = []
   subscription: Subscription = new Subscription()
 
-  constructor(private basketService: BasketService) {}
+  constructor(
+    private basketService: BasketService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.subscription = this.basketService
@@ -23,7 +27,7 @@ export class BasketComponent implements OnInit, OnDestroy {
   }
 
   onClickCheckout() {
-    console.log(this.addedToCart)
+    this.router.navigate(['cart'])
   }
 
   removeDish(index: number) {

@@ -91,4 +91,5 @@ export interface IAddedDishData {
   dish: IDish
   dishTotal: number
   selectedAddons: DishAddOns[]
+  quantity: number
 }

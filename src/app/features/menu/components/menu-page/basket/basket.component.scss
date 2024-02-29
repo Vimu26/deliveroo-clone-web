@@ -1,0 +1,8 @@
+.checkout:not([disabled]) {
+  background-color: #ff355e !important;
+  color: white !important;
+}
+.checkout[disabled] {
+  background-color: lightgray;
+  color: #a9a9a9;
+}

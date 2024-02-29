@@ -1,0 +1,98 @@
+<div class="container mb-5">
+  <div class="d-flex justify-content-between">
+    <h2>Shopping Cart</h2>
+    <h2>Items: {{ order.length }}</h2>
+  </div>
+  <mat-divider></mat-divider>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-8">
+      <div class="row">
+        <div
+          class="col-5 text-center d-flex align-items-center justify-content-center p-2"
+          style="background-color: lavender"
+        >
+          <div style="font-size: large">Dish Details</div>
+        </div>
+
+        <div
+          class="col-2 text-center d-flex align-items-center justify-content-center p-2"
+          style="background-color: lavender"
+        >
+          <div style="font-size: large">Quantity</div>
+        </div>
+        <div
+          class="col-3 text-center d-flex align-items-center justify-content-center p-2"
+          style="background-color: lavender"
+        >
+          <div style="font-size: large">Addons</div>
+        </div>
+        <div
+          class="col-2 text-center d-flex align-items-center justify-content-center p-2"
+          style="background-color: lavender"
+        >
+          <div style="font-size: large">Price</div>
+        </div>
+      </div>
+      <div class="row mb-3 mt-3" *ngFor="let orderD of order">
+        <div
+          class="col-5 text-center"
+          style="display: grid; align-items: center"
+        >
+          {{ orderD.dish.name }}
+        </div>
+        <div
+          class="col-2 text-center"
+          style="display: grid; align-items: center"
+        >
+          {{ orderD.quantity }}
+        </div>
+        <div
+          class="col-3 text-center"
+          style="display: grid; align-items: center"
+        >
+          <div *ngFor="let add of orderD.selectedAddons">
+            {{ add.name }}
+          </div>
+        </div>
+        <div
+          class="col-2 text-center"
+          style="display: grid; align-items: center"
+        >
+          £ {{ orderD.dishTotal }}
+        </div>
+        <mat-divider class="mt-2"></mat-divider>
+      </div>
+
+      <div class="container mt-5 font-size-Medium">
+        <a routerLink="/menu" class="d-flex align-items-center">
+          <mat-icon>keyboard_backspace</mat-icon>
+          <span class="ml-2">Shop More</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4 text-center pl-4">
+      <div
+        class="w-80 p-2 align-items-center"
+        style="
+          height: 500px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          background-color: #a8a8a8;
+          margin-left: 10%;
+          margin-right: 10%;
+        "
+      >
+        <h3>Payment Details</h3>
+        <!-- Add your payment-related content here -->
+        <p>Payment method: Credit Card</p>
+        <p>Total Amount: £{{ orderTotal }}</p>
+        <!-- You can add more payment details as needed -->
+
+        <button class="btn btn-primary mt-3">Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+</div>

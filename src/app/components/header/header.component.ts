@@ -50,7 +50,8 @@ export class HeaderComponent implements OnInit {
     return !(
       this.router.url.includes('/login') ||
       this.router.url.includes('/register') ||
-      this.router.url.includes('/menu')
+      this.router.url.includes('/menu') ||
+      this.router.url.includes('/cart')
     )
   }
 
@@ -59,6 +60,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onclickCart() {
-    //
+    this.router.navigate(['/cart'])
   }
 }
