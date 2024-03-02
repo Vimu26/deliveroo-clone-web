@@ -6,6 +6,12 @@ import { IUserLogin } from 'src/app/interfaces'
 import { LoginService } from '../../services/login.component.service'
 import { AuthService } from '../../services/auth.service'
 
+export enum USER_TYPE  {
+  USER = 'USER',
+  RESTAURANT = 'RESTAURANT',
+  ADMIN = 'ADMIN'
+}
+
 @Component({
   selector: 'app-login-email',
   templateUrl: './login-email.component.html',
@@ -15,6 +21,8 @@ export class EmailLoginComponent implements OnInit {
   isLoading = false
   passwordBeingEdited = false
   hidePassword = true
+  USER_TYPE = USER_TYPE;
+  selectedOption: string = USER_TYPE.USER; 
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
