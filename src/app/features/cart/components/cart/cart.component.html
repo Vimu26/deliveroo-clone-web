@@ -75,30 +75,109 @@
     </div>
     <div class="col-12 col-md-4 col-lg-4 text-center pl-4">
       <div
-        class="w-80 p-2 align-items-center"
+        class="w-90 p-2 align-items-center"
         style="
-          height: 500px;
+          height: 535px;
           border: 1px solid #ddd;
           border-radius: 10px;
-          background-color: #a8a8a8;
-          margin-left: 10%;
-          margin-right: 10%;
+          background-color: lavender;
+          margin-left: 5%;
+          margin-right: 5%;
         "
       >
-        <h3>Payment Details</h3>
+        <h3 style="font-size: large">Payment Details</h3>
+        <mat-checkbox
+          [checked]="selected === 0"
+          (change)="toggleSelection($event, 0)"
+          >Takeaway</mat-checkbox
+        >
+        <mat-checkbox
+          [checked]="selected === 1"
+          (change)="toggleSelection($event, 1)"
+          >Delivery</mat-checkbox
+        >
+        <form [formGroup]="userForm" class="mt-3">
+          <mat-form-field
+            appearance="outline"
+            class="example-full-width"
+            style="width: 85%"
+          >
+            <mat-label>name</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              readonly
+              placeholder="Ex. pat@example.com"
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline"
+            class="example-full-width"
+            style="width: 85%"
+          >
+            <mat-label>address</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="address"
+              readonly
+              placeholder="Ex. pat@example.com"
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline"
+            class="example-full-width"
+            style="width: 85%"
+          >
+            <mat-label>contact number</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="contactNumber"
+              readonly
+              placeholder="Ex. pat@example.com"
+            />
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline"
+            class="example-full-width"
+            style="width: 85%"
+          >
+            <mat-label>Total Amount</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="totalAmount"
+              readonly
+              placeholder="Ex. pat@example.com"
+            />
+          </mat-form-field>
+        </form>
+        <!--     
+        <div *ngIf="selectedOption === PAYMENT_METHOD.CASH"></div> -->
+
         <div class="container d-flex justify-content-center">
-          <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption">
-            <mat-radio-button [value]="PAYMENT_METHOD.CASH">Cash</mat-radio-button>
-            <mat-radio-button [value]="PAYMENT_METHOD.CARD">Card</mat-radio-button>
+          <mat-radio-group
+            aria-label="Select an option"
+            [(ngModel)]="selectedOption"
+          >
+            <mat-radio-button [value]="PAYMENT_METHOD.CASH"
+              >Cash</mat-radio-button
+            >
+            <mat-radio-button [value]="PAYMENT_METHOD.CARD"
+              >Card</mat-radio-button
+            >
           </mat-radio-group>
         </div>
-        <div *ngIf="selectedOption === PAYMENT_METHOD.CASH"></div>
-        
-        <!-- <p>Payment method: Credit Card</p>
-        <p>Total Amount: £{{ orderTotal }}</p>
-        You can add more payment details as needed -->
 
-        <button class="btn btn-primary mt-3">Place Your Order</button>
+        <button
+          mat-flat-button
+          class="mt-2"
+          style="width: 85%; height: 46px; background-color: #ff355e"
+        >
+          Place Your Order
+        </button>
       </div>
     </div>
   </div>
