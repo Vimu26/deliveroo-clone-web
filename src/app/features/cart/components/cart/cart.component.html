@@ -86,12 +86,19 @@
         "
       >
         <h3>Payment Details</h3>
-        <!-- Add your payment-related content here -->
-        <p>Payment method: Credit Card</p>
+        <div class="container d-flex justify-content-center">
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption">
+            <mat-radio-button [value]="PAYMENT_METHOD.CASH">Cash</mat-radio-button>
+            <mat-radio-button [value]="PAYMENT_METHOD.CARD">Card</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div *ngIf="selectedOption === PAYMENT_METHOD.CASH"></div>
+        
+        <!-- <p>Payment method: Credit Card</p>
         <p>Total Amount: £{{ orderTotal }}</p>
-        <!-- You can add more payment details as needed -->
+        You can add more payment details as needed -->
 
-        <button class="btn btn-primary mt-3">Proceed to Payment</button>
+        <button class="btn btn-primary mt-3">Place Your Order</button>
       </div>
     </div>
   </div>

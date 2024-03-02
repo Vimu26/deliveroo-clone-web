@@ -1,11 +1,23 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
+import { Observable } from 'rxjs'
+import {
+  LoginResponse,
+  IUserData,
+  userDetails,
+  CommonResponse,
+} from 'src/app/interfaces'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+  ) {}
+  readonly apiURL = 'http://localhost:8080/oauth'
 
   getToken(): string | null {
     return localStorage.getItem('token')
@@ -31,5 +43,14 @@ export class AuthService {
       return Date.now() >= expirationTime
     }
     return true
+  }
+
+  public getUserByToken(
+    token: string,
+  ): Observable<CommonResponse<userDetails>> {
+    return this.http.post<CommonResponse<userDetails>>(
+      this.apiURL + '/currentUser',
+      { token },
+    )
   }
 }
