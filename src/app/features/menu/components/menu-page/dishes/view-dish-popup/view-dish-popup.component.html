@@ -1,17 +1,41 @@
 <div>
   <img [src]="imgUrl" alt="" class="dish-image" />
 </div>
-<div class="container-fluid mt-2">
+<div class="container mt-2" style="padding: 5%;">
   <h1>{{ dish.name }}</h1>
   <h4>{{ dish.description }}</h4>
   <h4>{{ dish.calories }} Kcal</h4>
   <mat-divider></mat-divider>
 </div>
 
+<!-- size -->
+<div class="container mb-3 mt-3">
+  <h2 style="margin-bottom: -3%; margin-left: 2%"><b>Size</b></h2>
+  <br />
+  <div class="container">
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption">
+      <div class="radio-container">
+        <mat-radio-button [value]="DISH_SIZE.SMALL">Small</mat-radio-button>
+        <div class="price">25</div>
+      </div>
+
+      <div class="radio-container">
+        <mat-radio-button [value]="DISH_SIZE.MEDIUM">Medium</mat-radio-button>
+        <div class="price">50</div>
+      </div>
+
+      <div class="radio-container">
+        <mat-radio-button [value]="DISH_SIZE.LARGE">Large</mat-radio-button>
+        <div class="price">70</div>
+      </div>
+    </mat-radio-group>
+  </div>
+</div>
+
 <!-- Addons -->
 <div class="container mb-4 mt-3">
-  <h2><b>Extra Add-Ons</b></h2>
-  <div *ngFor="let add of dish.addOns">
+  <h2 style="margin-left: 2%"><b>Extra Add-Ons</b></h2>
+  <div class="container" *ngFor="let add of dish.addOns">
     <div class="d-flex d-flex justify-content-between">
       <div class="d-flex">
         <mat-checkbox

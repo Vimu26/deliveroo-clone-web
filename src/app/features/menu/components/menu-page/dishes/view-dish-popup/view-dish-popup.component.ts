@@ -3,6 +3,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { DishesServiceService } from 'src/app/features/menu/services/dishes-service.service'
 import { DishAddOns, IDish } from 'src/app/interfaces'
 
+export enum DISH_SIZE {
+  SMALL = 'SMALL',
+  MEDIUM = 'MEDIUM',
+  LARGE = 'LARGE',
+}
+
 @Component({
   selector: 'app-view-dish-popup',
   templateUrl: './view-dish-popup.component.html',
@@ -14,6 +20,8 @@ export class ViewDishPopupComponent implements OnInit {
   quantity: number = 1
   price: number
   additionPrice: number
+  DISH_SIZE = DISH_SIZE
+  selectedOption : string = DISH_SIZE.SMALL
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { dish: IDish },
