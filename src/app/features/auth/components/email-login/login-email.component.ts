@@ -79,4 +79,11 @@ export class EmailLoginComponent implements OnInit {
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword
   }
+
+  onClickAddRestaurant() {
+    //
+  }
+  onClickRestaurantSignup(){
+    //
+  }
 }
