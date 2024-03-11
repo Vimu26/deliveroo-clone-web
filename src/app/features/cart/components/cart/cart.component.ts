@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { Subscription } from 'rxjs'
+import { Subscription, min } from 'rxjs'
 import { BasketService } from 'src/app/features/menu/components/menu-page/basket/services/basket.service'
 import { AuthService } from 'src/app/features/auth/services/auth.service'
 import { userDetails } from 'src/app/interfaces'
 import { MatCheckboxChange } from '@angular/material/checkbox'
-import { FormControl, FormGroup } from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 export enum PAYMENT_METHOD {
   CASH = 'CASH',
@@ -22,16 +22,19 @@ export class CartComponent implements OnInit, OnDestroy {
   order: any
   orderTotal: number = 0
   PAYMENT_METHOD = PAYMENT_METHOD
-  selectedOption: string = PAYMENT_METHOD.CASH
-  userDetails : userDetails | undefined
-  selected: number = 0;
+  selectedPaymentOption: string = PAYMENT_METHOD.CASH
+  userDetails: userDetails | undefined
+  selectedOption: string = 'TakeAway'
 
   userForm = new FormGroup({
-    name: new FormControl(''),
-    address: new FormControl(''),
-    contactNumber: new FormControl(''),
-    totalAmount: new FormControl('')
-  });
+    name: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    contactNumber: new FormControl('', [
+      Validators.required,
+      Validators.min(10),
+    ]),
+    totalAmount: new FormControl('', Validators.required),
+  })
 
   constructor(
     private basketService: BasketService,
@@ -39,12 +42,11 @@ export class CartComponent implements OnInit, OnDestroy {
     private authService: AuthService,
   ) {}
 
-  toggleSelection(event: MatCheckboxChange, value: number) {
-    if (event.checked && this.selected === value) {
-      this.selected = -1;
-    } else {
-      this.selected = value;
+  toggleSelection(event: MatCheckboxChange, value: string) {
+    if (event.checked && this.selectedOption === value) {
+      return
     }
+    this.selectedOption = event.checked ? value : ''
   }
 
   ngOnInit(): void {
@@ -61,7 +63,6 @@ export class CartComponent implements OnInit, OnDestroy {
           this.router.navigate(['menu'])
         }
       })
-    console.log(this.order)
     this.getUser()
   }
 
@@ -74,8 +75,8 @@ export class CartComponent implements OnInit, OnDestroy {
           name: this.userDetails.full_name,
           address: this.userDetails.address,
           contactNumber: this.userDetails.contact_number,
-          totalAmount : `£${this.orderTotal}`,
-        });
+          totalAmount: `£${this.orderTotal}`,
+        })
       },
       error(err) {
         console.log(err.message)
@@ -85,5 +86,13 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+  }
+
+  onPlaceOrder() {
+    this.userForm.value
+    this.selectedPaymentOption
+    this.selectedOption
+    console.log(this.userForm.value,  this.selectedPaymentOption,
+      this.selectedOption)
   }
 }

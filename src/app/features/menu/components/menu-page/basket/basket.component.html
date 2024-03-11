@@ -1,5 +1,5 @@
 <div class="container-fluid mb-5 border" style="width: 100%">
-  <div style="max-width: 340px; min-height: 200px; margin: 0 auto">
+  <div style="max-width: 340px; min-height: 195px; margin: 0 auto">
     <div *ngIf="addedToCart.length === 0" class="text-center mt-5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -18,8 +18,8 @@
       </div>
     </div>
     <div *ngIf="addedToCart.length > 0" class="text-center mt-2">
-      <h3 style="margin-bottom: 5px;">Added Dishes</h3>
-      <div *ngFor="let item of addedToCart let i = index"  class="mb-2">
+      <h2 style="margin-bottom: 15px; margin-top: 15px"><b>Added Dishes</b></h2>
+      <div *ngFor="let item of addedToCart; let i = index" class="mb-2">
         <mat-card>
           <mat-card-content>
             <div class="row" style="width: 100%">
@@ -37,17 +37,27 @@
             </div>
           </mat-card-content>
         </mat-card>
-        
       </div>
     </div>
 
-    <div class="text-center mt-5 mb-4">
+    <div *ngIf="addedToCart.length > 0" class="text-center mt-3 mb-4">
       <button
         mat-flat-button
         class="checkout"
         (click)="onClickCheckout()"
         [disabled]="addedToCart.length === 0"
-        style="width: 100%; max-width: 340px"   
+        style="width: 100%; max-width: 340px"
+      >
+        <strong>Go to Checkout</strong>
+      </button>
+    </div>
+    <div *ngIf="addedToCart.length <= 0" class="text-center mt-5 mb-4">
+      <button
+        mat-flat-button
+        class="checkout"
+        (click)="onClickCheckout()"
+        [disabled]="addedToCart.length === 0"
+        style="width: 100%; max-width: 340px"
       >
         <strong>Go to Checkout</strong>
       </button>
