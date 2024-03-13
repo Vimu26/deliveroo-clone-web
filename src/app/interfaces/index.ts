@@ -35,12 +35,18 @@ export interface IDish {
   image: string
   calories: string
   addOns: DishAddOns[]
+  size : Size[]
 }
 
 export interface DishAddOns {
   name: string
   price: number
   checked: boolean
+}
+
+export interface Size {
+  name: string
+  price: number
 }
 
 export interface IRestaurant {
@@ -92,4 +98,5 @@ export interface IAddedDishData {
   dishTotal: number
   selectedAddons: DishAddOns[]
   quantity: number
+  size : string
 }

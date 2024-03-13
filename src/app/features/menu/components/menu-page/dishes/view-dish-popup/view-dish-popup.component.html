@@ -8,6 +8,20 @@
   <mat-divider></mat-divider>
 </div>
 
+<!-- size -->
+<div class="container mb-3 mt-3">
+  <h2 style="margin-bottom: -3%; margin-left: 2%"><b>Size</b></h2>
+  <br />
+  <div class="container">
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption" (change)="onChangeSize()">
+      <div *ngFor="let size of dish.size" class="radio-container">
+        <mat-radio-button [value]="size.name">{{size.name}}</mat-radio-button>
+        <div class="price">+£&nbsp;{{size.price || dish.price}}</div>
+      </div>
+    </mat-radio-group>
+  </div>
+</div>
+
 <!-- Addons -->
 <div class="container mb-4 mt-3">
   <h2><b>Extra Add-Ons</b></h2>
