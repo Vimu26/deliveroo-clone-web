@@ -5,10 +5,11 @@
 <div class="container d-flex justify-content-center">
   <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption">
     <mat-radio-button [value]="USER_TYPE.USER">User</mat-radio-button>
-    <mat-radio-button [value]="USER_TYPE.RESTAURANT">Restaurant</mat-radio-button>
+    <mat-radio-button [value]="USER_TYPE.RESTAURANT"
+      >Restaurant</mat-radio-button
+    >
   </mat-radio-group>
 </div>
-
 
 <div *ngIf="selectedOption === USER_TYPE.USER" class="container">
   <div class="mt-5 mb-5 d-flex justify-content-center">
@@ -99,12 +100,13 @@
 <br />
 <br />
 
-
 <div *ngIf="selectedOption === USER_TYPE.RESTAURANT" class="container">
   <div class="mt-2 mb-5 d-flex justify-content-center">
     <div class="dc-email-login d-flex flex-column">
       <div class="d-flex justify-content-center">
-        <span class="dc-email-login__heading"><strong>Restaurant Login</strong></span>
+        <span class="dc-email-login__heading"
+          ><strong>Restaurant Login</strong></span
+        >
       </div>
       <form [formGroup]="form">
         <div class="mt-3 d-flex flex-column">
@@ -188,4 +190,3 @@
 </div>
 <br />
 <br />
-

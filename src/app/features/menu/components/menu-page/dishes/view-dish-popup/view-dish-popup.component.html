@@ -13,10 +13,14 @@
   <h2 style="margin-bottom: -3%; margin-left: 2%"><b>Size</b></h2>
   <br />
   <div class="container">
-    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption" (change)="onChangeSize()">
+    <mat-radio-group
+      aria-label="Select an option"
+      [(ngModel)]="selectedOption"
+      (change)="onChangeSize()"
+    >
       <div *ngFor="let size of dish.size" class="radio-container">
-        <mat-radio-button [value]="size.name">{{size.name}}</mat-radio-button>
-        <div class="price">+£&nbsp;{{size.price || dish.price}}</div>
+        <mat-radio-button [value]="size.name">{{ size.name }}</mat-radio-button>
+        <div class="price">+£&nbsp;{{ size.price || dish.price }}</div>
       </div>
     </mat-radio-group>
   </div>

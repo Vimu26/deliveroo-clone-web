@@ -35,7 +35,7 @@ export interface IDish {
   image: string
   calories: string
   addOns: DishAddOns[]
-  size : Size[]
+  size: Size[]
 }
 
 export interface DishAddOns {
@@ -98,5 +98,5 @@ export interface IAddedDishData {
   dishTotal: number
   selectedAddons: DishAddOns[]
   quantity: number
-  size : string
+  size: string
 }
