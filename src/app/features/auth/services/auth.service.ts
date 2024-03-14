@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { Observable } from 'rxjs'
@@ -45,12 +45,19 @@ export class AuthService {
     return true
   }
 
+  //sending token attaching to headers manually
   public getUserByToken(
     token: string,
   ): Observable<CommonResponse<userDetails>> {
+    const tokenD = localStorage.getItem('token')
+    const headers = new HttpHeaders().append(
+      'Authorization',
+      `Bearer ${tokenD}`,
+    )
     return this.http.post<CommonResponse<userDetails>>(
       this.apiURL + '/currentUser',
       { token },
+      { headers },
     )
   }
 }
