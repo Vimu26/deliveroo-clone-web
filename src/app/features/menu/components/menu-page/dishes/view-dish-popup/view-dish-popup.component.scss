@@ -31,12 +31,14 @@
 
 .price {
   margin-left: 10px;
+  color: #777;
   // color: #777;
 }
 
 ::ng-deep {
   .mdc-dialog__surface {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-  }
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
+}
+

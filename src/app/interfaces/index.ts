@@ -12,6 +12,13 @@ export interface IUserData {
   password: string
 }
 
+export interface userDetails {
+  _id : string
+  full_name: string
+  contact_number: string
+  address: string
+}
+
 export interface IUserLogin {
   email: string
   password: string
