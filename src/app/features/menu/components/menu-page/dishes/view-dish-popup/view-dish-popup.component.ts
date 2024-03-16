@@ -51,6 +51,7 @@ export class ViewDishPopupComponent implements OnInit {
       },
       dishCategory_id: this.dish.dish_category._id,
       restaurant_id: this.dish.restaurant._id,
+      selectedAddons,
       dishTotal: this.additionPrice,
       quantity: this.quantity,
       size: this.selectedOption,
