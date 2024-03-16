@@ -183,7 +183,10 @@
   </div>
 </div>
 
-<app-dish-category [restaurantId]="RESTAURANT_ID"></app-dish-category>
+<app-dish-category
+  [restaurantId]="RESTAURANT_ID"
+  [class.sticky]="sticky"
+></app-dish-category>
 <div class="container">
   <p class="mt-4">Adults need around 2000 kcal a day</p>
 </div>

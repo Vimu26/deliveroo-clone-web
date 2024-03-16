@@ -11,7 +11,7 @@
     <div class="col-12 col-md-8 col-lg-8">
       <div class="row">
         <div
-          class="col-5 text-center d-flex align-items-center justify-content-center p-2"
+          class="col-4 text-center d-flex align-items-center justify-content-center p-2"
           style="background-color: lavender"
         >
           <div style="font-size: large">Dish Details</div>
@@ -24,7 +24,13 @@
           <div style="font-size: large">Quantity</div>
         </div>
         <div
-          class="col-3 text-center d-flex align-items-center justify-content-center p-2"
+          class="col-2 text-center d-flex align-items-center justify-content-center p-2"
+          style="background-color: lavender"
+        >
+          <div style="font-size: large">Size</div>
+        </div>
+        <div
+          class="col-2 text-center d-flex align-items-center justify-content-center p-2"
           style="background-color: lavender"
         >
           <div style="font-size: large">Addons</div>
@@ -38,7 +44,7 @@
       </div>
       <div class="row mb-3 mt-3" *ngFor="let orderD of order">
         <div
-          class="col-5 text-center"
+          class="col-4 text-center"
           style="display: grid; align-items: center"
         >
           {{ orderD.dish.name }}
@@ -50,7 +56,13 @@
           {{ orderD.quantity }}
         </div>
         <div
-          class="col-3 text-center"
+          class="col-2 text-center"
+          style="display: grid; align-items: center"
+        >
+          {{ orderD.size }}
+        </div>
+        <div
+          class="col-2 text-center"
           style="display: grid; align-items: center"
         >
           <div *ngFor="let add of orderD.selectedAddons">

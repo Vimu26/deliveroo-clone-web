@@ -4,9 +4,9 @@ import { DishesServiceService } from 'src/app/features/menu/services/dishes-serv
 import { DishAddOns, IDish } from 'src/app/interfaces'
 
 export enum DISH_SIZE {
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  LARGE = 'LARGE',
+  SMALL = 'Small',
+  MEDIUM = 'Medium',
+  LARGE = 'Large',
 }
 
 @Component({
@@ -21,7 +21,7 @@ export class ViewDishPopupComponent implements OnInit {
   price: number
   additionPrice: number
   DISH_SIZE = DISH_SIZE
-  selectedOption : string = DISH_SIZE.SMALL
+  selectedOption: string = DISH_SIZE.SMALL
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { dish: IDish },
@@ -49,6 +49,7 @@ export class ViewDishPopupComponent implements OnInit {
       selectedAddons,
       dishTotal: this.additionPrice,
       quantity: this.quantity,
+      size: this.selectedOption,
     })
   }
 
@@ -108,5 +109,18 @@ export class ViewDishPopupComponent implements OnInit {
     this.dish.addOns.forEach((addon) => {
       addon.checked = false
     })
+  }
+  onChangeSize() {
+    const selectedSize = this.dish.size.find(
+      (sized) => sized.name === this.selectedOption,
+    )
+    this.additionPrice = parseFloat(
+      (this.dish.price + (selectedSize?.price ?? 0)).toFixed(2),
+    )
+    this.price = parseFloat(
+      (this.dish.price + (selectedSize?.price ?? 0)).toFixed(2),
+    )
+    this.resetCheckboxValues()
+    this.quantity = 1
   }
 }

@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core'
 import { RestaurantsService } from '../../services/restaurant.service'
 import { IRestaurant } from 'src/app/interfaces'
 
@@ -11,6 +17,17 @@ export class MenuComponent implements OnInit {
   RESTAURANT_ID: string
   restaurantList: IRestaurant[] = []
   selectedRestaurant: IRestaurant | undefined
+  sticky: boolean = false
+
+  @HostListener('window:scroll', ['$event'])
+  handleScroll() {
+    const windowScroll = window.scrollY || window.pageYOffset
+    if (windowScroll >= 370) {
+      this.sticky = true
+    } else {
+      this.sticky = false
+    }
+  }
 
   constructor(private restaurantsService: RestaurantsService) {
     this.RESTAURANT_ID = '657efd66af295827d530ef3b'
