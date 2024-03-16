@@ -45,8 +45,12 @@ export class ViewDishPopupComponent implements OnInit {
       (addon) => addon.checked === true,
     )
     this.dialogRef.close({
-      dish: this.dish,
-      selectedAddons,
+      dish: {
+        name: this.dish.name,
+        _id: this.dish._id,
+      },
+      dishCategory_id: this.dish.dish_category._id,
+      restaurant_id: this.dish.restaurant._id,
       dishTotal: this.additionPrice,
       quantity: this.quantity,
       size: this.selectedOption,

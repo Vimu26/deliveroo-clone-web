@@ -117,7 +117,6 @@ export class DishesComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result: IAddedDishData) => {
       if (result) {
-        console.log(result)
         this.AddedToCart.push(result)
         this.basketService.addToCart(result)
       }
