@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 import { Subscription, min } from 'rxjs'
 import { BasketService } from 'src/app/features/menu/components/menu-page/basket/services/basket.service'
 import { AuthService } from 'src/app/features/auth/services/auth.service'
-import { userDetails } from 'src/app/interfaces'
+import { IAddedDishData, userDetails } from 'src/app/interfaces'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
@@ -19,7 +19,7 @@ export enum PAYMENT_METHOD {
 })
 export class CartComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription()
-  order: any
+  order: IAddedDishData[] = []
   orderTotal: number = 0
   PAYMENT_METHOD = PAYMENT_METHOD
   selectedPaymentOption: string = PAYMENT_METHOD.CASH
@@ -53,6 +53,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subscription = this.basketService
       .getAddedToCart()
       .subscribe((data) => {
+        console.log(data)
         this.order = data
         this.orderTotal = this.order.reduce(
           (total: number, item: { dishTotal: number }) =>
@@ -93,14 +94,17 @@ export class CartComponent implements OnInit, OnDestroy {
     this.selectedPaymentOption
     this.selectedOption
     const OrderDetails = {
-      userId : this.userDetails?._id,
-      name: this.userForm.value.name,
-      address: this.userForm.value.address,
-      contactNumber: this.userForm.value.contactNumber,
-      totalAmount: this.userForm.value.totalAmount,
+      user: this.userDetails?._id,
+      user_Details: {
+        name: this.userForm.value.name,
+        address: this.userForm.value.address,
+        contactNumber: this.userForm.value.contactNumber,
+      },
+      totalAmount: this.orderTotal,
       paymentMethod: this.selectedPaymentOption,
-      selectedOption : this.selectedOption,
+      selectedOption: this.selectedOption,
       orderItems: this.order,
+      restaurant: this.order[0].restaurant_id,
     }
     console.log(OrderDetails)
   }
