@@ -115,3 +115,33 @@ export interface ISelectedDish {
   name: string
   _id: string
 }
+
+export interface IUserDetails {
+  name: string | null | undefined 
+  address: string | null | undefined 
+  contact_number: string | null | undefined 
+}
+
+export interface IOrderItem {
+  dish: {
+    name: string
+    _id: string
+  }
+  
+  dishCategory_id: string
+  restaurant_id :string
+  dish_total: number
+  quantity: number
+  size: string
+  selected_addOns: DishAddOns[]
+}
+
+export interface IOrder {
+  user: string | undefined
+  user_details: IUserDetails
+  restaurant: string
+  total_amount: number
+  payment_method: string
+  order_items: IOrderItem[]
+  selected_option: string
+}
