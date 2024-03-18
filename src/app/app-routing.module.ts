@@ -23,6 +23,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/cart/cart.module').then((m) => m.CartModule),
   },
+  {
+    path: 'restaurant',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./features/restaurant/restaurant.module').then(
+        (m) => m.RestaurantModule,
+      ),
+  },
   { path: '**', component: NotFoundComponent },
 ]
 

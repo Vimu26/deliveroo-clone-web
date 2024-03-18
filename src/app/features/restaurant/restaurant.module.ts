@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
-import { CartRoutingModule } from './cart-routing.module'
+import { RestaurantRoutingModule } from './restaurant-routing.module'
+import { RestaurantComponent } from './components/restaurant/restaurant.component'
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { MaterialModule } from 'src/app/material.module'
-import { CartComponent } from './components/cart/cart.component'
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [RestaurantComponent],
   imports: [
     CommonModule,
-    CartRoutingModule,
+    RestaurantRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
   ],
 })
-export class CartModule {}
+export class RestaurantModule {}

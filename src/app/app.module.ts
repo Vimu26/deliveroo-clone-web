@@ -13,7 +13,6 @@ import { MainContentComponent } from './components/pages/landing-component/main-
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NotFoundComponent } from './components/pages/not-found/not-found.component'
 import { TokenInterceptor } from './services/token-inteceptor.service'
-import { CartComponent } from './features/cart/components/cart/cart.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { CartComponent } from './features/cart/components/cart/cart.component'
     HeaderComponent,
     MainContentComponent,
     NotFoundComponent,
-    CartComponent,
   ],
   imports: [
     BrowserModule,
