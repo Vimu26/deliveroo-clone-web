@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-restaurant',
@@ -13,13 +14,13 @@ export class RestaurantComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   })
 
-  constructor() {}
+  constructor(private router : Router) {}
 
   ngOnInit(): void {
     //
   }
   onClickAddRestaurant() {
-    //
+    this.router.navigate(['restaurant/create-restaurant'])
   }
 
   togglePasswordVisibility() {
