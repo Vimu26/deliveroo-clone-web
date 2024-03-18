@@ -12,8 +12,7 @@ import { FooterComponent } from './components/footer/footer.component'
 import { MainContentComponent } from './components/pages/landing-component/main-content/main-content.component'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NotFoundComponent } from './components/pages/not-found/not-found.component'
-import { TokenInterceptor } from './services/token-inteceptor.service'
-import { CartComponent } from './features/cart/components/cart/cart.component'
+import { TokenInterceptor } from './services/token-inteceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { CartComponent } from './features/cart/components/cart/cart.component'
     HeaderComponent,
     MainContentComponent,
     NotFoundComponent,
-    CartComponent,
   ],
   imports: [
     BrowserModule,

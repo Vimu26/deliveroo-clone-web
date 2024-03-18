@@ -5,9 +5,10 @@ import { CartRoutingModule } from './cart-routing.module'
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { MaterialModule } from 'src/app/material.module'
+import { CartComponent } from './components/cart/cart.component'
 
 @NgModule({
-  declarations: [],
+  declarations: [CartComponent],
   imports: [
     CommonModule,
     CartRoutingModule,

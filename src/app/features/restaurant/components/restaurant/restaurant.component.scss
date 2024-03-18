@@ -1,0 +1,45 @@
+.dc-email-login {
+    &__heading {
+      font-family: plex-sans, sans-serif;
+      font-size: 22px;
+      line-height: 28px;
+      font-weight: 700;
+    }
+  
+    &__paragraph {
+      font-size: 16px;
+      color: #2e3333;
+      font-family: plex-sans, sans-serif;
+    }
+  
+    &__forgot {
+      color: #ff355e;
+      width: 380px !important;
+      height: 50px !important;
+      color: #ff355e !important;
+    }
+    &__login {
+      background-color: #ff355e;
+      color: white;
+    }
+  
+    &__continue:not([disabled]) {
+      background-color: #ff355e;
+      color: white;
+    }
+    &__continue[disabled] {
+      background-color: lightgray;
+      color: #a9a9a9;
+    }
+  }
+  .loading-overlay {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 999;
+  }
+  
