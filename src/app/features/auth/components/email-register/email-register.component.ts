@@ -35,12 +35,12 @@ export class EmailRegisterComponent implements OnInit {
   constructor(
     private loginDataService: LoginDataService,
     private loginService: LoginService,
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private _snackBar: MatSnackBar,
   ) {
-    this.registrationForm = this.fb.group({
+    this.registrationForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
