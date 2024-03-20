@@ -83,7 +83,7 @@ export class EmailLoginComponent implements OnInit {
   onClickAddRestaurant() {
     //
   }
-  onClickRestaurantSignup(){
+  onClickRestaurantSignup() {
     //
   }
 }

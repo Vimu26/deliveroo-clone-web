@@ -12,7 +12,9 @@ import { FooterComponent } from './components/footer/footer.component'
 import { MainContentComponent } from './components/pages/landing-component/main-content/main-content.component'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NotFoundComponent } from './components/pages/not-found/not-found.component'
-import { TokenInterceptor } from './services/token-inteceptor.service';
+import { TokenInterceptor } from './services/token-inteceptor.service'
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { TokenInterceptor } from './services/token-inteceptor.service';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgxMaterialTimepickerModule,
+    MatFormFieldModule,
   ],
   providers: [
     {

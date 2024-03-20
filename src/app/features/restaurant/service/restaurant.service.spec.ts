@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { RestaurantService } from './restaurant.service';
+import { RestaurantService } from './restaurant.service'
 
 describe('RestaurantService', () => {
-  let service: RestaurantService;
+  let service: RestaurantService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(RestaurantService);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(RestaurantService)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})

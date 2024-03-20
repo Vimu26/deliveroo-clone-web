@@ -93,13 +93,13 @@ export class CartComponent implements OnInit, OnDestroy {
     this.selectedPaymentOption
     this.selectedOption
     const OrderDetails = {
-      userId : this.userDetails?._id,
+      userId: this.userDetails?._id,
       name: this.userForm.value.name,
       address: this.userForm.value.address,
       contactNumber: this.userForm.value.contactNumber,
       totalAmount: this.userForm.value.totalAmount,
       paymentMethod: this.selectedPaymentOption,
-      selectedOption : this.selectedOption,
+      selectedOption: this.selectedOption,
       orderItems: this.order,
     }
     console.log(OrderDetails)

@@ -10,6 +10,8 @@ import { AddEditRestaurantComponent } from './components/add-edit-restaurant/add
 import { DishesComponent } from './components/add-edit-restaurant/sections/dishes/dishes.component'
 import { DishCategoriesComponent } from './components/add-edit-restaurant/sections/dish-categories/dish-categories.component'
 import { RestaurantDetailsComponent } from './components/add-edit-restaurant/sections/restaurant-details/restaurant-details.component'
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { RestaurantDetailsComponent } from './components/add-edit-restaurant/sec
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgxMaterialTimepickerModule,
+    MatFormFieldModule,
   ],
 })
 export class RestaurantModule {}

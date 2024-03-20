@@ -93,7 +93,14 @@
               color="accent"
             >
               <mat-label>Opens At</mat-label>
-              <input type="time" matInput formControlName="opensAt" required />
+              <input
+                #opensAtInput
+                matInput
+                [ngxTimepicker]="opensAtPicker"
+                formControlName="opensAt"
+                required
+              />
+              <ngx-material-timepicker #opensAtPicker></ngx-material-timepicker>
             </mat-form-field>
           </div>
           <div class="col-6">
@@ -103,7 +110,16 @@
               color="accent"
             >
               <mat-label>Closes At</mat-label>
-              <input type="time" matInput formControlName="closesAt" required />
+              <input
+                #closesAtInput
+                matInput
+                [ngxTimepicker]="closesAtPicker"
+                formControlName="closesAt"
+                required
+              />
+              <ngx-material-timepicker
+                #closesAtPicker
+              ></ngx-material-timepicker>
             </mat-form-field>
           </div>
         </div>
