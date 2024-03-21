@@ -3,9 +3,10 @@ import { Router } from '@angular/router'
 import { Subscription, min } from 'rxjs'
 import { BasketService } from 'src/app/features/menu/components/menu-page/basket/services/basket.service'
 import { AuthService } from 'src/app/features/auth/services/auth.service'
-import { userDetails } from 'src/app/interfaces'
+import { IAddedDishData, IOrder, IOrderItem, userDetails } from 'src/app/interfaces'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { CartServiceService } from '../../services/cart-service.service'
 
 export enum PAYMENT_METHOD {
   CASH = 'CASH',
@@ -19,7 +20,7 @@ export enum PAYMENT_METHOD {
 })
 export class CartComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription()
-  order: any
+  order: IAddedDishData[] = []
   orderTotal: number = 0
   PAYMENT_METHOD = PAYMENT_METHOD
   selectedPaymentOption: string = PAYMENT_METHOD.CASH
@@ -40,6 +41,7 @@ export class CartComponent implements OnInit, OnDestroy {
     private basketService: BasketService,
     private router: Router,
     private authService: AuthService,
+    private cartService : CartServiceService
   ) {}
 
   toggleSelection(event: MatCheckboxChange, value: string) {
@@ -53,12 +55,14 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subscription = this.basketService
       .getAddedToCart()
       .subscribe((data) => {
+        console.log(data)
         this.order = data
         this.orderTotal = this.order.reduce(
           (total: number, item: { dishTotal: number }) =>
             total + item.dishTotal,
           0,
         )
+        this.orderTotal = parseFloat(this.orderTotal.toFixed(2));
         if (this.order.length === 0) {
           this.router.navigate(['menu'])
         }
@@ -89,19 +93,29 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onPlaceOrder() {
-    this.userForm.value
-    this.selectedPaymentOption
-    this.selectedOption
-    const OrderDetails = {
-      userId: this.userDetails?._id,
-      name: this.userForm.value.name,
-      address: this.userForm.value.address,
-      contactNumber: this.userForm.value.contactNumber,
-      totalAmount: this.userForm.value.totalAmount,
-      paymentMethod: this.selectedPaymentOption,
-      selectedOption: this.selectedOption,
-      orderItems: this.order,
+    const OrderDetails: IOrder = {
+      user: this.userDetails?._id,
+      user_details: {
+        name: this.userForm?.value.name,
+        address: this.userForm?.value.address,
+        contact_number: this.userForm?.value.contactNumber,
+      },
+      total_amount: this.orderTotal,
+      payment_method: this.selectedPaymentOption,
+      selected_option: this.selectedOption,
+      order_items: this.order as unknown as IOrderItem[],
+      restaurant: this.order[0]?.restaurant_id,
     }
     console.log(OrderDetails)
+
+       this.cartService.createOrder(OrderDetails).subscribe({
+      next:(res)=>{
+        console.log(res)
+      },
+      error:(err)=>{
+        console.log(err)
+      }
+    })
+   
   }
 }

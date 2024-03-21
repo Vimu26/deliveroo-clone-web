@@ -33,7 +33,7 @@ export interface LoginResponse {
 }
 
 export interface IDish {
-  restaurant: string
+  restaurant: IRestaurant
   order?: string
   dish_category: IDishCategory
   name: string
@@ -43,6 +43,7 @@ export interface IDish {
   calories: string
   addOns: DishAddOns[]
   size: Size[]
+  _id: string
 }
 
 export interface DishAddOns {
@@ -101,9 +102,46 @@ export interface CategorizedDishes {
 }
 
 export interface IAddedDishData {
-  dish: IDish
+  dish: ISelectedDish
+  dishCategory_id: string
+  restaurant_id: string
   dishTotal: number
   selectedAddons: DishAddOns[]
   quantity: number
   size: string
+}
+
+export interface ISelectedDish {
+  name: string
+  _id: string
+}
+
+export interface IUserDetails {
+  name: string | null | undefined 
+  address: string | null | undefined 
+  contact_number: string | null | undefined 
+}
+
+export interface IOrderItem {
+  dish: {
+    name: string
+    _id: string
+  }
+  
+  dishCategory_id: string
+  restaurant_id :string
+  dish_total: number
+  quantity: number
+  size: string
+  selected_addOns: DishAddOns[]
+}
+
+export interface IOrder {
+  user: string | undefined
+  user_details: IUserDetails
+  restaurant: string
+  total_amount: number
+  payment_method: string
+  order_items: IOrderItem[]
+  selected_option: string
 }
