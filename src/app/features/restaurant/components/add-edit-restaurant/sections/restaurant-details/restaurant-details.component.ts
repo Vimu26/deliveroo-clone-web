@@ -31,11 +31,21 @@ export class RestaurantDetailsComponent {
     //
   }
 
-  onSubmit() {
+  onNext() {
     console.log(this.restaurantDetailsForm.value)
   }
 
+  get tagList() {
+    return this.restaurantDetailsForm.get('tagList') as FormArray
+  }
+
   addTag() {
-    //
+    this.tagList.push(new FormControl('', Validators.required))
+  }
+
+  removeTag(index: number) {
+    if (index !== 0) {
+      this.tagList.removeAt(index)
+    }
   }
 }

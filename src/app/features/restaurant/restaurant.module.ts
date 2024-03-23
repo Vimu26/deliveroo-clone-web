@@ -12,6 +12,7 @@ import { DishCategoriesComponent } from './components/add-edit-restaurant/sectio
 import { RestaurantDetailsComponent } from './components/add-edit-restaurant/sections/restaurant-details/restaurant-details.component'
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatDividerModule } from '@angular/material/divider'
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
     HttpClientModule,
     NgxMaterialTimepickerModule,
     MatFormFieldModule,
+    MatDividerModule,
   ],
 })
 export class RestaurantModule {}
