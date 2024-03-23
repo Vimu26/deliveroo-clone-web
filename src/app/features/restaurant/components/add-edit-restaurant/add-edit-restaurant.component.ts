@@ -57,6 +57,7 @@ export class AddEditRestaurantComponent implements OnInit {
   }
 
   onNextClicked(e: number, data: any) {
+    console.log(e , data)
     switch (e) {
       case 1:
         this.isAddRestaurantDetailsCompleted = true
