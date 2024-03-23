@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core'
   styleUrls: ['./dish-categories.component.scss'],
 })
 export class DishCategoriesComponent implements OnInit {
-  @Output() onCategoriesNext = new EventEmitter<{data: any;}>()
+  @Output() onCategoriesNext = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
   constructor() {}
@@ -16,9 +16,9 @@ export class DishCategoriesComponent implements OnInit {
     this.onBackClicked.emit(true)
   }
   onNext() {
-    console.log("ddvbfdhvs")
+    console.log('ddvbfdhvs')
     this.onCategoriesNext.emit({
-      data : 'string'
-    });
+      data: 'string',
+    })
   }
 }

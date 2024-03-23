@@ -7,7 +7,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./restaurant-details.component.scss'],
 })
 export class RestaurantDetailsComponent {
-  @Output() onDetailsNext = new EventEmitter<{data: any;}>();
+  @Output() onDetailsNext = new EventEmitter<{ data: any }>()
 
   restaurantDetailsForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -35,7 +35,7 @@ export class RestaurantDetailsComponent {
 
   onNext() {
     console.log(this.restaurantDetailsForm.value)
-    this.onDetailsNext.emit({ data: this.restaurantDetailsForm.value });
+    this.onDetailsNext.emit({ data: this.restaurantDetailsForm.value })
   }
 
   get tagList() {
