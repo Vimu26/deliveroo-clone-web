@@ -14,7 +14,7 @@ export class RestaurantComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   })
 
-  constructor(private router : Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     //
@@ -27,7 +27,7 @@ export class RestaurantComponent implements OnInit {
     this.hidePassword = !this.hidePassword
   }
 
-  onClickRestaurantLogin(){
+  onClickRestaurantLogin() {
     //
   }
 }

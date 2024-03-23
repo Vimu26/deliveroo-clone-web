@@ -117,9 +117,9 @@ export interface ISelectedDish {
 }
 
 export interface IUserDetails {
-  name: string | null | undefined 
-  address: string | null | undefined 
-  contact_number: string | null | undefined 
+  name: string | null | undefined
+  address: string | null | undefined
+  contact_number: string | null | undefined
 }
 
 export interface IOrderItem {
@@ -127,9 +127,9 @@ export interface IOrderItem {
     name: string
     _id: string
   }
-  
+
   dishCategory_id: string
-  restaurant_id :string
+  restaurant_id: string
   dish_total: number
   quantity: number
   size: string

@@ -7,15 +7,13 @@ import { Router } from '@angular/router'
   styleUrls: ['./main-content.component.scss'],
 })
 export class MainContentComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router){}
-
-ngOnInit(): void {
+  ngOnInit(): void {
     //
-}
+  }
 
-onClickAddRestaurant(){
-  this.router.navigate(['restaurant'])
-}
-
+  onClickAddRestaurant() {
+    this.router.navigate(['restaurant'])
+  }
 }

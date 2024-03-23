@@ -3,7 +3,12 @@ import { Router } from '@angular/router'
 import { Subscription, min } from 'rxjs'
 import { BasketService } from 'src/app/features/menu/components/menu-page/basket/services/basket.service'
 import { AuthService } from 'src/app/features/auth/services/auth.service'
-import { IAddedDishData, IOrder, IOrderItem, userDetails } from 'src/app/interfaces'
+import {
+  IAddedDishData,
+  IOrder,
+  IOrderItem,
+  userDetails,
+} from 'src/app/interfaces'
 import { MatCheckboxChange } from '@angular/material/checkbox'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { CartServiceService } from '../../services/cart-service.service'
@@ -41,7 +46,7 @@ export class CartComponent implements OnInit, OnDestroy {
     private basketService: BasketService,
     private router: Router,
     private authService: AuthService,
-    private cartService : CartServiceService
+    private cartService: CartServiceService,
   ) {}
 
   toggleSelection(event: MatCheckboxChange, value: string) {
@@ -62,7 +67,7 @@ export class CartComponent implements OnInit, OnDestroy {
             total + item.dishTotal,
           0,
         )
-        this.orderTotal = parseFloat(this.orderTotal.toFixed(2));
+        this.orderTotal = parseFloat(this.orderTotal.toFixed(2))
         if (this.order.length === 0) {
           this.router.navigate(['menu'])
         }
@@ -108,14 +113,13 @@ export class CartComponent implements OnInit, OnDestroy {
     }
     console.log(OrderDetails)
 
-       this.cartService.createOrder(OrderDetails).subscribe({
-      next:(res)=>{
+    this.cartService.createOrder(OrderDetails).subscribe({
+      next: (res) => {
         console.log(res)
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err)
-      }
+      },
     })
-   
   }
 }

@@ -26,31 +26,31 @@ export class AddEditRestaurantComponent implements OnInit {
 
     switch (selectedIndex) {
       case 0:
-        this.isAddRestaurantDetailsSelected = true;
-        break;
+        this.isAddRestaurantDetailsSelected = true
+        break
       case 1:
-        this.isDishCategoriesSelected = true;
+        this.isDishCategoriesSelected = true
 
-        break;
+        break
       case 2:
-        this.isDishSectionSelected = true;
-        break;
+        this.isDishSectionSelected = true
+        break
       default:
-        break;
+        break
     }
 
     switch (previouslySelectedIndex) {
       case 0:
-        this.isAddRestaurantDetailsSelected = false;
-        break;
+        this.isAddRestaurantDetailsSelected = false
+        break
       case 1:
-        this.isDishCategoriesSelected = false;
-        break;
+        this.isDishCategoriesSelected = false
+        break
       case 2:
-        this.isDishSectionSelected = false;
-        break;
+        this.isDishSectionSelected = false
+        break
       default:
-        break;
+        break
     }
   }
 }
