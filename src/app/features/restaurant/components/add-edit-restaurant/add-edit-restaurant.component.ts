@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { MatStepper } from '@angular/material/stepper'
 
 @Component({
   selector: 'app-add-edit-restaurant',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./add-edit-restaurant.component.scss'],
 })
 export class AddEditRestaurantComponent implements OnInit {
+  @ViewChild('stepper') stepper: any
   isAddRestaurantDetailsSelected = false
   isDishCategoriesSelected = false
   isDishSectionSelected = false
@@ -52,5 +54,30 @@ export class AddEditRestaurantComponent implements OnInit {
       default:
         break
     }
+  }
+
+  onNextClicked(e: number, data: any) {
+    console.log(e, data)
+    switch (e) {
+      case 1:
+        this.isAddRestaurantDetailsCompleted = true
+        this.isAddRestaurantDetailsSelected = false
+        break
+      case 2:
+        this.isDishCategoriesCompleted = true
+        this.isDishCategoriesSelected = false
+        break
+      case 3:
+        this.isDishSectionCompleted = true
+        this.isDishSectionSelected = false
+        break
+      default:
+        break
+    }
+    this.stepper.next()
+  }
+
+  onBackClicked() {
+    this.stepper.previous()
   }
 }
