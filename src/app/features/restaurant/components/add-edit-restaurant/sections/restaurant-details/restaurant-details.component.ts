@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
+import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
+import { IRestaurantDetails } from 'src/app/interfaces'
 
 @Component({
   selector: 'app-restaurant-details',
@@ -8,6 +10,8 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RestaurantDetailsComponent {
   @Output() onDetailsNext = new EventEmitter<{ data: any }>()
+
+  constructor(private restaurantDetailsService: AddEditRestaurantService) {}
 
   restaurantDetailsForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -35,7 +39,50 @@ export class RestaurantDetailsComponent {
 
   onNext() {
     console.log(this.restaurantDetailsForm.value)
-    this.onDetailsNext.emit({ data: this.restaurantDetailsForm.value })
+    const restaurantDetails: IRestaurantDetails = {
+      name: this.restaurantDetailsForm?.controls?.name?.value ?? '',
+      email: this.restaurantDetailsForm?.controls?.email?.value ?? '',
+      contact_number:
+        this.restaurantDetailsForm?.controls?.contactNumber?.value ?? '',
+      location: this.restaurantDetailsForm?.controls?.location?.value ?? '',
+      distance:
+        Number(this.restaurantDetailsForm?.controls?.distance?.value) ?? 0,
+      opens_at: this.restaurantDetailsForm?.controls?.opensAt?.value ?? '',
+      closes_at: this.restaurantDetailsForm?.controls?.closesAt?.value ?? '',
+      minimumPrice:
+        this.restaurantDetailsForm?.controls?.minimumPrice?.value ?? '',
+      deliveryFee:
+        Number(this.restaurantDetailsForm?.controls?.deliveryFee?.value) ?? 0,
+      delivery_time: {
+        from:
+          Number(
+            this.restaurantDetailsForm?.controls?.deliveryTime?.controls?.from
+              ?.value,
+          ) ?? 0,
+        to:
+          Number(
+            this.restaurantDetailsForm?.controls?.deliveryTime?.controls?.to
+              ?.value,
+          ) ?? 0,
+      },
+      tag_list: this.restaurantDetailsForm?.controls?.tagList?.value?.map(
+        (tag) => tag!,
+      ),
+    }
+
+    console.log(restaurantDetails)
+    this.restaurantDetailsService
+      .checkRestaurantDetails(restaurantDetails)
+      .subscribe({
+        next: (res: any) => {
+          console.log(res)
+          if (res.code === 201)
+            this.onDetailsNext.emit({ data: this.restaurantDetailsForm.value })
+        },
+        error: (error: any) => {
+          console.log(error)
+        },
+      })
   }
 
   get tagList() {

@@ -3,6 +3,12 @@ export interface CommonResponse<T> {
   message: string
   status: boolean
 }
+
+export interface CommonCheckResponse {
+  message: string
+  status: boolean
+  statusCode: number
+}
 export interface IUserData {
   first_name: string
   last_name: string
@@ -17,6 +23,23 @@ export interface userDetails {
   full_name: string
   contact_number: string
   address: string
+}
+
+export interface IRestaurantDetails {
+  name: string
+  email: string
+  contact_number: string
+  location: string
+  distance: number
+  opens_at: string
+  closes_at: string
+  minimumPrice: string
+  deliveryFee: number
+  delivery_time: {
+    from: number
+    to: number
+  }
+  tag_list: string[]
 }
 
 export interface IUserLogin {
@@ -67,16 +90,12 @@ export interface IRestaurant {
   opens_at: string
   closes_at: string
   minimumPrice: string
-  deliveryFee: string
-  tags: {
-    delivery_time: {
-      from: number
-      to: number
-    }
-    tag1: string
-    tag2: string
-    tag3: string
+  deliveryFee: number
+  delivery_time: {
+    from: number
+    to: number
   }
+  tagList: string[]
 }
 export interface IDishCategory {
   restaurant: string

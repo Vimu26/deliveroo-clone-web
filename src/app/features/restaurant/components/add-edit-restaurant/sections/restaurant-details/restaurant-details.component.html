@@ -38,7 +38,6 @@
       >
         <mat-label>Restaurant Contact Number</mat-label>
         <input
-          type="number"
           matInput
           formControlName="contactNumber"
           placeholder="0777123456"
@@ -139,6 +138,7 @@
           placeholder="50"
           required
         />
+        <span class="mr-2" matTextPrefix>£</span>
       </mat-form-field>
 
       <mat-form-field
@@ -155,6 +155,7 @@
           placeholder="5"
           required
         />
+        <span class="mr-2" matTextPrefix>£</span>
       </mat-form-field>
 
       <div
@@ -168,14 +169,15 @@
               style="width: 100%"
               color="accent"
             >
-              <mat-label>Delivery Time</mat-label>
+              <mat-label>Delivery Time (From)</mat-label>
               <input
-                type="time"
+                type="number"
                 matInput
                 formControlName="from"
                 placeholder="From"
                 required
               />
+              <span matTextSuffix>min</span>
             </mat-form-field>
           </div>
           <div class="col-6">
@@ -184,14 +186,15 @@
               style="width: 100%"
               color="accent"
             >
-              <mat-label>Delivery Time</mat-label>
+              <mat-label>Delivery Time (To)</mat-label>
               <input
-                type="time"
+                type="number"
                 matInput
                 formControlName="to"
                 placeholder="To"
                 required
               />
+              <span matTextSuffix>min</span>
             </mat-form-field>
           </div>
         </div>
