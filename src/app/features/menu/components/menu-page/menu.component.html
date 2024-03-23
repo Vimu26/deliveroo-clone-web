@@ -32,13 +32,13 @@
             >{{ selectedRestaurant?.name }} -
             {{ selectedRestaurant?.location }}</strong
           >
-          <p>
+          <!-- <p>
             {{ selectedRestaurant?.tags?.delivery_time?.from }} -
             {{ selectedRestaurant?.tags?.delivery_time?.to }} min·
             {{ selectedRestaurant?.tags?.tag1 }}·{{
               selectedRestaurant?.tags?.tag2
             }}·{{ selectedRestaurant?.tags?.tag3 }}
-          </p>
+          </p> -->
           <p>
             {{ selectedRestaurant?.distance }} miles away·{{
               getStatusAndTime().status
@@ -154,8 +154,8 @@
               >
                 directions_bike</mat-icon
               >
-              Deliver in {{ selectedRestaurant?.tags?.delivery_time?.from }} -
-              {{ selectedRestaurant?.tags?.delivery_time?.to }} min &nbsp;<span
+              Deliver in {{ selectedRestaurant?.delivery_time?.from }} -
+              {{ selectedRestaurant?.delivery_time?.to }} min &nbsp;<span
                 style="color: #ff355e"
                 >Change</span
               ></button
