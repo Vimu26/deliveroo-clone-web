@@ -10,7 +10,7 @@ export class CartServiceService {
   readonly apiURL = 'http://localhost:8080/orders/'
   constructor(private http: HttpClient) {}
 
-  public createOrder(orderData: IOrder): Observable<CommonResponse<IOrder>> {
+  createOrder(orderData: IOrder): Observable<CommonResponse<IOrder>> {
     return this.http.post<CommonResponse<IOrder>>(this.apiURL + '', orderData)
   }
 }

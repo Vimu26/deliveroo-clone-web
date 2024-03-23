@@ -98,7 +98,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onPlaceOrder() {
-    const OrderDetails: IOrder = {
+    const orderDetails: IOrder = {
       user: this.userDetails?._id,
       user_details: {
         name: this.userForm?.value.name,
@@ -111,9 +111,9 @@ export class CartComponent implements OnInit, OnDestroy {
       order_items: this.order as unknown as IOrderItem[],
       restaurant: this.order[0]?.restaurant_id,
     }
-    console.log(OrderDetails)
+    console.log(orderDetails)
 
-    this.cartService.createOrder(OrderDetails).subscribe({
+    this.cartService.createOrder(orderDetails).subscribe({
       next: (res) => {
         console.log(res)
       },
