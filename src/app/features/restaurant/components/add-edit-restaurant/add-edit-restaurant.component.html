@@ -29,10 +29,13 @@
     <!-- RIGHT PANEL -->
     <div class="col-9">
       <div class="box">
-        <app-restaurant-details *ngIf="isAddRestaurantDetailsSelected">
+        <app-restaurant-details *ngIf="isAddRestaurantDetailsSelected"
+        (onDetailsNext)="onNextClicked(1, $event)">
         </app-restaurant-details>
         <app-dish-categories
           *ngIf="isDishCategoriesSelected"
+          (onCategoriesNext)="onNextClicked(2, $event)"
+          (onBackClicked)="onBackClicked()"
         ></app-dish-categories>
         <app-dishes *ngIf="isDishSectionSelected"></app-dishes>
       </div>
