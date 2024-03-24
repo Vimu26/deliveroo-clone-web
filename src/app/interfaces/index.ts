@@ -33,7 +33,7 @@ export interface IRestaurantDetails {
   distance: number
   opens_at: string
   closes_at: string
-  minimumPrice: string
+  minimumPrice: number
   deliveryFee: number
   delivery_time: {
     from: number

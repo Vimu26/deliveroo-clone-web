@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatStepper } from '@angular/material/stepper'
+import { IRestaurantDetails } from 'src/app/interfaces'
 
 @Component({
   selector: 'app-add-edit-restaurant',
@@ -15,6 +16,10 @@ export class AddEditRestaurantComponent implements OnInit {
   isAddRestaurantDetailsCompleted = false
   isDishCategoriesCompleted = false
   isDishSectionCompleted = false
+
+  formData_RestaurantDetails!: IRestaurantDetails
+  formData_DishCategories!: string[]
+  formData_dishes!: string[]
 
   constructor() {}
 
@@ -62,6 +67,7 @@ export class AddEditRestaurantComponent implements OnInit {
       case 1:
         this.isAddRestaurantDetailsCompleted = true
         this.isAddRestaurantDetailsSelected = false
+        this.formData_RestaurantDetails = data.data
         break
       case 2:
         this.isDishCategoriesCompleted = true
