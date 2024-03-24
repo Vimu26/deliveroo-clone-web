@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
 import { IRestaurantDetails } from 'src/app/interfaces'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-restaurant-details',
@@ -12,7 +13,10 @@ export class RestaurantDetailsComponent implements OnInit {
   @Output() onDetailsNext = new EventEmitter<{ data: IRestaurantDetails }>()
   @Input() restaurantDetailsData!: IRestaurantDetails
 
-  constructor(private restaurantDetailsService: AddEditRestaurantService) {}
+  constructor(
+    private restaurantDetailsService: AddEditRestaurantService,
+    private router: Router,
+  ) {}
 
   restaurantDetailsForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -40,7 +44,7 @@ export class RestaurantDetailsComponent implements OnInit {
         this.addTag()
       }
       this.restaurantDetailsData.tag_list.forEach((tag, index) => {
-         (this.restaurantDetailsForm.get('tagList') as FormArray)
+        ;(this.restaurantDetailsForm.get('tagList') as FormArray)
           .at(index)
           .patchValue(tag)
       })
@@ -64,7 +68,7 @@ export class RestaurantDetailsComponent implements OnInit {
   }
 
   onCancel() {
-    //
+    this.router.navigate(['/restaurant'])
   }
 
   onNext() {
