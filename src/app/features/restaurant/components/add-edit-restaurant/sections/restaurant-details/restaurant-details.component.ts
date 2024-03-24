@@ -40,7 +40,7 @@ export class RestaurantDetailsComponent implements OnInit {
         this.addTag()
       }
       this.restaurantDetailsData.tag_list.forEach((tag, index) => {
-         (this.restaurantDetailsForm.get('tagList') as FormArray)
+        ;(this.restaurantDetailsForm.get('tagList') as FormArray)
           .at(index)
           .patchValue(tag)
       })
