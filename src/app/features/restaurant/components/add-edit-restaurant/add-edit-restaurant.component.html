@@ -37,6 +37,7 @@
         </app-restaurant-details>
         <app-dish-categories
           *ngIf="isDishCategoriesSelected"
+          [CategoryData]="formData_DishCategories"
           (onCategoriesNext)="onNextClicked(2, $event)"
           (onBackClicked)="onBackClicked()"
         ></app-dish-categories>

@@ -102,6 +102,11 @@ export interface IDishCategory {
   name: string
   _id: string
 }
+
+export interface IDishCategoryDetails {
+  restaurantId?: string
+  name: string
+}
 export interface DishCategory {
   dishCategoryName: string
   index: number

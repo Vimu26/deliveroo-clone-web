@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
@@ -7,6 +7,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./dish-categories.component.scss'],
 })
 export class DishCategoriesComponent implements OnInit {
+  @Input() CategoryData: any
   @Output() onCategoriesNext = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
@@ -15,14 +16,27 @@ export class DishCategoriesComponent implements OnInit {
   })
 
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.CategoryData)
+    if (this.CategoryData.name) {
+      for (let i = 1; i < this.CategoryData.name.length; i++) {
+        this.addDishCategory()
+      }
+      this.CategoryData.name.forEach((category: any, index: number) => {
+        ;(this.dishCategoriesForm.get('name') as FormArray)
+          .at(index)
+          .patchValue(category)
+      })
+    }
+  }
 
   onBack() {
     this.onBackClicked.emit(true)
   }
   onNext() {
+    console.log(this.dishCategoriesForm.value)
     this.onCategoriesNext.emit({
-      data: 'string',
+      data: this.dishCategoriesForm.value,
     })
   }
   get getDishCategoryArray() {
