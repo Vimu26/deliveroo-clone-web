@@ -19,7 +19,7 @@ export class AddEditRestaurantComponent implements OnInit {
 
   formData_RestaurantDetails!: IRestaurantDetails
   formData_DishCategories!: string[]
-  formData_dishes! : string[]
+  formData_dishes!: string[]
 
   constructor() {}
 
