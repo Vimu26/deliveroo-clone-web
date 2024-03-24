@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
 import { IRestaurantDetails } from 'src/app/interfaces'
@@ -8,8 +8,9 @@ import { IRestaurantDetails } from 'src/app/interfaces'
   templateUrl: './restaurant-details.component.html',
   styleUrls: ['./restaurant-details.component.scss'],
 })
-export class RestaurantDetailsComponent {
-  @Output() onDetailsNext = new EventEmitter<{ data: any }>()
+export class RestaurantDetailsComponent implements OnInit {
+  @Output() onDetailsNext = new EventEmitter<{ data: IRestaurantDetails }>()
+  @Input() restaurantDetailsData!: IRestaurantDetails
 
   constructor(private restaurantDetailsService: AddEditRestaurantService) {}
 
@@ -21,17 +22,46 @@ export class RestaurantDetailsComponent {
       Validators.maxLength(10),
     ]),
     location: new FormControl('', [Validators.required]),
-    distance: new FormControl('', [Validators.required]),
+    distance: new FormControl(0, [Validators.required]),
     opensAt: new FormControl('', [Validators.required]),
     closesAt: new FormControl('', [Validators.required]),
-    minimumPrice: new FormControl('', [Validators.required]),
-    deliveryFee: new FormControl('', [Validators.required]),
+    minimumPrice: new FormControl(0, [Validators.required]),
+    deliveryFee: new FormControl(0, [Validators.required]),
     deliveryTime: new FormGroup({
-      from: new FormControl('', Validators.required),
-      to: new FormControl('', Validators.required),
+      from: new FormControl(0, Validators.required),
+      to: new FormControl(0, Validators.required),
     }),
     tagList: new FormArray([new FormControl('', Validators.required)]),
   })
+
+  ngOnInit(): void {
+    if (this.restaurantDetailsData !== undefined) {
+      for (let i = 1; i < this.restaurantDetailsData.tag_list.length; i++) {
+        this.addTag()
+      }
+      this.restaurantDetailsData.tag_list.forEach((tag, index) => {
+         (this.restaurantDetailsForm.get('tagList') as FormArray)
+          .at(index)
+          .patchValue(tag)
+      })
+
+      this.restaurantDetailsForm.patchValue({
+        name: this.restaurantDetailsData.name,
+        email: this.restaurantDetailsData.email,
+        contactNumber: this.restaurantDetailsData.contact_number,
+        location: this.restaurantDetailsData.location,
+        distance: this.restaurantDetailsData.distance,
+        opensAt: this.restaurantDetailsData.opens_at,
+        closesAt: this.restaurantDetailsData.closes_at,
+        minimumPrice: this.restaurantDetailsData.minimumPrice,
+        deliveryFee: this.restaurantDetailsData.deliveryFee,
+        deliveryTime: {
+          from: this.restaurantDetailsData.delivery_time.from,
+          to: this.restaurantDetailsData.delivery_time.to,
+        },
+      })
+    }
+  }
 
   onCancel() {
     //
@@ -50,7 +80,7 @@ export class RestaurantDetailsComponent {
       opens_at: this.restaurantDetailsForm?.controls?.opensAt?.value ?? '',
       closes_at: this.restaurantDetailsForm?.controls?.closesAt?.value ?? '',
       minimumPrice:
-        this.restaurantDetailsForm?.controls?.minimumPrice?.value ?? '',
+        this.restaurantDetailsForm?.controls?.minimumPrice?.value ?? 0,
       deliveryFee:
         Number(this.restaurantDetailsForm?.controls?.deliveryFee?.value) ?? 0,
       delivery_time: {
@@ -70,14 +100,12 @@ export class RestaurantDetailsComponent {
       ),
     }
 
-    console.log(restaurantDetails)
     this.restaurantDetailsService
       .checkRestaurantDetails(restaurantDetails)
       .subscribe({
         next: (res: any) => {
-          console.log(res)
           if (res.code === 201)
-            this.onDetailsNext.emit({ data: this.restaurantDetailsForm.value })
+            this.onDetailsNext.emit({ data: restaurantDetails })
         },
         error: (error: any) => {
           console.log(error)
