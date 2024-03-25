@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-dishes',
@@ -7,14 +7,14 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./dishes.component.scss'],
 })
 export class DishesComponent implements OnInit {
-  @Input() dishCategoriesData : any;
+  @Input() dishCategoriesData: any
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
   dishFormGroup = new FormGroup({
     dish: new FormArray([
       new FormGroup({
-        dishCategory : new FormControl('', Validators.required),
+        dishCategory: new FormControl('', Validators.required),
         name: new FormControl('', Validators.required),
         description: new FormControl('', Validators.required),
         price: new FormControl(0, Validators.required),
@@ -24,17 +24,17 @@ export class DishesComponent implements OnInit {
           new FormGroup({
             name: new FormControl('', Validators.required),
             price: new FormControl(0, Validators.required),
-            checked: new FormControl(false)
-          })
+            checked: new FormControl(false),
+          }),
         ]),
         size: new FormArray([
           new FormGroup({
             name: new FormControl('', Validators.required),
             price: new FormControl(0, Validators.required),
-          })
-        ])   
-      })
-    ])
+          }),
+        ]),
+      }),
+    ]),
   })
 
   constructor() {}
@@ -51,5 +51,49 @@ export class DishesComponent implements OnInit {
 
   onBack() {
     this.onBackClicked.emit(true)
+  }
+
+  addAddon(index: number) {
+    const addonsFormArray = (this.dishFormGroup.get('dish') as FormArray)
+      .at(index)
+      .get('addons') as FormArray
+    addonsFormArray.push(
+      new FormGroup({
+        name: new FormControl('', Validators.required),
+        price: new FormControl(0, Validators.required),
+        checked: new FormControl(false),
+      }),
+    )
+  }
+
+  addSize(index: number) {
+    const sizesFormArray = (this.dishFormGroup.get('dish') as FormArray)
+      .at(index)
+      .get('size') as FormArray
+    sizesFormArray.push(
+      new FormGroup({
+        name: new FormControl('', Validators.required),
+        price: new FormControl(0, Validators.required),
+      }),
+    )
+  }
+
+  removeAddon(dishIndex: number, addonIndex: number) {
+    const addonsFormArray = (this.dishFormGroup.get('dish') as FormArray)
+      .at(dishIndex)
+      .get('addons') as FormArray
+    addonsFormArray.removeAt(addonIndex)
+  }
+
+  removeSize(dishIndex: number, sizeIndex: number) {
+    const sizesFormArray = (this.dishFormGroup.get('dish') as FormArray)
+      .at(dishIndex)
+      .get('size') as FormArray
+    sizesFormArray.removeAt(sizeIndex)
+  }
+
+  removeDish(index: number) {
+    const dishFormArray = this.dishFormGroup.get('dish') as FormArray
+    dishFormArray.removeAt(index)
   }
 }
