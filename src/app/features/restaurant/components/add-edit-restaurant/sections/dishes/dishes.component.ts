@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'app-dishes',
@@ -6,13 +6,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core'
   styleUrls: ['./dishes.component.scss'],
 })
 export class DishesComponent implements OnInit {
+  @Input() dishCategoriesData : any;
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
   constructor() {}
 
   ngOnInit(): void {
-    //
+    console.log(this.dishCategoriesData)
   }
 
   onNext() {

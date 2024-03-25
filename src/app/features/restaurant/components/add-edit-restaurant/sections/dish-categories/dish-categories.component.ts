@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
+import { IDishCategory, IDishCategoryDetails } from 'src/app/interfaces'
 
 @Component({
   selector: 'app-dish-categories',
@@ -7,25 +8,39 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./dish-categories.component.scss'],
 })
 export class DishCategoriesComponent implements OnInit {
-  @Input() CategoryData: any
+  @Input() CategoryData: IDishCategoryDetails[] = []
   @Output() onCategoriesNext = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
+  // dishCategoriesForm = new FormGroup({
+  //   name: new FormArray([new FormControl('', Validators.required)]),
+  // })
+
   dishCategoriesForm = new FormGroup({
-    name: new FormArray([new FormControl('', Validators.required)]),
+    category: new FormArray([
+      new FormGroup({
+        restaurant: new FormControl(''),
+        name: new FormControl('', Validators.required),
+      }),
+    ]),
   })
 
   constructor() {}
   ngOnInit(): void {
     console.log(this.CategoryData)
-    if (this.CategoryData.name) {
-      for (let i = 1; i < this.CategoryData.name.length; i++) {
+    if (this.CategoryData) {
+      for (let i = 1; i < this.CategoryData.length; i++) {
         this.addDishCategory()
       }
-      this.CategoryData.name.forEach((category: any, index: number) => {
-        ;(this.dishCategoriesForm.get('name') as FormArray)
-          .at(index)
-          .patchValue(category)
+      this.CategoryData.forEach((category, index) => {
+        ;(
+          (this.dishCategoriesForm.controls.category as FormArray).at(
+            index,
+          ) as FormGroup
+        ).patchValue({
+          restaurant: category.restaurant,
+          name: category.name,
+        })
       })
     }
   }
@@ -36,15 +51,20 @@ export class DishCategoriesComponent implements OnInit {
   onNext() {
     console.log(this.dishCategoriesForm.value)
     this.onCategoriesNext.emit({
-      data: this.dishCategoriesForm.value,
+      data: this.dishCategoriesForm.value.category,
     })
   }
   get getDishCategoryArray() {
-    return this.dishCategoriesForm.get('name') as FormArray
+    return this.dishCategoriesForm.controls.category as FormArray
   }
 
   addDishCategory() {
-    this.getDishCategoryArray.push(new FormControl('', Validators.required))
+    this.getDishCategoryArray.push(
+      new FormGroup({
+        restaurant: new FormControl(''),
+        name: new FormControl('', Validators.required),
+      }),
+    )
   }
 
   removeCategory(index: number) {

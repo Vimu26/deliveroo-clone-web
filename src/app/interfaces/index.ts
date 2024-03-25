@@ -104,7 +104,7 @@ export interface IDishCategory {
 }
 
 export interface IDishCategoryDetails {
-  restaurantId?: string
+  restaurant?: string
   name: string
 }
 export interface DishCategory {

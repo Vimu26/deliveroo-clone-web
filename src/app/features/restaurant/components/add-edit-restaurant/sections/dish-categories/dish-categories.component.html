@@ -17,12 +17,13 @@
 
       <div class="container">
         <div class="row">
-          <div formArrayName="name">
+          <div formArrayName="category">
             <div
               *ngFor="
                 let category of getDishCategoryArray.controls;
                 let i = index
               "
+              [formGroupName]="i"
               class="row"
             >
               <div
@@ -44,7 +45,7 @@
                   <mat-label>{{ 'Dish Category' + (i + 1) }}</mat-label>
                   <input
                     matInput
-                    [formControlName]="i"
+                    formControlName="name"
                     [placeholder]="'Dish Category ' + (i + 1)"
                     required
                     type="text"
