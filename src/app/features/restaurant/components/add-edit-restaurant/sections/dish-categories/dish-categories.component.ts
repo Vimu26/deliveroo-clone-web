@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
-import { IDishCategory, IDishCategoryDetails } from 'src/app/interfaces'
+import { IDishCategoryDetails } from 'src/app/interfaces'
 
 @Component({
   selector: 'app-dish-categories',
@@ -11,10 +11,6 @@ export class DishCategoriesComponent implements OnInit {
   @Input() CategoryData: IDishCategoryDetails[] = []
   @Output() onCategoriesNext = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
-
-  // dishCategoriesForm = new FormGroup({
-  //   name: new FormArray([new FormControl('', Validators.required)]),
-  // })
 
   dishCategoriesForm = new FormGroup({
     category: new FormArray([
