@@ -53,6 +53,31 @@ export class DishesComponent implements OnInit {
     this.onBackClicked.emit(true)
   }
 
+
+ addDish(){
+   this.dishControls.push(new FormGroup({
+     dishCategory: new FormControl('', Validators.required),
+     name: new FormControl('', Validators.required),
+     description: new FormControl('', Validators.required),
+     price: new FormControl(0, Validators.required),
+     image: new FormControl('', Validators.required),
+     calories: new FormControl(0, Validators.required),
+     addons: new FormArray([
+       new FormGroup({
+         name: new FormControl('', Validators.required),
+         price: new FormControl(0, Validators.required),
+         checked: new FormControl(false),
+       }),
+     ]),
+     size: new FormArray([
+       new FormGroup({
+         name: new FormControl('', Validators.required),
+         price: new FormControl(0, Validators.required),
+       }),
+     ]),
+   }))
+ }
+
   addAddon(index: number) {
     const addonsFormArray = (this.dishFormGroup.get('dish') as FormArray)
       .at(index)
@@ -95,5 +120,9 @@ export class DishesComponent implements OnInit {
   removeDish(index: number) {
     const dishFormArray = this.dishFormGroup.get('dish') as FormArray
     dishFormArray.removeAt(index)
+  }
+
+  get dishControls(): FormArray {
+    return this.dishFormGroup.get('dish') as FormArray;
   }
 }
