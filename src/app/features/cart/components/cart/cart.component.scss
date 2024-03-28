@@ -1,0 +1,17 @@
+.my-selected-color {
+  background-color: hotpink;
+  color: white;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.decision-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

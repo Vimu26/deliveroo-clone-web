@@ -17,6 +17,10 @@ export enum PAYMENT_METHOD {
   CASH = 'CASH',
   CARD = 'CARD',
 }
+export enum SHOPPING_TYPE {
+  TAKEAWAY = 'TAKEAWAY',
+  DELIVERY = 'DELIVERY',
+}
 
 @Component({
   selector: 'app-cart',
@@ -24,13 +28,14 @@ export enum PAYMENT_METHOD {
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit, OnDestroy {
+  selectedDecision: SHOPPING_TYPE = SHOPPING_TYPE.TAKEAWAY
+  SHOPPING_TYPE = SHOPPING_TYPE
   subscription: Subscription = new Subscription()
   order: IAddedDishData[] = []
   orderTotal: number = 0
   PAYMENT_METHOD = PAYMENT_METHOD
   selectedPaymentOption: string = PAYMENT_METHOD.CASH
   userDetails: userDetails | undefined
-  selectedOption: string = 'TakeAway'
 
   userForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -49,12 +54,12 @@ export class CartComponent implements OnInit, OnDestroy {
     private cartService: CartServiceService,
   ) {}
 
-  toggleSelection(event: MatCheckboxChange, value: string) {
-    if (event.checked && this.selectedOption === value) {
-      return
-    }
-    this.selectedOption = event.checked ? value : ''
-  }
+  // toggleSelection(event: MatCheckboxChange, value: string) {
+  //   if (event.checked && this.selectedOption === value) {
+  //     return
+  //   }
+  //   this.selectedOption = event.checked ? value : ''
+  // }
 
   ngOnInit(): void {
     this.subscription = this.basketService
@@ -107,7 +112,7 @@ export class CartComponent implements OnInit, OnDestroy {
       },
       total_amount: this.orderTotal,
       payment_method: this.selectedPaymentOption,
-      selected_option: this.selectedOption,
+      selected_option: this.selectedDecision,
       order_items: this.order as unknown as IOrderItem[],
       restaurant: this.order[0]?.restaurant_id,
     }
@@ -121,5 +126,8 @@ export class CartComponent implements OnInit, OnDestroy {
         console.log(err)
       },
     })
+  }
+  onDecisionChange(e: SHOPPING_TYPE) {
+    this.selectedDecision = e
   }
 }
