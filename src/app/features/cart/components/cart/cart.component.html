@@ -98,16 +98,42 @@
         "
       >
         <h3 style="font-size: large">Payment Details</h3>
-        <mat-checkbox
-          [checked]="selectedOption === 'TakeAway'"
-          (change)="toggleSelection($event, 'TakeAway')"
-          >Takeaway</mat-checkbox
-        >
-        <mat-checkbox
-          [checked]="selectedOption === 'Delivery'"
-          (change)="toggleSelection($event, 'Delivery')"
-          >Delivery</mat-checkbox
-        >
+        <div class="col-sm-12 button-row mt-3">
+          <button
+            class="decision-button"
+            mat-button
+            [ngClass]="
+              selectedDecision === SHOPPING_TYPE.TAKEAWAY
+                ? 'mat-raised-button my-selected-color'
+                : 'mat-stroked-button'
+            "
+            [color]="
+              selectedDecision === SHOPPING_TYPE.TAKEAWAY ? 'primary' : ''
+            "
+            (click)="onDecisionChange(SHOPPING_TYPE.TAKEAWAY)"
+          >
+            TakeAway
+            <mat-icon class="ml-2">restaurant</mat-icon>
+          </button>
+
+          <button
+            class="decision-button"
+            mat-button
+            [ngClass]="
+              selectedDecision === SHOPPING_TYPE.DELIVERY
+                ? 'mat-raised-button my-selected-color'
+                : 'mat-stroked-button'
+            "
+            [color]="
+              selectedDecision === SHOPPING_TYPE.DELIVERY ? 'primary' : ''
+            "
+            (click)="onDecisionChange(SHOPPING_TYPE.DELIVERY)"
+          >
+            Delivery
+            <mat-icon class="ml-2">local_shipping</mat-icon>
+          </button>
+        </div>
+
         <div
           style="
             padding-top: 10px;
@@ -194,11 +220,7 @@
           mat-flat-button
           class="mt-2 mb-2"
           style="width: 85%; height: 46px; background-color: #ff355e"
-          [disabled]="
-            userForm.invalid ||
-            selectedOption === '' ||
-            selectedPaymentOption === ''
-          "
+          [disabled]="userForm.invalid || selectedPaymentOption === ''"
           (click)="onPlaceOrder()"
         >
           Place Your Order
