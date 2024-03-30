@@ -24,9 +24,11 @@
                 [formGroupName]="i"
                 class="row"
               >
-                <mat-divider></mat-divider>
+                <mat-divider
+                  style="background-color: black; height: 2px"
+                ></mat-divider>
                 <div class="mb-3 mt-3" style="font-size: medium">
-                  dish>{{ i + 1 }}
+                  <span>dish {{ i + 1 }}</span>
                 </div>
                 <div class="col-lg-11 col-md-11 col-sm-1">
                   <mat-form-field
@@ -134,9 +136,10 @@
                       >Calories is Required</mat-error
                     >
                   </mat-form-field>
+                  <mat-divider class="mb-3 mt-3"></mat-divider>
                   <div class="d-flex justify-content-around mb-3">
                     <div class="col-6">
-                      <h3>Add Your Tags Here</h3>
+                      <h3>Add Dish Sizes Here</h3>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
                       <button
@@ -144,7 +147,7 @@
                         type="button"
                         (click)="addSize(i)"
                       >
-                        <mat-icon>add</mat-icon>&nbsp;Add Tag
+                        <mat-icon>add</mat-icon>&nbsp;Add Size
                       </button>
                     </div>
                   </div>
@@ -219,6 +222,92 @@
                       </div>
                     </div>
                   </div>
+                  <mat-divider class="mb-3 mt-3"></mat-divider>
+                  <div class="d-flex justify-content-around mb-3">
+                    <div class="col-6">
+                      <h3>Add Dish AddOns Here</h3>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                      <button
+                        mat-stroked-button
+                        type="button"
+                        (click)="addAddon(i)"
+                      >
+                        <mat-icon>add</mat-icon>&nbsp;Add AddOn
+                      </button>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div formArrayName="addons">
+                      <div
+                        class="row d-flex align-items-center"
+                        *ngFor="
+                          let size of getAddonsControl(i).controls;
+                          let k = index
+                        "
+                        [formGroupName]="k"
+                      >
+                        <div
+                          class="col-2 d-flex align-items-center"
+                          style="flex: 0 0 50px; margin-top: -20px"
+                        >
+                          <mat-divider
+                            vertical
+                            style="height: 70px; margin-top: -60px"
+                          ></mat-divider>
+                          <mat-divider
+                            style="width: 40px; margin-top: 8px"
+                          ></mat-divider>
+                        </div>
+                        <div class="col-5">
+                          <mat-form-field
+                            appearance="outline"
+                            color="accent"
+                            style="width: 100%"
+                          >
+                            <mat-label>Extra Addon</mat-label>
+                            <input
+                              matInput
+                              formControlName="name"
+                              placeholder="cheese"
+                              required
+                            />
+                          </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                          <mat-form-field
+                            appearance="outline"
+                            color="accent"
+                            style="width: 100%"
+                          >
+                            <mat-label>Price</mat-label>
+                            <input
+                              matInput
+                              formControlName="price"
+                              placeholder="3.99"
+                              required
+                              type="number"
+                            />
+                            <mat-icon matPrefix>euro_symbol</mat-icon>
+                          </mat-form-field>
+                        </div>
+                        <div
+                          class="col-1 d-flex align-items-center justify-content-center"
+                          style="padding-bottom: 20px"
+                        >
+                          <button
+                            type="button"
+                            mat-icon-button
+                            color="warn"
+                            (click)="removeAddon(i, k)"
+                            aria-label="Remove"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="col-lg-1 col-md-1 col-sm-1 d-flex align-items-center justify-content-center"
@@ -235,7 +324,9 @@
                   </button>
                 </div>
               </div>
-              <mat-divider></mat-divider>
+              <mat-divider
+                style="background-color: black; height: 2px"
+              ></mat-divider>
             </div>
           </div>
         </div>
