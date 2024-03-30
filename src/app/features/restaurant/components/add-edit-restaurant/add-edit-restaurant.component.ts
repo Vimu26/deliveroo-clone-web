@@ -25,6 +25,7 @@ export class AddEditRestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAddRestaurantDetailsSelected = true
+    console.log(this.formData_DishCategories)
   }
   onStepChange(e: any) {
     console.log(e)

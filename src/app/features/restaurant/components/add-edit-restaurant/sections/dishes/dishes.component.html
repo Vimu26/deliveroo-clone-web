@@ -3,322 +3,158 @@
     Dishes
   </div>
   <div class="d-flex flex-column">
-    <!-- <mat-form-field
-      appearance="outline"
-      style="width: 70%"
-      color="accent"
-      class="d-flex justify-content-center m-auto mb-3"
-    >
-      <mat-label>Restaurant Name</mat-label>
-      <input matInput formControlName="name" placeholder="Hilton" required />
-    </mat-form-field> -->
     <form [formGroup]="dishFormGroup">
-
-
-<div class="mt-3" style="margin-left: 1rem; margin-right: 1rem">
-      <div class="d-flex justify-content-around mb-3">
-        <div class="col-6">
-          <h3>Add a Dish</h3>
+      <div class="mt-3" style="margin-left: 1rem; margin-right: 1rem">
+        <div class="d-flex justify-content-around mb-3">
+          <div class="col-6">
+            <h3>Add a Dish</h3>
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <button mat-stroked-button type="button" (click)="addDish()">
+              <mat-icon>add</mat-icon>&nbsp;Add Dish
+            </button>
+          </div>
         </div>
-        <div class="col-6 d-flex justify-content-end">
-          <button mat-stroked-button type="button" (click)="addDish()">
-            <mat-icon>add</mat-icon>&nbsp;Add Dish
-          </button>
-        </div>
-      </div>
 
-      <div class="container">
-        <div class="row">
-          <div formArrayName="dish">
-            <div
-              *ngFor="
-                let category of dishControls.controls;
-                let i = index
-              "
-              [formGroupName]="i"
-              class="row"
-            >
-            <div>dish>{{i+1}}</div>
-              <!-- <div
-                class="col-1 d-flex align-items-center"
-                style="margin-top: -20px"
-              >
-              <div>dish>{{i+1}}</div>
-                <mat-divider
-                  vertical
-                  style="height: 70px; margin-top: -60px"
-                ></mat-divider>
-                <mat-divider style="width: 40px; margin-top: 8px"></mat-divider>
-              </div> -->
-              <div class="col-11">
-                <mat-form-field
-                  appearance="outline"
-                  color="accent"
-                  style="width: 100%"
-                >
-                  <mat-label>{{ 'Dish Category' + (i + 1) }}</mat-label>
-                  <input
-                    matInput
-                    formControlName="name"
-                    [placeholder]="'Dish Category ' + (i + 1)"
-                    required
-                    type="text"
-                  />
-                  <mat-error
-                    style="margin-top: -4px"
-                    *ngIf="dishControls.controls[i].invalid"
-                    >Dish Category is required</mat-error
-                  >
-                </mat-form-field>
-              </div>
+        <div class="container">
+          <div class="row">
+            <div formArrayName="dish">
               <div
-                class="col-1 d-flex align-items-center justify-content-center"
-                style="padding-bottom: 20px"
+                *ngFor="let category of dishControls.controls; let i = index"
+                [formGroupName]="i"
+                class="row"
               >
-                <button
-                  type="button"
-                  mat-icon-button
-                  color="warn"
-                  (click)="removeDish(i)"
-                  aria-label="Remove"
+                <mat-divider></mat-divider>
+                <div class="mb-3 mt-3" style="font-size: medium">
+                  dish>{{ i + 1 }}
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-1">
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    style="width: 100%"
+                  >
+                    <mat-label>Dish Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="name"
+                      [placeholder]="'Dish Name ' + (i + 1)"
+                      required
+                      type="text"
+                    />
+                    <mat-error
+                      style="margin-top: -4px"
+                      *ngIf="dishControls.controls[i].invalid"
+                      >Dish name is Required</mat-error
+                    >
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    style="width: 100%"
+                  >
+                    <mat-label>Dish Categories</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="dishCategory"
+                      required
+                      [matAutocomplete]="autoGroup"
+                    />
+                    <mat-autocomplete #autoGroup="matAutocomplete">
+                      <mat-option
+                        *ngFor="let category of dishCategoriesData"
+                        [value]="category.name"
+                      >
+                        {{ category.name }}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <mat-error
+                      style="margin-top: -4px"
+                      *ngIf="dishControls.controls[i].invalid"
+                      >Dish Category is Required</mat-error
+                    >
+                  </mat-form-field>
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    style="width: 100%"
+                  >
+                    <mat-label>Price</mat-label>
+                    <input
+                      matInput
+                      formControlName="price"
+                      placeholder="12.89"
+                      required
+                      type="number"
+                    />
+                    <mat-icon matPrefix>euro_symbol</mat-icon>
+                    <mat-error
+                      style="margin-top: -4px"
+                      *ngIf="dishControls.controls[i].invalid"
+                      >Price is Required</mat-error
+                    >
+                  </mat-form-field>
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    style="width: 100%"
+                  >
+                    <mat-label>Description</mat-label>
+                    <textarea
+                      matInput
+                      formControlName="description"
+                      placeholder="Enter Description About the dish"
+                      required
+                    ></textarea>
+                    <mat-error
+                      style="margin-top: -4px"
+                      *ngIf="dishControls.controls[i].invalid"
+                      >Description is Required</mat-error
+                    >
+                  </mat-form-field>
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    style="width: 100%"
+                  >
+                    <mat-label>Calories</mat-label>
+                    <input
+                      matInput
+                      formControlName="calories"
+                      placeholder="125"
+                      required
+                      type="number"
+                    />
+                    <span matSuffix>KCal</span>
+                    <mat-error
+                      style="margin-top: -4px"
+                      *ngIf="dishControls.controls[i].invalid"
+                      >Calories is Required</mat-error
+                    >
+                  </mat-form-field>
+                </div>
+                <div
+                  class="col-lg-1 col-md-1 col-sm-1 d-flex align-items-center justify-content-center"
+                  style="padding-bottom: 20px"
                 >
-                  <mat-icon>delete</mat-icon>
-                </button>
+                  <button
+                    type="button"
+                    mat-icon-button
+                    color="warn"
+                    (click)="removeDish(i)"
+                    aria-label="Remove"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
               </div>
+              <mat-divider></mat-divider>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-
-      
-
-
-      <!-- <div
-        class="d-flex justify-content-end margin-left:100px; margin-right:100px;"
-      >
-        <button mat-stroked-button (click)="addDish()">+ Add Dish</button>
-      </div>
-      <div formArrayName="dish">
-        <div
-          *ngFor="let dishGroup of dishControls.controls; let i = index"
-          [formGroupName]="i"
-        > -->
-          <!-- Name -->
-          <!-- <mat-form-field
-            appearance="outline"
-            style="width: 70%"
-            color="accent"
-            class="d-flex justify-content-center m-auto mb-3"
-          >
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" placeholder="Name" />
-            <mat-error
-              *ngIf="
-                dishFormGroup.get('dish.' + i + '.name')?.hasError('required')
-              "
-              >Name is required</mat-error
-            >
-          </mat-form-field> -->
-
-          <!-- Description -->
-          <!-- <mat-form-field
-            appearance="outline"
-            style="width: 70%"
-            color="accent"
-            class="d-flex justify-content-center m-auto mb-3"
-          >
-            <mat-label>Description</mat-label>
-            <input
-              matInput
-              formControlName="description"
-              placeholder="Description"
-            />
-            <mat-error
-              *ngIf="
-                dishFormGroup
-                  .get('dish.' + i + '.description')
-                  .hasError('required')
-              "
-              >Description is required</mat-error
-            >
-          </mat-form-field>
-
-           Price -->
-          <!-- <mat-form-field
-            appearance="outline"
-            style="width: 70%"
-            color="accent"
-            class="d-flex justify-content-center m-auto mb-3"
-          >
-            <mat-label>Price</mat-label>
-            <input matInput formControlName="price" placeholder="Price" />
-            <mat-error
-              *ngIf="
-                dishFormGroup.get('dish.' + i + '.price').hasError('required')
-              "
-              >Price is required</mat-error
-            >
-          </mat-form-field> -->
-
-          <!-- Image -->
-          <!-- <mat-form-field
-            appearance="outline"
-            style="width: 70%"
-            color="accent"
-            class="d-flex justify-content-center m-auto mb-3"
-          >
-            <mat-label>Image URL</mat-label>
-            <input matInput formControlName="image" placeholder="Image URL" />
-            <mat-error
-              *ngIf="
-                dishFormGroup.get('dish.' + i + '.image').hasError('required')
-              "
-              >Image URL is required</mat-error
-            >
-          </mat-form-field> -->
-
-          <!-- Calories -->
-          <!-- <mat-form-field
-            appearance="outline"
-            style="width: 70%"
-            color="accent"
-            class="d-flex justify-content-center m-auto mb-3"
-          >
-            <mat-label>Calories</mat-label>
-            <input matInput formControlName="calories" placeholder="Calories" />
-            <mat-error
-              *ngIf="
-                dishFormGroup
-                  .get('dish.' + i + '.calories')
-                  .hasError('required')
-              "
-              >Calories is required</mat-error
-            >
-          </mat-form-field> -->
-
-          <!-- Addons -->
-          <!-- <div formArrayName="addons">
-            <div
-              *ngFor="
-                let addonGroup of dishGroup.get('addons').controls;
-                let j = index
-              "
-              [formGroupName]="j"
-            >
-              <mat-form-field>
-                <mat-label>Addon Name</mat-label>
-                <input
-                  matInput
-                  formControlName="name"
-                  placeholder="Addon Name"
-                />
-                <mat-error
-                  *ngIf="
-                    dishFormGroup
-                      .get('dish.' + i + '.addons.' + j + '.name')
-                      .hasError('required')
-                  "
-                  >Addon Name is required</mat-error
-                >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Addon Price</mat-label>
-                <input
-                  matInput
-                  formControlName="price"
-                  placeholder="Addon Price"
-                />
-                <mat-error
-                  *ngIf="
-                    dishFormGroup
-                      .get('dish.' + i + '.addons.' + j + '.price')
-                      .hasError('required')
-                  "
-                  >Addon Price is required</mat-error
-                >
-              </mat-form-field>
-              <mat-checkbox formControlName="checked">Checked</mat-checkbox>
-              <button type="button" (click)="removeAddon(i, j)">
-                Remove Addon
-              </button>
-            </div>
-            <button type="button" (click)="addAddon(i)">Add Addon</button>
-          </div> -->
-
-          <!-- Sizes -->
-          <!-- <div formArrayName="size">
-            <div
-              *ngFor="
-                let sizeGroup of dishGroup.get('size').controls;
-                let k = index
-              "
-              [formGroupName]="k"
-            >
-              <mat-form-field>
-                <mat-label>Size Name</mat-label>
-                <input
-                  matInput
-                  formControlName="name"
-                  placeholder="Size Name"
-                />
-                <mat-error
-                  *ngIf="
-                    dishFormGroup
-                      .get('dish.' + i + '.size.' + k + '.name')
-                      .hasError('required')
-                  "
-                  >Size Name is required</mat-error
-                >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Size Price</mat-label>
-                <input
-                  matInput
-                  formControlName="price"
-                  placeholder="Size Price"
-                />
-                <mat-error
-                  *ngIf="
-                    dishFormGroup
-                      .get('dish.' + i + '.size.' + k + '.price')
-                      .hasError('required')
-                  "
-                  >Size Price is required</mat-error
-                >
-              </mat-form-field>
-              <button type="button" (click)="removeSize(i, k)">
-                Remove Size
-              </button>
-            </div>
-            <button type="button" (click)="addSize(i)">Add Size</button>
-          </div> -->
-
-          <!-- Favorite Food -->
-          <!-- <mat-form-field>
-            <mat-label>Favorite Food</mat-label>
-            <mat-select
-              formControlName="favoriteFood"
-              placeholder="Favorite Food"
-            >
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{ food.viewValue }}
-              </mat-option>
-            </mat-select>
-            <mat-error
-              *ngIf="
-                dishFormGroup
-                  .get('dish.' + i + '.favoriteFood')
-                  .hasError('required')
-              "
-              >Favorite Food is required</mat-error
-            >
-          </mat-form-field>
-
-          <button type="button" (click)="removeDish(i)">Remove Dish</button> -->
-        <!-- </div>
-      </div> -->
     </form>
 
     <div class="d-flex justify-content-end mt-3 mb-5 mx-4">
