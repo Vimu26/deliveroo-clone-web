@@ -19,6 +19,7 @@ export class DishesComponent implements OnInit {
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
   filteredOptions: Observable<IDishCategoryDetails[]> | undefined
+  uploadedImage: File | null = null;
 
   dishFormGroup = new FormGroup({
     dish: new FormArray([
@@ -74,10 +75,20 @@ export class DishesComponent implements OnInit {
     )
   }
 
+  onFilesUploaded(files: File[]) {
+    if (files.length > 0) {
+      this.uploadedImage = files[0];
+    }
+  }
+
   onNext() {
     // this.onDishesCompleted.emit({
     //   data: '3',
     // })
+  }
+
+  removeImage(){
+    this.uploadedImage = null;
   }
 
   onBack() {

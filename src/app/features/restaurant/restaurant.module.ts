@@ -13,6 +13,7 @@ import { RestaurantDetailsComponent } from './components/add-edit-restaurant/sec
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatDividerModule } from '@angular/material/divider'
+import { FileUploadComponent } from 'src/app/common-components/file-upload/file-upload.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatDividerModule } from '@angular/material/divider'
     RestaurantDetailsComponent,
     DishCategoriesComponent,
     DishesComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
