@@ -16,6 +16,23 @@ import { TokenInterceptor } from './services/token-inteceptor.service'
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+// Import Firebase modules
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCnb6mL7ggQnuLXYNX8zviSHTct3e37q6c",
+  authDomain: "foodie-81a18.firebaseapp.com",
+  projectId: "foodie-81a18",
+  storageBucket: "foodie-81a18.appspot.com",
+  messagingSenderId: "1025498188968",
+  appId: "1:1025498188968:web:6e1416c11fed02560fc69d"
+};
+
+// Initialize Firebase app
+// const app = initializeApp(firebaseConfig);
+
 @NgModule({
   declarations: [
     AppComponent,
