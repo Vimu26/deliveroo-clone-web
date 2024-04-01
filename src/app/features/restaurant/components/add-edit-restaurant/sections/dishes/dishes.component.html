@@ -139,36 +139,7 @@
                     *ngIf="!uploadedImage"
                     (filesUploaded)="onFilesUploaded($event)"
                   ></app-file-upload>
-                  <!-- <div class="row" *ngIf="uploadedImage">
-                    <div
-                      class="col-8"
-                      style="display: flex; justify-content: end; margin-bottom: 2rem;"
-                    >
-                      <img
-                        [src]="this.imageUrl"
-                        style="width: 200px; height: 200px"
-                        alt=""
-                      />
-                    </div>
-                    <div
-                      class="col-4"
-                      style="
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                      "
-                    >
-                      <button
-                        type="button"
-                        mat-icon-button
-                        color="warn"
-                        (click)="removeImage()"
-                        aria-label="Remove"
-                      >
-                        <mat-icon>delete</mat-icon>
-                      </button>
-                    </div>
-                  </div> -->
+                  
                   <div *ngIf="uploadedImage" class="image-wrapper">
                     <div class="row">
                       <div

@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs'
-// import { FileUpload } from 'src/app/common-components/models/fileupload.model'
 import { FirebaseService } from 'src/app/common-components/services/firebase.service'
 import { IDishCategoryDetails } from 'src/app/interfaces'
 
@@ -90,23 +89,12 @@ export class DishesComponent implements OnInit {
         .publishFileToStorage(this.currentFileUpload)
         .then((downloadURL: string) => {
           // Handle successful upload
-          console.log('File uploaded successfully. URL:', downloadURL)
           this.imageUrl = downloadURL
-          // Do something with the downloadURL, such as displaying it on the UI
         })
         .catch((error) => {
           // Handle error
           console.error('Error uploading file:', error)
-          // Notify the user or handle the error in some way
         })
-      // .subscribe({
-      //   next: (url) => {
-      //     console.log(url)
-      //   },
-      //   error: (error) => {
-      //     console.log(error)
-      //   }
-      // })
     }
   }
 
