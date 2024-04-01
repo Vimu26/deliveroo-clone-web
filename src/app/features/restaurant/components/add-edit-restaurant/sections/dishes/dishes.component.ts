@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs'
+import { FirebaseService } from 'src/app/common-components/services/firebase.service'
 import { IDishCategoryDetails } from 'src/app/interfaces'
 
 @Component({
@@ -19,6 +20,9 @@ export class DishesComponent implements OnInit {
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
   filteredOptions: Observable<IDishCategoryDetails[]> | undefined
+  uploadedImage: File | null = null
+  currentFileUpload?: any
+  imageUrl = ''
 
   dishFormGroup = new FormGroup({
     dish: new FormArray([
@@ -46,7 +50,7 @@ export class DishesComponent implements OnInit {
     ]),
   })
 
-  constructor() {}
+  constructor(private fileUploadService: FirebaseService) {}
 
   ngOnInit(): void {
     console.log(this.dishCategoriesData)
@@ -74,10 +78,34 @@ export class DishesComponent implements OnInit {
     )
   }
 
+  onFilesUploaded(files: File[]) {
+    if (files.length > 0) {
+      this.uploadedImage = files[0]
+      this.currentFileUpload = {
+        name: files[0].name,
+        file: files[0] as File,
+      }
+      this.fileUploadService
+        .publishFileToStorage(this.currentFileUpload)
+        .then((downloadURL: string) => {
+          // Handle successful upload
+          this.imageUrl = downloadURL
+        })
+        .catch((error) => {
+          // Handle error
+          console.error('Error uploading file:', error)
+        })
+    }
+  }
+
   onNext() {
     // this.onDishesCompleted.emit({
     //   data: '3',
     // })
+  }
+
+  removeImage() {
+    this.uploadedImage = null
   }
 
   onBack() {

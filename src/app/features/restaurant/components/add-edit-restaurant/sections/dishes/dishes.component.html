@@ -134,6 +134,50 @@
                       >Calories is Required</mat-error
                     >
                   </mat-form-field>
+
+                  <app-file-upload
+                    *ngIf="!uploadedImage"
+                    (filesUploaded)="onFilesUploaded($event)"
+                  ></app-file-upload>
+                  
+                  <div *ngIf="uploadedImage" class="image-wrapper">
+                    <div class="row">
+                      <div
+                        class="col-8"
+                        style="
+                          display: flex;
+                          justify-content: end;
+                          margin-top: 1rem;
+                          margin-bottom: 1rem;
+                        "
+                      >
+                        <img
+                          [src]="imageUrl"
+                          style="width: 200px; height: 200px"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="col-4"
+                        style="
+                          display: flex;
+                          justify-content: start;
+                          align-items: center;
+                        "
+                      >
+                        <button
+                          type="button"
+                          mat-icon-button
+                          color="warn"
+                          (click)="removeImage()"
+                          aria-label="Remove"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="d-flex justify-content-around mb-3">
                     <div class="col-6">
                       <h3>Add Your Tags Here</h3>

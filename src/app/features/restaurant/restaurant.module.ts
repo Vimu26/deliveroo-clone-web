@@ -13,6 +13,25 @@ import { RestaurantDetailsComponent } from './components/add-edit-restaurant/sec
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatDividerModule } from '@angular/material/divider'
+import { FileUploadComponent } from 'src/app/common-components/file-upload/file-upload.component'
+
+
+// Import Firebase modules
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCnb6mL7ggQnuLXYNX8zviSHTct3e37q6c",
+  authDomain: "foodie-81a18.firebaseapp.com",
+  projectId: "foodie-81a18",
+  storageBucket: "foodie-81a18.appspot.com",
+  messagingSenderId: "1025498188968",
+  appId: "1:1025498188968:web:6e1416c11fed02560fc69d"
+};
 
 @NgModule({
   declarations: [
@@ -21,6 +40,7 @@ import { MatDividerModule } from '@angular/material/divider'
     RestaurantDetailsComponent,
     DishCategoriesComponent,
     DishesComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +52,9 @@ import { MatDividerModule } from '@angular/material/divider'
     NgxMaterialTimepickerModule,
     MatFormFieldModule,
     MatDividerModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
 })
 export class RestaurantModule {}
