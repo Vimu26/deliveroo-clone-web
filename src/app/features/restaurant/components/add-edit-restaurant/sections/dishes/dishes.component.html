@@ -139,22 +139,22 @@
                     *ngIf="!uploadedImage"
                     (filesUploaded)="onFilesUploaded($event)"
                   ></app-file-upload>
-                  <div class="row" *ngIf="uploadedImage">
+                  <!-- <div class="row" *ngIf="uploadedImage">
                     <div
-                      class="col-10"
-                      style="display: flex; justify-content: center"
+                      class="col-8"
+                      style="display: flex; justify-content: end; margin-bottom: 2rem;"
                     >
                       <img
-                        [src]="uploadedImage"
+                        [src]="this.imageUrl"
                         style="width: 200px; height: 200px"
                         alt=""
                       />
                     </div>
                     <div
-                      class="col-2"
+                      class="col-4"
                       style="
                         display: flex;
-                        justify-content: center;
+                        justify-content: start;
                         align-items: center;
                       "
                     >
@@ -167,6 +167,43 @@
                       >
                         <mat-icon>delete</mat-icon>
                       </button>
+                    </div>
+                  </div> -->
+                  <div *ngIf="uploadedImage" class="image-wrapper">
+                    <div class="row">
+                      <div
+                        class="col-8"
+                        style="
+                          display: flex;
+                          justify-content: end;
+                          margin-top: 1rem;
+                          margin-bottom: 1rem;
+                        "
+                      >
+                        <img
+                          [src]="imageUrl"
+                          style="width: 200px; height: 200px"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="col-4"
+                        style="
+                          display: flex;
+                          justify-content: start;
+                          align-items: center;
+                        "
+                      >
+                        <button
+                          type="button"
+                          mat-icon-button
+                          color="warn"
+                          (click)="removeImage()"
+                          aria-label="Remove"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
                     </div>
                   </div>
 

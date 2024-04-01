@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -15,6 +18,8 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { TokenInterceptor } from './services/token-inteceptor.service'
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+
 
 // Import Firebase modules
 import { initializeApp } from 'firebase/app';
@@ -31,7 +36,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase app
-// const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -52,6 +57,9 @@ const firebaseConfig = {
     HttpClientModule,
     NgxMaterialTimepickerModule,
     MatFormFieldModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [
     {
@@ -63,3 +71,7 @@ const firebaseConfig = {
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+function provideStorage(arg0: () => import("@firebase/storage").FirebaseStorage): any[] | import("@angular/core").Type<any> {
+  throw new Error('Function not implemented.')
+}
+

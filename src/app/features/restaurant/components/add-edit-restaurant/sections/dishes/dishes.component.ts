@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs'
+// import { FileUpload } from 'src/app/common-components/models/fileupload.model'
+import { FirebaseService } from 'src/app/common-components/services/firebase.service'
 import { IDishCategoryDetails } from 'src/app/interfaces'
 
 @Component({
@@ -19,7 +21,9 @@ export class DishesComponent implements OnInit {
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
   filteredOptions: Observable<IDishCategoryDetails[]> | undefined
-  uploadedImage: File | null = null;
+  uploadedImage: File | null = null
+  currentFileUpload?: any
+  imageUrl = ''
 
   dishFormGroup = new FormGroup({
     dish: new FormArray([
@@ -47,7 +51,7 @@ export class DishesComponent implements OnInit {
     ]),
   })
 
-  constructor() {}
+  constructor(private fileUploadService: FirebaseService) {}
 
   ngOnInit(): void {
     console.log(this.dishCategoriesData)
@@ -77,7 +81,32 @@ export class DishesComponent implements OnInit {
 
   onFilesUploaded(files: File[]) {
     if (files.length > 0) {
-      this.uploadedImage = files[0];
+      this.uploadedImage = files[0]
+      this.currentFileUpload = {
+        name: files[0].name,
+        file: files[0] as File,
+      }
+      this.fileUploadService
+        .publishFileToStorage(this.currentFileUpload)
+        .then((downloadURL: string) => {
+          // Handle successful upload
+          console.log('File uploaded successfully. URL:', downloadURL)
+          this.imageUrl = downloadURL
+          // Do something with the downloadURL, such as displaying it on the UI
+        })
+        .catch((error) => {
+          // Handle error
+          console.error('Error uploading file:', error)
+          // Notify the user or handle the error in some way
+        })
+      // .subscribe({
+      //   next: (url) => {
+      //     console.log(url)
+      //   },
+      //   error: (error) => {
+      //     console.log(error)
+      //   }
+      // })
     }
   }
 
@@ -87,8 +116,8 @@ export class DishesComponent implements OnInit {
     // })
   }
 
-  removeImage(){
-    this.uploadedImage = null;
+  removeImage() {
+    this.uploadedImage = null
   }
 
   onBack() {
