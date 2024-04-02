@@ -110,12 +110,20 @@ export class DishesComponent implements OnInit {
     // })
   }
 
-  removeImage(index: number) {
-    const indexToRemove = this.dishImages.findIndex(
+  async removeImage(index: number): Promise<void> {
+    const imageToRemove = this.dishImages.find(
       (dishImage) => dishImage.dishIndex === index,
     )
-    if (indexToRemove !== -1) {
-      this.dishImages.splice(indexToRemove, 1)
+    if (imageToRemove) {
+      try {
+        await this.fileUploadService.deleteFile(imageToRemove?.image ?? '')
+        const indexToRemove = this.dishImages.indexOf(imageToRemove)
+        if (indexToRemove !== -1) {
+          this.dishImages.splice(indexToRemove, 1)
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 

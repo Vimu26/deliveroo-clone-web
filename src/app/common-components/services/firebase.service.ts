@@ -5,6 +5,7 @@ import {
 } from '@angular/fire/compat/database'
 import { AngularFireStorage } from '@angular/fire/compat/storage'
 import {
+  deleteObject,
   getDownloadURL,
   getStorage,
   ref,
@@ -58,16 +59,13 @@ export class FirebaseService {
     return this.db.list(this.basePath, (ref) => ref.limitToLast(numberItems))
   }
 
-  deleteFile(fileUpload: any): void {
-    this.deleteFileDatabase(fileUpload.key)
-      .then(() => {
-        this.deleteFileStorage(fileUpload.name)
-      })
-      .catch((error) => console.log(error))
-  }
+  deleteFile(downloadUrl: string): Promise<void> {
+    const storage = getStorage()
+    // Get the reference to the file using its download URL
+    const storageRef = ref(storage, downloadUrl)
 
-  private deleteFileDatabase(key: string): Promise<void> {
-    return this.db.list(this.basePath).remove(key)
+    // Delete the file
+    return deleteObject(storageRef)
   }
 
   private deleteFileStorage(name: string): void {
