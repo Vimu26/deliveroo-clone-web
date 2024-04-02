@@ -23,7 +23,6 @@ export class DishCategoriesComponent implements OnInit {
 
   constructor() {}
   ngOnInit(): void {
-    console.log(this.CategoryData)
     if (this.CategoryData) {
       for (let i = 1; i < this.CategoryData.length; i++) {
         this.addDishCategory()
@@ -45,7 +44,6 @@ export class DishCategoriesComponent implements OnInit {
     this.onBackClicked.emit(true)
   }
   onNext() {
-    console.log(this.dishCategoriesForm.value)
     this.onCategoriesNext.emit({
       data: this.dishCategoriesForm.value.category,
     })

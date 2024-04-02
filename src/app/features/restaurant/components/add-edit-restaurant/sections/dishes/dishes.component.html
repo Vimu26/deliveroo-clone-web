@@ -136,11 +136,11 @@
                   </mat-form-field>
 
                   <app-file-upload
-                    *ngIf="!uploadedImage"
-                    (filesUploaded)="onFilesUploaded($event)"
+                    *ngIf="!findDishImage(i)?.image"
+                    (filesUploaded)="onFilesUploaded($event, i)"
                   ></app-file-upload>
-                  
-                  <div *ngIf="uploadedImage" class="image-wrapper">
+
+                  <div *ngIf="findDishImage(i)?.image" class="image-wrapper">
                     <div class="row">
                       <div
                         class="col-8"
@@ -152,7 +152,7 @@
                         "
                       >
                         <img
-                          [src]="imageUrl"
+                          [src]="findDishImage(i)?.image"
                           style="width: 200px; height: 200px"
                           alt=""
                         />
@@ -169,7 +169,7 @@
                           type="button"
                           mat-icon-button
                           color="warn"
-                          (click)="removeImage()"
+                          (click)="removeImage(i)"
                           aria-label="Remove"
                         >
                           <mat-icon>delete</mat-icon>

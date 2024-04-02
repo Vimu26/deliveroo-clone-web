@@ -25,10 +25,8 @@ export class AddEditRestaurantComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAddRestaurantDetailsSelected = true
-    console.log(this.formData_DishCategories)
   }
   onStepChange(e: any) {
-    console.log(e)
     const selectedIndex = e.selectedIndex
     const previouslySelectedIndex = e.previouslySelectedIndex
 
@@ -63,7 +61,6 @@ export class AddEditRestaurantComponent implements OnInit {
   }
 
   onNextClicked(e: number, data: any) {
-    console.log(e, data)
     switch (e) {
       case 1:
         this.isAddRestaurantDetailsCompleted = true
