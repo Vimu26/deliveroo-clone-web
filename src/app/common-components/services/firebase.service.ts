@@ -55,10 +55,6 @@ export class FirebaseService {
     })
   }
 
-  getFiles(numberItems: number): AngularFireList<any> {
-    return this.db.list(this.basePath, (ref) => ref.limitToLast(numberItems))
-  }
-
   deleteFile(downloadUrl: string): Promise<void> {
     const storage = getStorage()
     // Get the reference to the file using its download URL
@@ -66,10 +62,5 @@ export class FirebaseService {
 
     // Delete the file
     return deleteObject(storageRef)
-  }
-
-  private deleteFileStorage(name: string): void {
-    const storageRef = this.storage.ref(this.basePath)
-    storageRef.child(name).delete()
   }
 }
