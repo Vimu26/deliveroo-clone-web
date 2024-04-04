@@ -209,6 +209,12 @@ export class DishesComponent implements OnInit {
       .at(index)
       .get('size') as FormArray
   }
+
+  getAddonsControl(index: number): FormArray {
+    return (this.dishFormGroup.get('dish') as FormArray)
+      .at(index)
+      .get('addons') as FormArray
+  }
   getDishCategoryControl(index: number): FormControl {
     return (this.dishFormGroup.get('dish') as FormArray)
       .at(index)
