@@ -137,6 +137,50 @@
                     >
                   </mat-form-field>
                   <mat-divider class="mb-3 mt-3"></mat-divider>
+
+                  <app-file-upload
+                    *ngIf="!findDishImage(i)?.image"
+                    (filesUploaded)="onFilesUploaded($event, i)"
+                  ></app-file-upload>
+
+                  <div *ngIf="findDishImage(i)?.image" class="image-wrapper">
+                    <div class="row">
+                      <div
+                        class="col-8"
+                        style="
+                          display: flex;
+                          justify-content: end;
+                          margin-top: 1rem;
+                          margin-bottom: 1rem;
+                        "
+                      >
+                        <img
+                          [src]="findDishImage(i)?.image"
+                          style="width: 200px; height: 200px"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="col-4"
+                        style="
+                          display: flex;
+                          justify-content: start;
+                          align-items: center;
+                        "
+                      >
+                        <button
+                          type="button"
+                          mat-icon-button
+                          color="warn"
+                          (click)="removeImage(i)"
+                          aria-label="Remove"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="d-flex justify-content-around mb-3">
                     <div class="col-6">
                       <h3>Add Dish Sizes Here</h3>

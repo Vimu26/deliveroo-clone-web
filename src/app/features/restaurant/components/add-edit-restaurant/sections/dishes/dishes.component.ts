@@ -7,8 +7,13 @@ import {
   Validators,
 } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs'
+import { FirebaseService } from 'src/app/common-components/services/firebase.service'
 import { IDishCategoryDetails } from 'src/app/interfaces'
 
+export interface DishImages {
+  image: string | undefined
+  dishIndex: number
+}
 @Component({
   selector: 'app-dishes',
   templateUrl: './dishes.component.html',
@@ -19,6 +24,10 @@ export class DishesComponent implements OnInit {
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
   filteredOptions: Observable<IDishCategoryDetails[]> | undefined
+  uploadedImage: File | null = null
+  currentFileUpload?: any
+  imageUrl = ''
+  dishImages: DishImages[] = []
 
   dishFormGroup = new FormGroup({
     dish: new FormArray([
@@ -46,11 +55,9 @@ export class DishesComponent implements OnInit {
     ]),
   })
 
-  constructor() {}
+  constructor(private fileUploadService: FirebaseService) {}
 
   ngOnInit(): void {
-    console.log(this.dishCategoriesData)
-    console.log(this.dishControls.controls)
     // this.filteredOptions = (this.dishFormGroup.get('dish') as FormArray).get('dishCategory').valueChanges.pipe(
     //   startWith(''),
     //   map(value => this._filter(value || '')),
@@ -74,10 +81,50 @@ export class DishesComponent implements OnInit {
     )
   }
 
+  onFilesUploaded(files: File[], dishIndex: number) {
+    if (files.length > 0) {
+      this.uploadedImage = files[0]
+      this.currentFileUpload = {
+        name: files[0].name,
+        file: files[0] as File,
+      }
+      this.fileUploadService
+        .publishFileToStorage(this.currentFileUpload)
+        .then((downloadURL: string) => {
+          // Handle successful upload
+          this.dishImages.push({
+            image: downloadURL,
+            dishIndex: dishIndex,
+          })
+        })
+        .catch((error) => {
+          // Handle error
+          console.error('Error uploading file:', error)
+        })
+    }
+  }
+
   onNext() {
     // this.onDishesCompleted.emit({
     //   data: '3',
     // })
+  }
+
+  async removeImage(index: number): Promise<void> {
+    const imageToRemove = this.dishImages.find(
+      (dishImage) => dishImage.dishIndex === index,
+    )
+    if (imageToRemove) {
+      try {
+        await this.fileUploadService.deleteFile(imageToRemove?.image ?? '')
+        const indexToRemove = this.dishImages.indexOf(imageToRemove)
+        if (indexToRemove !== -1) {
+          this.dishImages.splice(indexToRemove, 1)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 
   onBack() {
@@ -172,5 +219,9 @@ export class DishesComponent implements OnInit {
     return (this.dishFormGroup.get('dish') as FormArray)
       .at(index)
       .get('dishCategory') as FormControl
+  }
+
+  findDishImage(index: number) {
+    return this.dishImages.find((dishImage) => dishImage.dishIndex === index)
   }
 }
