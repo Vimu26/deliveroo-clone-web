@@ -10,7 +10,7 @@ import { AddEditRestaurantService } from '../../services/add-edit-restaurant.ser
 })
 export class DishCategoriesComponent implements OnInit {
   @Input() CategoryData: IDishCategoryDetails[] = []
-  @Output() onCategoriesNext = new EventEmitter<{ data: any }>()
+  @Output() onCategoriesNext = new EventEmitter<{ data: IDishCategoryDetails[] }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
   dishCategoriesForm = new FormGroup({
@@ -52,7 +52,7 @@ export class DishCategoriesComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.onCategoriesNext.emit({
-            data: this.dishCategoriesForm.value.category,
+            data: dishCategories,
           })
         },
         error: (error) => {
