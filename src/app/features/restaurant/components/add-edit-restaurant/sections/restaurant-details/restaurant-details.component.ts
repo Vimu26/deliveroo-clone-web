@@ -12,6 +12,7 @@ import { Router } from '@angular/router'
 export class RestaurantDetailsComponent implements OnInit {
   @Output() onDetailsNext = new EventEmitter<{ data: IRestaurantDetails }>()
   @Input() restaurantDetailsData!: IRestaurantDetails
+  isDetailsValid = false
 
   constructor(
     private restaurantDetailsService: AddEditRestaurantService,
@@ -108,8 +109,10 @@ export class RestaurantDetailsComponent implements OnInit {
       .checkRestaurantDetails(restaurantDetails)
       .subscribe({
         next: (res: any) => {
+          console.log(res)
           if (res.code === 201)
-            this.onDetailsNext.emit({ data: restaurantDetails })
+          this.onDetailsNext.emit({ data: restaurantDetails })
+          this.isDetailsValid = true;
         },
         error: (error: any) => {
           console.log(error)
