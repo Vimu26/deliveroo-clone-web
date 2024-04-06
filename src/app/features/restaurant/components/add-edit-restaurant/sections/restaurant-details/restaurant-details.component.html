@@ -274,7 +274,12 @@
           <button mat-stroked-button (click)="onCancel()">Back</button>
         </div>
         <div class="m-2">
-          <button mat-raised-button color="accent" (click)="onNext()">
+          <button
+            mat-raised-button
+            color="accent"
+            [disabled]="!this.restaurantDetailsForm.valid"
+            (click)="onNext()"
+          >
             Next
           </button>
         </div>
