@@ -45,10 +45,10 @@ export class DishCategoriesComponent implements OnInit {
     this.onBackClicked.emit(true)
   }
   onNext() {
+    const dishCategories = this.dishCategoriesForm?.value
+      ?.category as IDishCategoryDetails[]
     this.addEditRestaurantService
-      .checkDishCategoriesDetails(
-        this.dishCategoriesForm?.value?.category as IDishCategoryDetails[],
-      )
+      .checkDishCategoriesDetails(dishCategories)
       .subscribe({
         next: (res) => {
           this.onCategoriesNext.emit({
