@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 import { IDishCategoryDetails } from 'src/app/interfaces'
+import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
 
 @Component({
   selector: 'app-dish-categories',
@@ -9,7 +10,7 @@ import { IDishCategoryDetails } from 'src/app/interfaces'
 })
 export class DishCategoriesComponent implements OnInit {
   @Input() CategoryData: IDishCategoryDetails[] = []
-  @Output() onCategoriesNext = new EventEmitter<{ data: any }>()
+  @Output() onCategoriesNext = new EventEmitter<{ data: IDishCategoryDetails[] }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
 
   dishCategoriesForm = new FormGroup({
@@ -21,7 +22,7 @@ export class DishCategoriesComponent implements OnInit {
     ]),
   })
 
-  constructor() {}
+  constructor(private addEditRestaurantService: AddEditRestaurantService) {}
   ngOnInit(): void {
     if (this.CategoryData) {
       for (let i = 1; i < this.CategoryData.length; i++) {
@@ -44,9 +45,20 @@ export class DishCategoriesComponent implements OnInit {
     this.onBackClicked.emit(true)
   }
   onNext() {
-    this.onCategoriesNext.emit({
-      data: this.dishCategoriesForm.value.category,
-    })
+    const dishCategories = this.dishCategoriesForm?.value
+      ?.category as IDishCategoryDetails[]
+    this.addEditRestaurantService
+      .checkDishCategoriesDetails(dishCategories)
+      .subscribe({
+        next: (res) => {
+          this.onCategoriesNext.emit({
+            data: dishCategories,
+          })
+        },
+        error: (error) => {
+          console.log(error)
+        },
+      })
   }
   get getDishCategoryArray() {
     return this.dishCategoriesForm.controls.category as FormArray
