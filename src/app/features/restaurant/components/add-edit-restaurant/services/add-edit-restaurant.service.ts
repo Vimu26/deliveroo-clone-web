@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import {
@@ -16,7 +16,7 @@ export class AddEditRestaurantService {
   checkRestaurantDetails(
     data: IRestaurantDetails,
   ): Observable<CommonCheckResponse> {
-    const url = 'http://localhost:8080/restaurants//check-restaurant-details'
+    const url = 'http://localhost:8080/restaurants/check-restaurant-details'
     return this.http.post<CommonCheckResponse>(url + '', data)
   }
 
