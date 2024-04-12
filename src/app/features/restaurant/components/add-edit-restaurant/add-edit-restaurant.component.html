@@ -12,16 +12,21 @@
           <ng-template matStepperIcon="edit">
             <mat-icon>done</mat-icon>
           </ng-template>
-          <mat-step>
+          <mat-step [completed]="isAddRestaurantDetailsCompleted">
             <ng-template matStepLabel>Restaurant Details</ng-template>
-            <ng-template matStepContent> </ng-template>
+            <ng-template matStepContent
+              >Enter Your Restaurant Details Here
+            </ng-template>
           </mat-step>
-          <mat-step>
+          <mat-step [completed]="isDishCategoriesCompleted">
             <ng-template matStepLabel>Add Dish Categories</ng-template>
-            <ng-template matStepContent> </ng-template>
+            <ng-template matStepContent
+              >Enter the Dish Categories Here</ng-template
+            >
           </mat-step>
-          <mat-step>
+          <mat-step [completed]="isDishSectionCompleted">
             <ng-template matStepLabel>Add Dishes</ng-template>
+            <ng-template matStepContent>Enter the Dishes Here</ng-template>
           </mat-step>
         </mat-stepper>
       </div>

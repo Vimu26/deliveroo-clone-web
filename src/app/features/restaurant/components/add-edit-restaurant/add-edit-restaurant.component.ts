@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
-import { MatStepper } from '@angular/material/stepper'
-import { IDishCategoryDetails, IRestaurantDetails } from 'src/app/interfaces'
+import {
+  IDish,
+  IDishCategoryDetails,
+  IRestaurantDetails,
+} from 'src/app/interfaces'
 
 @Component({
   selector: 'app-add-edit-restaurant',
@@ -19,7 +22,7 @@ export class AddEditRestaurantComponent implements OnInit {
 
   formData_RestaurantDetails!: IRestaurantDetails
   formData_DishCategories: IDishCategoryDetails[] = []
-  formData_dishes!: string[]
+  formData_dishes: IDish[] = []
 
   constructor() {}
 
@@ -33,13 +36,19 @@ export class AddEditRestaurantComponent implements OnInit {
     switch (selectedIndex) {
       case 0:
         this.isAddRestaurantDetailsSelected = true
+        this.isDishCategoriesCompleted = false
+        this.isDishSectionSelected = false
         break
       case 1:
         this.isDishCategoriesSelected = true
+        this.isAddRestaurantDetailsSelected = false
+        this.isDishSectionSelected = false
 
         break
       case 2:
         this.isDishSectionSelected = true
+        this.isDishCategoriesSelected = false
+        this.isAddRestaurantDetailsSelected = false
         break
       default:
         break
@@ -66,11 +75,13 @@ export class AddEditRestaurantComponent implements OnInit {
         this.isAddRestaurantDetailsCompleted = true
         this.isAddRestaurantDetailsSelected = false
         this.formData_RestaurantDetails = data.data
+        this.isDishCategoriesSelected = true
         break
       case 2:
         this.isDishCategoriesCompleted = true
         this.isDishCategoriesSelected = false
         this.formData_DishCategories = data.data
+        this.isDishSectionSelected = true
         break
       case 3:
         this.isDishSectionCompleted = true
@@ -79,7 +90,9 @@ export class AddEditRestaurantComponent implements OnInit {
       default:
         break
     }
-    this.stepper.next()
+    setTimeout(() => {
+      this.stepper.next()
+    }, 10)
   }
 
   onBackClicked() {

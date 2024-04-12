@@ -63,7 +63,7 @@ export interface IDish {
   description: string
   price: number
   image: string
-  calories: string
+  calories: number
   addOns: DishAddOns[]
   size: Size[]
   _id: string
