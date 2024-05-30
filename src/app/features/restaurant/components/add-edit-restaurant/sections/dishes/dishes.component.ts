@@ -29,7 +29,7 @@ export interface DishImages {
 export class DishesComponent implements OnInit {
   @Input() dishCategoriesData: IDishCategoryDetails[] = []
   @Input() dishesData: IDishData[] = []
-  @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
+  @Output() onDishesCompleted = new EventEmitter<{ data: IDishData[] }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
   filteredOptions: Observable<IDishCategoryDetails[]> | undefined
   uploadedImage: File | null = null
@@ -69,10 +69,6 @@ export class DishesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.filteredOptions = (this.dishFormGroup.get('dish') as FormArray).get('dishCategory').valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value || '')),
-    // );
     this.filteredOptions = (
       this.dishFormGroup.get('dish') as FormArray
     ).valueChanges.pipe(
@@ -82,6 +78,37 @@ export class DishesComponent implements OnInit {
       }),
       map((categories) => this._filter(categories || [])),
     )
+    console.log(this.dishesData)
+
+    if (this.dishesData) {
+      for (let i = 0; i < this.dishesData.length; i++) {
+        if (i !== 0) this.addDish()
+        for (let j = 1; j < this.dishesData[i].addOns.length; j++) {
+          this.addAddon(i)
+        }
+        for (let k = 1; k < this.dishesData[i].size.length; k++) {
+          this.addSize(i)
+        }
+      }
+      //  this.dishesData.forEach((data , index)=>{
+      //     this.
+      //  })
+    }
+    // if (this.CategoryData) {
+    //   for (let i = 1; i < this.CategoryData.length; i++) {
+    //     this.addDishCategory()
+    //   }
+    //   this.CategoryData.forEach((category, index) => {
+    //     ;(
+    //       (this.dishCategoriesForm.controls.category as FormArray).at(
+    //         index,
+    //       ) as FormGroup
+    //     ).patchValue({
+    //       restaurant: category.restaurant,
+    //       name: category.name,
+    //     })
+    //   })
+    // }
   }
 
   private _filter(value: string): IDishCategoryDetails[] {

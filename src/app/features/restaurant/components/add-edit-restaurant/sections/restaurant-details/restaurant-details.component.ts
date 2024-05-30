@@ -40,7 +40,7 @@ export class RestaurantDetailsComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    if (this.restaurantDetailsData !== undefined) {
+    if (this.restaurantDetailsData) {
       for (let i = 1; i < this.restaurantDetailsData.tag_list.length; i++) {
         this.addTag()
       }
