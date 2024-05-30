@@ -8,7 +8,14 @@ import {
 } from '@angular/forms'
 import { Observable, map, startWith } from 'rxjs'
 import { FirebaseService } from 'src/app/common-components/services/firebase.service'
-import { IDishCategoryDetails } from 'src/app/interfaces'
+import {
+  DishAddOns,
+  IDish,
+  IDishCategoryDetails,
+  IDishData,
+  Size,
+} from 'src/app/interfaces'
+import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
 
 export interface DishImages {
   image: string | undefined
@@ -21,6 +28,7 @@ export interface DishImages {
 })
 export class DishesComponent implements OnInit {
   @Input() dishCategoriesData: IDishCategoryDetails[] = []
+  @Input() dishesData: IDishData[] = []
   @Output() onDishesCompleted = new EventEmitter<{ data: any }>()
   @Output() onBackClicked = new EventEmitter<boolean>()
   filteredOptions: Observable<IDishCategoryDetails[]> | undefined
@@ -55,7 +63,10 @@ export class DishesComponent implements OnInit {
     ]),
   })
 
-  constructor(private fileUploadService: FirebaseService) {}
+  constructor(
+    private fileUploadService: FirebaseService,
+    private addEditRestaurantService: AddEditRestaurantService,
+  ) {}
 
   ngOnInit(): void {
     // this.filteredOptions = (this.dishFormGroup.get('dish') as FormArray).get('dishCategory').valueChanges.pipe(
@@ -104,10 +115,46 @@ export class DishesComponent implements OnInit {
     }
   }
 
+  getDishData(): IDishData[] {
+    const dishFormArray = this.dishFormGroup.get('dish')?.value || []
+    return dishFormArray.map((dishFormGroup) => {
+      const addOns: DishAddOns[] = dishFormGroup.addons.map(
+        (addOnFormGroup) => ({
+          name: addOnFormGroup?.name ?? '',
+          price: addOnFormGroup?.price ?? 0,
+          checked: addOnFormGroup?.checked ?? false,
+        }),
+      )
+      const sizes: Size[] = dishFormGroup.size.map((sizeFormGroup) => ({
+        name: sizeFormGroup.name ?? '',
+        price: sizeFormGroup.price ?? 0,
+      }))
+      return {
+        dish_category: dishFormGroup.dishCategory ?? '',
+        name: dishFormGroup.name ?? '',
+        price: dishFormGroup.price ?? 0,
+        image: dishFormGroup.image ?? '',
+        calories: dishFormGroup.calories ?? 0,
+        description: dishFormGroup.description ?? '',
+        addOns: addOns,
+        size: sizes,
+      }
+    })
+  }
+
   onNext() {
-    // this.onDishesCompleted.emit({
-    //   data: '3',
-    // })
+    for (let dish of this.getDishData()) {
+      this.addEditRestaurantService.checkDishes(dish).subscribe({
+        next: (res: any) => {
+          console.log(res)
+          if (res.code === 201)
+            this.onDishesCompleted.emit({ data: this.getDishData() })
+        },
+        error(err) {
+          console.log(err)
+        },
+      })
+    }
   }
 
   async removeImage(index: number): Promise<void> {

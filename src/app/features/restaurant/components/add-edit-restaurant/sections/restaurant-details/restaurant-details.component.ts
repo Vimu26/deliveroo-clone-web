@@ -111,8 +111,8 @@ export class RestaurantDetailsComponent implements OnInit {
         next: (res: any) => {
           console.log(res)
           if (res.code === 201)
-          this.onDetailsNext.emit({ data: restaurantDetails })
-          this.isDetailsValid = true;
+            this.onDetailsNext.emit({ data: restaurantDetails })
+          this.isDetailsValid = true
         },
         error: (error: any) => {
           console.log(error)
