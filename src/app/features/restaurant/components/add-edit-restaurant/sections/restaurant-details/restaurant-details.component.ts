@@ -40,7 +40,7 @@ export class RestaurantDetailsComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    if (this.restaurantDetailsData !== undefined) {
+    if (this.restaurantDetailsData) {
       for (let i = 1; i < this.restaurantDetailsData.tag_list.length; i++) {
         this.addTag()
       }
@@ -111,8 +111,8 @@ export class RestaurantDetailsComponent implements OnInit {
         next: (res: any) => {
           console.log(res)
           if (res.code === 201)
-          this.onDetailsNext.emit({ data: restaurantDetails })
-          this.isDetailsValid = true;
+            this.onDetailsNext.emit({ data: restaurantDetails })
+          this.isDetailsValid = true
         },
         error: (error: any) => {
           console.log(error)

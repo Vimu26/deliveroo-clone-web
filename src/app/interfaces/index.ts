@@ -56,7 +56,7 @@ export interface LoginResponse {
 }
 
 export interface IDish {
-  restaurant: IRestaurant
+  restaurant?: IRestaurant
   order?: string
   dish_category: IDishCategory
   name: string
@@ -66,7 +66,21 @@ export interface IDish {
   calories: number
   addOns: DishAddOns[]
   size: Size[]
-  _id: string
+  _id?: string
+}
+
+export interface IDishData {
+  restaurant?: IRestaurant
+  order?: string
+  dish_category: string
+  name: string
+  description: string
+  price: number
+  image: string
+  calories: number
+  addOns: DishAddOns[]
+  size: Size[]
+  _id?: string
 }
 
 export interface DishAddOns {
@@ -105,6 +119,7 @@ export interface IDishCategory {
 
 export interface IDishCategoryDetails {
   restaurant?: string
+  _id?: string
   name: string
 }
 export interface DishCategory {

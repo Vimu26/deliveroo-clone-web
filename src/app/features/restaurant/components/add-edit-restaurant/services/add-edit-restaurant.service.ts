@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import {
   CommonCheckResponse,
+  IDish,
   IDishCategoryDetails,
+  IDishData,
   IRestaurantDetails,
 } from 'src/app/interfaces'
 
@@ -26,6 +28,12 @@ export class AddEditRestaurantService {
     console.log(data)
     const url =
       'http://localhost:8080/dish-categories/check-dish-categories-details'
+    return this.http.post<CommonCheckResponse>(url + '', data)
+  }
+
+  checkDishes(data: IDishData): Observable<CommonCheckResponse> {
+    console.log(data)
+    const url = 'http://localhost:8080/dishes/check-dishes-details'
     return this.http.post<CommonCheckResponse>(url + '', data)
   }
 }

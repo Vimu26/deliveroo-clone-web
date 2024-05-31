@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import {
   IDish,
   IDishCategoryDetails,
+  IDishData,
   IRestaurantDetails,
 } from 'src/app/interfaces'
 
@@ -22,7 +23,7 @@ export class AddEditRestaurantComponent implements OnInit {
 
   formData_RestaurantDetails!: IRestaurantDetails
   formData_DishCategories: IDishCategoryDetails[] = []
-  formData_dishes: IDish[] = []
+  formData_dishes: IDishData[] = []
 
   constructor() {}
 
@@ -76,16 +77,20 @@ export class AddEditRestaurantComponent implements OnInit {
         this.isAddRestaurantDetailsSelected = false
         this.formData_RestaurantDetails = data.data
         this.isDishCategoriesSelected = true
+        console.log(this.formData_RestaurantDetails)
         break
       case 2:
         this.isDishCategoriesCompleted = true
         this.isDishCategoriesSelected = false
         this.formData_DishCategories = data.data
         this.isDishSectionSelected = true
+        console.log(this.formData_DishCategories)
         break
       case 3:
         this.isDishSectionCompleted = true
         this.isDishSectionSelected = false
+        this.formData_dishes = data.data
+        console.log(this.formData_dishes)
         break
       default:
         break

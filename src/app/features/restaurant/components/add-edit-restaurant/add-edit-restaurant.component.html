@@ -49,6 +49,7 @@
         <app-dishes
           *ngIf="isDishSectionSelected"
           [dishCategoriesData]="formData_DishCategories"
+          [dishesData]="formData_dishes"
           (onDishesCompleted)="onNextClicked(3, $event)"
           (onBackClicked)="onBackClicked()"
         ></app-dishes>
