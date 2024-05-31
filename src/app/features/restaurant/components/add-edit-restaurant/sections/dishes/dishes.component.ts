@@ -78,9 +78,9 @@ export class DishesComponent implements OnInit {
       }),
       map((categories) => this._filter(categories || [])),
     )
-    console.log(this.dishesData)
 
     if (this.dishesData) {
+      //form generating part without values
       for (let i = 0; i < this.dishesData.length; i++) {
         if (i !== 0) this.addDish()
         for (let j = 1; j < this.dishesData[i].addOns.length; j++) {
@@ -90,25 +90,34 @@ export class DishesComponent implements OnInit {
           this.addSize(i)
         }
       }
-      //  this.dishesData.forEach((data , index)=>{
-      //     this.
-      //  })
+      //patching values for the generated forms
+      const dishArray = this.dishFormGroup.controls.dish as FormArray
+      this.dishesData.forEach((dish, index) => {
+        ;(dishArray.at(index) as FormGroup).patchValue({
+          dishCategory: dish.dish_category,
+          name: dish.name,
+          description: dish.description,
+          price: dish.price,
+          image: dish.image,
+          calories: dish.calories,
+        })
+        const addonsArray = dishArray.at(index).get('addons') as FormArray
+        dish.addOns.forEach((addOn, j) => {
+          ;(addonsArray.at(j) as FormGroup).patchValue({
+            name: addOn.name,
+            price: addOn.price,
+            checked: addOn.checked,
+          })
+        })
+        const sizeArray = dishArray.at(index).get('size') as FormArray
+        dish.size.forEach((size, k) => {
+          ;(sizeArray.at(k) as FormGroup).patchValue({
+            name: size.name,
+            price: size.price,
+          })
+        })
+      })
     }
-    // if (this.CategoryData) {
-    //   for (let i = 1; i < this.CategoryData.length; i++) {
-    //     this.addDishCategory()
-    //   }
-    //   this.CategoryData.forEach((category, index) => {
-    //     ;(
-    //       (this.dishCategoriesForm.controls.category as FormArray).at(
-    //         index,
-    //       ) as FormGroup
-    //     ).patchValue({
-    //       restaurant: category.restaurant,
-    //       name: category.name,
-    //     })
-    //   })
-    // }
   }
 
   private _filter(value: string): IDishCategoryDetails[] {
@@ -173,7 +182,6 @@ export class DishesComponent implements OnInit {
     for (let dish of this.getDishData()) {
       this.addEditRestaurantService.checkDishes(dish).subscribe({
         next: (res: any) => {
-          console.log(res)
           if (res.code === 201)
             this.onDishesCompleted.emit({ data: this.getDishData() })
         },
