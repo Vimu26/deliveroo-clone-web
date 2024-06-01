@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="d-flex justify-content-center mt-5 mb-5" style="font-size: 25px">
     Dishes
   </div>
@@ -25,80 +25,113 @@
                 class="row"
               >
                 <mat-divider
-                  class="mb-2"
-                  style="background-color: black; height: 2px"
+                  class="mb-4"
+                  style="background-color: rgb(67, 67, 67); height: 1px"
                 ></mat-divider>
                 <!-- <div class="mb-3 mt-3 " style="font-size: medium">
                   <span>dish {{ i + 1 }}</span>
                 </div> -->
                 <div class="col-lg-11 col-md-11 col-sm-1">
-                  <mat-form-field
-                    appearance="outline"
-                    color="accent"
-                    style="width: 100%"
-                  >
-                    <mat-label>Dish Name</mat-label>
-                    <input
-                      matInput
-                      formControlName="name"
-                      [placeholder]="'Dish Name ' + (i + 1)"
-                      required
-                      type="text"
-                    />
-                    <mat-error
-                      style="margin-top: -4px"
-                      *ngIf="dishControls.controls[i].invalid"
-                      >Dish name is Required</mat-error
-                    >
-                  </mat-form-field>
-
-                  <mat-form-field
-                    appearance="outline"
-                    color="accent"
-                    style="width: 100%"
-                  >
-                    <mat-label>Dish Categories</mat-label>
-                    <input
-                      type="text"
-                      matInput
-                      formControlName="dishCategory"
-                      required
-                      [matAutocomplete]="autoGroup"
-                    />
-                    <mat-autocomplete #autoGroup="matAutocomplete">
-                      <mat-option
-                        *ngFor="let category of dishCategoriesData"
-                        [value]="category.name"
+                  <div class="d-flex justify-content-between gap-2">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <mat-form-field
+                        appearance="outline"
+                        color="accent"
+                        style="width: 100%"
                       >
-                        {{ category.name }}
-                      </mat-option>
-                    </mat-autocomplete>
-                    <mat-error
-                      style="margin-top: -4px"
-                      *ngIf="dishControls.controls[i].invalid"
-                      >Dish Category is Required</mat-error
-                    >
-                  </mat-form-field>
-                  <mat-form-field
-                    appearance="outline"
-                    color="accent"
-                    style="width: 100%"
-                  >
-                    <mat-label>Price</mat-label>
-                    <input
-                      matInput
-                      formControlName="price"
-                      placeholder="12.89"
-                      required
-                      type="number"
-                    />
-                    <mat-icon matPrefix>euro_symbol</mat-icon>
-                    <mat-error
-                      style="margin-top: -4px"
-                      *ngIf="dishControls.controls[i].invalid"
-                      >Price is Required</mat-error
-                    >
-                  </mat-form-field>
+                        <mat-label>Dish Name</mat-label>
+                        <input
+                          matInput
+                          formControlName="name"
+                          [placeholder]="'Dish Name ' + (i + 1)"
+                          required
+                          type="text"
+                        />
+                        <mat-error
+                          style="margin-top: -4px"
+                          *ngIf="dishControls.controls[i].invalid"
+                          >Dish name is Required</mat-error
+                        >
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                      <mat-form-field
+                        appearance="outline"
+                        color="accent"
+                        style="width: 100%"
+                      >
+                        <mat-label>Price</mat-label>
+                        <input
+                          matInput
+                          formControlName="price"
+                          placeholder="12.89"
+                          required
+                          type="number"
+                        />
+                        <mat-icon matPrefix>euro_symbol</mat-icon>
+                        <mat-error
+                          style="margin-top: -4px"
+                          *ngIf="dishControls.controls[i].invalid"
+                          >Price is Required</mat-error
+                        >
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between gap-2">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <mat-form-field
+                        appearance="outline"
+                        color="accent"
+                        style="width: 100%"
+                      >
+                        <mat-label>Dish Category</mat-label>
+                        <input
+                          type="text"
+                          matInput
+                          formControlName="dishCategory"
+                          required
+                          [matAutocomplete]="autoGroup"
+                        />
+                        <mat-autocomplete #autoGroup="matAutocomplete">
+                          <mat-option
+                            *ngFor="let category of dishCategoriesData"
+                            [value]="category.name"
+                          >
+                            {{ category.name }}
+                          </mat-option>
+                        </mat-autocomplete>
+                        <mat-error
+                          style="margin-top: -4px"
+                          *ngIf="dishControls.controls[i].invalid"
+                          >Dish Category is Required</mat-error
+                        >
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                      <mat-form-field
+                        appearance="outline"
+                        color="accent"
+                        style="width: 100%"
+                      >
+                        <mat-label>Calories</mat-label>
+                        <input
+                          matInput
+                          formControlName="calories"
+                          placeholder="125"
+                          required
+                          type="number"
+                        />
+                        <span matSuffix style="margin-right: 10px">KCal</span>
+                        <mat-error
+                          style="margin-top: -4px"
+                          *ngIf="dishControls.controls[i].invalid"
+                          >Calories is Required</mat-error
+                        >
+                      </mat-form-field>
+                    </div>
+                  </div>
+
                   <mat-form-field
                     appearance="outline"
                     color="accent"
@@ -117,26 +150,7 @@
                       >Description is Required</mat-error
                     >
                   </mat-form-field>
-                  <mat-form-field
-                    appearance="outline"
-                    color="accent"
-                    style="width: 100%"
-                  >
-                    <mat-label>Calories</mat-label>
-                    <input
-                      matInput
-                      formControlName="calories"
-                      placeholder="125"
-                      required
-                      type="number"
-                    />
-                    <span matSuffix style="margin-right: 10px">KCal</span>
-                    <mat-error
-                      style="margin-top: -4px"
-                      *ngIf="dishControls.controls[i].invalid"
-                      >Calories is Required</mat-error
-                    >
-                  </mat-form-field>
+
                   <mat-divider class="mb-3 mt-3"></mat-divider>
 
                   <app-file-upload
@@ -148,12 +162,7 @@
                     <div class="row">
                       <div
                         class="col-8"
-                        style="
-                          display: flex;
-                          justify-content: end;
-                          margin-top: 1rem;
-                          margin-bottom: 1rem;
-                        "
+                        style="display: flex; justify-content: end"
                       >
                         <img
                           [src]="findDishImage(i)?.image"
@@ -283,7 +292,7 @@
                     </div>
                   </div>
                   <div class="container">
-                    <div formArrayName="addons">
+                    <div formArrayName="addons" class="mb-3">
                       <div
                         class="row d-flex align-items-center"
                         *ngFor="
@@ -369,9 +378,9 @@
                   </button>
                 </div>
               </div>
-              <mat-divider
+              <!-- <mat-divider
                 style="background-color: black; height: 2px"
-              ></mat-divider>
+              ></mat-divider> -->
             </div>
           </div>
         </div>
