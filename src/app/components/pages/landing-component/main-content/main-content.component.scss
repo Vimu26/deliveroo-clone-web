@@ -18,10 +18,13 @@
 }
 
 .off {
-  background-color: #bb3a54;
+  // background-color: #bb3a54;
   min-height: 300px;
   margin-bottom: 50px;
   min-height: 330px;
+  background-image: url('https://gfieurope.org/wp-content/uploads/2023/05/Germany-SOTIR-website-header_v5-07.png');
+  background-size: cover;
+  background-position: center;
 
   &__heading {
     font-size: 60px;
@@ -92,4 +95,73 @@
 
 .map {
   background-image: url('/../assets/images/image (2).png');
+}
+
+// .scroll-container {
+//   width: 100vw; 
+//   overflow: hidden;
+//   white-space: nowrap;
+//   position: relative;
+//   margin-top: -6vw;
+// }
+
+// .scroll-content {
+//   display: flex;
+//   animation: scroll 4s linear infinite;
+//   gap: 2rem;
+// }
+
+// @keyframes scroll {
+//   0% {
+//     transform: translateX(5%);
+//   }
+//   100% {
+//     transform: translateX(-5%);
+//   }
+// }
+
+// .scroll-item {
+//   display: inline-block;
+//   width: 100%; 
+//   height: 200px;
+//   margin-right: 10px;
+//   font-size: 24px; 
+// }
+
+
+.scroll-container {
+  width: 100vw; 
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  margin-top: -6vw;
+}
+
+.scroll-content {
+  display: flex;
+  animation: scroll 40s linear infinite; 
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll-item {
+  display: inline-block;
+  width: auto;
+  height: 200px;
+  margin-right: 10px;
+  font-size: 24px; 
+}
+
+.scroll-item img {
+  height: 100%;
+  object-fit: cover; 
 }
