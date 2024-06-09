@@ -16,6 +16,7 @@ import {
   Size,
 } from 'src/app/interfaces'
 import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
+import { ScrollToTopService } from 'src/app/services/scroll-to-top.service'
 
 export interface DishImages {
   image: string | undefined
@@ -66,9 +67,11 @@ export class DishesComponent implements OnInit {
   constructor(
     private fileUploadService: FirebaseService,
     private addEditRestaurantService: AddEditRestaurantService,
+    private scrollToTopService: ScrollToTopService,
   ) {}
 
   ngOnInit(): void {
+    this.scrollToTopService.scrollToTop()
     this.filteredOptions = (
       this.dishFormGroup.get('dish') as FormArray
     ).valueChanges.pipe(
