@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
 import { IRestaurantDetails } from 'src/app/interfaces'
 import { Router } from '@angular/router'
+import { ScrollToTopService } from 'src/app/services/scroll-to-top.service'
 
 @Component({
   selector: 'app-restaurant-details',
@@ -17,6 +18,7 @@ export class RestaurantDetailsComponent implements OnInit {
   constructor(
     private restaurantDetailsService: AddEditRestaurantService,
     private router: Router,
+    private scrollToTopService: ScrollToTopService,
   ) {}
 
   restaurantDetailsForm = new FormGroup({
@@ -40,6 +42,7 @@ export class RestaurantDetailsComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.scrollToTopService.scrollToTop()
     if (this.restaurantDetailsData) {
       for (let i = 1; i < this.restaurantDetailsData.tag_list.length; i++) {
         this.addTag()

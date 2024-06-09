@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms'
 import { IDishCategoryDetails } from 'src/app/interfaces'
 import { AddEditRestaurantService } from '../../services/add-edit-restaurant.service'
+import { ScrollToTopService } from 'src/app/services/scroll-to-top.service'
 
 @Component({
   selector: 'app-dish-categories',
@@ -24,8 +25,12 @@ export class DishCategoriesComponent implements OnInit {
     ]),
   })
 
-  constructor(private addEditRestaurantService: AddEditRestaurantService) {}
+  constructor(
+    private addEditRestaurantService: AddEditRestaurantService,
+    private scrollToTopService: ScrollToTopService,
+  ) {}
   ngOnInit(): void {
+    this.scrollToTopService.scrollToTop()
     if (this.CategoryData) {
       for (let i = 1; i < this.CategoryData.length; i++) {
         this.addDishCategory()

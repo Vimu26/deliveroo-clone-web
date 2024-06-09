@@ -23,6 +23,8 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
+import { ScrollToTopService } from './services/scroll-to-top.service'
+import { NavigationEnd, Router } from '@angular/router'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCnb6mL7ggQnuLXYNX8zviSHTct3e37q6c',
@@ -65,10 +67,22 @@ const app = initializeApp(firebaseConfig)
       useClass: TokenInterceptor,
       multi: true,
     },
+    ScrollToTopService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    private router: Router,
+    private scrollService: ScrollToTopService,
+  ) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.scrollService.scrollToTop()
+      }
+    })
+  }
+}
 function provideStorage(
   arg0: () => import('@firebase/storage').FirebaseStorage,
 ): any[] | import('@angular/core').Type<any> {
