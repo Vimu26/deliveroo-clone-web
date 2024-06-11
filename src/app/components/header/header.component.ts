@@ -51,7 +51,8 @@ export class HeaderComponent implements OnInit {
       this.router.url.includes('/login') ||
       this.router.url.includes('/register') ||
       this.router.url.includes('/menu') ||
-      this.router.url.includes('/cart')
+      this.router.url.includes('/cart') ||
+      this.router.url.includes('/restaurant')
     )
   }
 
