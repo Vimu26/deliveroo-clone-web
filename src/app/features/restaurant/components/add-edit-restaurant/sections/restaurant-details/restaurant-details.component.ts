@@ -72,7 +72,7 @@ export class RestaurantDetailsComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['/restaurant'])
+    this.router.navigate([''])
   }
 
   onNext() {

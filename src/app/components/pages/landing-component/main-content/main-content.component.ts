@@ -14,6 +14,6 @@ export class MainContentComponent implements OnInit {
   }
 
   onClickAddRestaurant() {
-    this.router.navigate(['restaurant'])
+    this.router.navigate(['restaurant/create-restaurant'])
   }
 }
