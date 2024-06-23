@@ -392,7 +392,12 @@
         <button mat-stroked-button (click)="onBack()">Back</button>
       </div>
       <div class="m-2">
-        <button mat-raised-button color="accent" (click)="onNext()">
+        <button
+          [disabled]="!this.dishFormGroup.valid && !this.isDetailsValid"
+          mat-raised-button
+          color="accent"
+          (click)="onNext()"
+        >
           Create
         </button>
       </div>

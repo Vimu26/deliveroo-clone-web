@@ -37,6 +37,7 @@ export class DishesComponent implements OnInit {
   currentFileUpload?: any
   imageUrl = ''
   dishImages: DishImages[] = []
+  isDetailsValid = false
 
   dishFormGroup = new FormGroup({
     dish: new FormArray([
@@ -146,6 +147,9 @@ export class DishesComponent implements OnInit {
             image: downloadURL,
             dishIndex: dishIndex,
           })
+          const dishFormArray = this.dishFormGroup.get('dish') as FormArray
+          const dishFormGroup = dishFormArray.at(dishIndex) as FormGroup
+          dishFormGroup.get('image')?.setValue(downloadURL)
         })
         .catch((error) => {
           // Handle error
@@ -187,6 +191,7 @@ export class DishesComponent implements OnInit {
         next: (res: any) => {
           if (res.code === 201)
             this.onDishesCompleted.emit({ data: this.getDishData() })
+          this.isDetailsValid = true
         },
         error(err) {
           console.log(err)

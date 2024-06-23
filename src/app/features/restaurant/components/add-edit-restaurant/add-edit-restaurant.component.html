@@ -1,59 +1,73 @@
 <div class="container">
-  <div class="row">
-    <!-- LEFT PANEL -->
-    <div class="col-3">
-      <div class="box">
-        <mat-stepper
-          orientation="vertical"
-          [linear]="true"
-          #stepper
-          (selectionChange)="onStepChange($event)"
-        >
-          <ng-template matStepperIcon="edit">
-            <mat-icon>done</mat-icon>
-          </ng-template>
-          <mat-step [completed]="isAddRestaurantDetailsCompleted">
-            <ng-template matStepLabel>Restaurant Details</ng-template>
-            <ng-template matStepContent
-              >Enter Your Restaurant Details Here
+  <div *ngIf="!loading; else loadingTemplate">
+    <div class="row">
+      <!-- LEFT PANEL -->
+      <div class="col-3">
+        <div class="box">
+          <mat-stepper
+            orientation="vertical"
+            [linear]="true"
+            #stepper
+            (selectionChange)="onStepChange($event)"
+          >
+            <ng-template matStepperIcon="edit">
+              <mat-icon>done</mat-icon>
             </ng-template>
-          </mat-step>
-          <mat-step [completed]="isDishCategoriesCompleted">
-            <ng-template matStepLabel>Add Dish Categories</ng-template>
-            <ng-template matStepContent
-              >Enter the Dish Categories Here</ng-template
-            >
-          </mat-step>
-          <mat-step [completed]="isDishSectionCompleted">
-            <ng-template matStepLabel>Add Dishes</ng-template>
-            <ng-template matStepContent>Enter the Dishes Here</ng-template>
-          </mat-step>
-        </mat-stepper>
+            <mat-step [completed]="isAddRestaurantDetailsCompleted">
+              <ng-template matStepLabel>Restaurant Details</ng-template>
+              <ng-template matStepContent
+                >Enter Your Restaurant Details Here
+              </ng-template>
+            </mat-step>
+            <mat-step [completed]="isDishCategoriesCompleted">
+              <ng-template matStepLabel>Add Dish Categories</ng-template>
+              <ng-template matStepContent
+                >Enter the Dish Categories Here</ng-template
+              >
+            </mat-step>
+            <mat-step [completed]="isDishSectionCompleted">
+              <ng-template matStepLabel>Add Dishes</ng-template>
+              <ng-template matStepContent>Enter the Dishes Here</ng-template>
+            </mat-step>
+          </mat-stepper>
+        </div>
       </div>
-    </div>
-    <!-- RIGHT PANEL -->
-    <div class="col-9">
-      <div class="box">
-        <app-restaurant-details
-          *ngIf="isAddRestaurantDetailsSelected"
-          [restaurantDetailsData]="formData_RestaurantDetails"
-          (onDetailsNext)="onNextClicked(1, $event)"
-        >
-        </app-restaurant-details>
-        <app-dish-categories
-          *ngIf="isDishCategoriesSelected"
-          [CategoryData]="formData_DishCategories"
-          (onCategoriesNext)="onNextClicked(2, $event)"
-          (onBackClicked)="onBackClicked()"
-        ></app-dish-categories>
-        <app-dishes
-          *ngIf="isDishSectionSelected"
-          [dishCategoriesData]="formData_DishCategories"
-          [dishesData]="formData_dishes"
-          (onDishesCompleted)="onNextClicked(3, $event)"
-          (onBackClicked)="onBackClicked()"
-        ></app-dishes>
+      <!-- RIGHT PANEL -->
+      <div class="col-9">
+        <div class="box">
+          <app-restaurant-details
+            *ngIf="isAddRestaurantDetailsSelected"
+            [restaurantDetailsData]="formData_RestaurantDetails"
+            (onDetailsNext)="onNextClicked(1, $event)"
+          >
+          </app-restaurant-details>
+          <app-dish-categories
+            *ngIf="isDishCategoriesSelected"
+            [CategoryData]="formData_DishCategories"
+            (onCategoriesNext)="onNextClicked(2, $event)"
+            (onBackClicked)="onBackClicked()"
+          ></app-dish-categories>
+          <app-dishes
+            *ngIf="isDishSectionSelected"
+            [dishCategoriesData]="formData_DishCategories"
+            [dishesData]="formData_dishes"
+            (onDishesCompleted)="onNextClicked(3, $event)"
+            (onBackClicked)="onBackClicked()"
+          ></app-dishes>
+        </div>
       </div>
     </div>
   </div>
+  <ng-template #loadingTemplate>
+    <div class="loading">
+      <h2 class="h2">Please Wait</h2>
+
+      <mat-progress-spinner
+        class="example-margin"
+        color="accent"
+        mode="indeterminate"
+      >
+      </mat-progress-spinner>
+    </div>
+  </ng-template>
 </div>
