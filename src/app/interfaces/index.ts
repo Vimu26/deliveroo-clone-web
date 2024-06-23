@@ -26,6 +26,7 @@ export interface userDetails {
 }
 
 export interface IRestaurantDetails {
+  _id?: string
   name: string
   email: string
   contact_number: string
@@ -81,6 +82,33 @@ export interface IDishData {
   addOns: DishAddOns[]
   size: Size[]
   _id?: string
+}
+
+export interface IDishRequest {
+  restaurant: string
+  order?: string
+  dish_category: string
+  name: string
+  description: string
+  price: number
+  image: string
+  calories: number
+  addOns: DishAddOns[]
+  size: Size[]
+}
+
+export interface IDishResponse {
+  restaurant: string
+  order?: string
+  dish_category: string
+  name: string
+  description: string
+  price: number
+  image: string
+  calories: number
+  addOns: DishAddOns[]
+  size: Size[]
+  _id: string
 }
 
 export interface DishAddOns {

@@ -72,11 +72,10 @@ export class RestaurantDetailsComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate([''])
+    this.router.navigate(['restaurant'])
   }
 
   onNext() {
-    console.log(this.restaurantDetailsForm.value)
     const restaurantDetails: IRestaurantDetails = {
       name: this.restaurantDetailsForm?.controls?.name?.value ?? '',
       email: this.restaurantDetailsForm?.controls?.email?.value ?? '',
@@ -112,7 +111,6 @@ export class RestaurantDetailsComponent implements OnInit {
       .checkRestaurantDetails(restaurantDetails)
       .subscribe({
         next: (res: any) => {
-          console.log(res)
           if (res.code === 201)
             this.onDetailsNext.emit({ data: restaurantDetails })
           this.isDetailsValid = true
