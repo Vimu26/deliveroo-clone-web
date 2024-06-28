@@ -30,6 +30,13 @@ const routes: Routes = [
         (m) => m.RestaurantModule,
       ),
   },
+  {
+    path: 'riders',
+    loadChildren: () =>
+      import('./features/riders/riders.module').then(
+        (m) => m.RidersModule,
+      ),
+  },
   { path: '**', component: NotFoundComponent },
 ]
 
