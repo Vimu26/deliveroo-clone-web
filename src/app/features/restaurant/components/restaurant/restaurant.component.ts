@@ -20,7 +20,7 @@ export class RestaurantComponent implements OnInit {
     //
   }
   onClickAddRestaurant() {
-    this.router.navigate(['restaurant/create-restaurant'])
+    this.router.navigate(['restaurants/create-restaurant'])
   }
 
   togglePasswordVisibility() {

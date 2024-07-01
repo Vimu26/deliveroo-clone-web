@@ -21,7 +21,8 @@ import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database'
-import { AngularFireStorageModule } from '@angular/fire/compat/storage'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ViewRestaurantsComponent } from './components/view-restaurants/view-restaurants.component'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCnb6mL7ggQnuLXYNX8zviSHTct3e37q6c',
@@ -40,6 +41,7 @@ const firebaseConfig = {
     DishCategoriesComponent,
     DishesComponent,
     FileUploadComponent,
+    ViewRestaurantsComponent,
   ],
   imports: [
     CommonModule,

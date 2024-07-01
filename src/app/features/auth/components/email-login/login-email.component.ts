@@ -57,7 +57,7 @@ export class EmailLoginComponent implements OnInit {
         next: (res) => {
           const token = res.data.token
           this.authService.setToken(token)
-          this.router.navigate(['menu'])
+          this.router.navigate(['restaurants'])
         },
         error: (error) => {
           if (error.status === 401) {
