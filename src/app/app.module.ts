@@ -47,7 +47,7 @@ const app = initializeApp(firebaseConfig)
     HeaderComponent,
     MainContentComponent,
     NotFoundComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
