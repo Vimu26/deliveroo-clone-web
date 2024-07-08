@@ -25,6 +25,7 @@ import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 import { ScrollToTopService } from './services/scroll-to-top.service'
 import { NavigationEnd, Router } from '@angular/router'
+import { LoadingComponent } from './components/loading/loading.component'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCnb6mL7ggQnuLXYNX8zviSHTct3e37q6c',
@@ -46,6 +47,7 @@ const app = initializeApp(firebaseConfig)
     HeaderComponent,
     MainContentComponent,
     NotFoundComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
