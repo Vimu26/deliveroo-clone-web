@@ -138,6 +138,8 @@ export interface IRestaurant {
     to: number
   }
   tagList: string[]
+  rating: number
+  image: string
 }
 export interface IDishCategory {
   restaurant: string
