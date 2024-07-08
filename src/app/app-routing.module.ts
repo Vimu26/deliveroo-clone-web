@@ -33,9 +33,7 @@ const routes: Routes = [
   {
     path: 'riders',
     loadChildren: () =>
-      import('./features/riders/riders.module').then(
-        (m) => m.RidersModule,
-      ),
+      import('./features/riders/riders.module').then((m) => m.RidersModule),
   },
   { path: '**', component: NotFoundComponent },
 ]
