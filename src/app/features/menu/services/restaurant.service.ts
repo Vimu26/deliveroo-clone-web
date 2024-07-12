@@ -21,6 +21,8 @@ export class RestaurantsService {
   }
 
   getSingleRestaurant(id: string): Observable<CommonResponse<IRestaurant>> {
-    return this.http.get<CommonResponse<IRestaurant>>(this.apiURL + id)
+    return this.http.get<CommonResponse<IRestaurant>>(
+      `http://localhost:8080/restaurants/${id}/single-restaurant`,
+    )
   }
 }
