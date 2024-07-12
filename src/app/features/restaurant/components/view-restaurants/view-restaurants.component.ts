@@ -3,6 +3,7 @@ import { RestaurantService } from '../../service/restaurant.service'
 import { HttpParams } from '@angular/common/http'
 import { IRestaurant } from 'src/app/interfaces'
 import { FormControl, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-view-restaurants',
@@ -15,7 +16,10 @@ export class ViewRestaurantsComponent implements OnInit {
   page = 1
   limit = 10
 
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(
+    private restaurantService: RestaurantService,
+    private router: Router,
+  ) {}
 
   filtersFormGroup = new FormGroup({
     name: new FormControl(''),
@@ -71,11 +75,8 @@ export class ViewRestaurantsComponent implements OnInit {
     }
     params = params.append('page', this.page)
     params = params.append('limit', this.limit)
-    console.log(params)
     this.restaurantService.getAllRestaurants(params).subscribe({
       next: (res) => {
-        // this.restaurantList = res.data
-        console.log(res.data)
         this.restaurantList = res.data
         //MOCK DATA
         // this.restaurantList = Array.from({ length: 10 }, () => ({
@@ -113,6 +114,7 @@ export class ViewRestaurantsComponent implements OnInit {
   }
 
   onRestaurantClick(id: string, index: number) {
-    console.log(id, index)
+    this.restaurantService.setRestaurantId(id)
+    this.router.navigate([`/menu/${id}`])
   }
 }
