@@ -2,7 +2,7 @@
   <div class="row">
     <!-- Left Screen-->
 
-    <div class="col-2">
+    <div class="col-3">
       <div class="d-flex justify-content-center flex-column">
         <h3 class="text-center">Filters</h3>
         <form [formGroup]="filtersFormGroup">
@@ -67,10 +67,15 @@
           </mat-form-field>
         </form>
         <div class="d-flex justify-content-between">
-          <button mat-stroked-button style="width: 45%" (click)="onReset()">
+          <button mat-stroked-button style="width: 48%" (click)="onReset()">
             Reset
           </button>
-          <button mat-flat-button style="width: 45%" (click)="onFilter()">
+          <button
+            mat-flat-button
+            style="width: 48%"
+            color="accent"
+            (click)="onFilter()"
+          >
             Filter
           </button>
         </div>
@@ -79,7 +84,7 @@
 
     <!-- Right Screen -->
 
-    <div class="col-10">
+    <div class="col-9">
       <div class="d-flex justify-content-center flex-column align-items-center">
         <h2 class="mb-2 text-center">Restaurants</h2>
 
@@ -95,7 +100,7 @@
         </mat-form-field> -->
       </div>
       <div
-        class="d-flex gap-5 pb-3 flex-wrap justify-content-center align-items-center"
+        class="d-flex gap-4 pb-3 flex-wrap justify-content-center align-items-center"
       >
         <div *ngFor="let restaurant of restaurantList; let i = index">
           <mat-card
