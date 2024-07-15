@@ -35,6 +35,7 @@ export class AuthService {
     const token = this.getToken()
     return !!token
   }
+
   isTokenExpired(): boolean {
     const token = this.getToken()
     if (token) {
