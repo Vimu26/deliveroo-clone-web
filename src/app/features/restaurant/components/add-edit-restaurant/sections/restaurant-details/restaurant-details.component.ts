@@ -115,7 +115,7 @@ export class RestaurantDetailsComponent implements OnInit {
             this.onDetailsNext.emit({ data: restaurantDetails })
           this.isDetailsValid = true
         },
-        error: (error: any) => {
+        error: (error) => {
           console.log(error)
         },
       })
