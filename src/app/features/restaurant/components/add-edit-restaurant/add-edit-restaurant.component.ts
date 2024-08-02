@@ -159,6 +159,7 @@ export class AddEditRestaurantComponent implements OnInit {
                       .createDishes(dishesRequest)
                       .subscribe({
                         next: (dishesResponse) => {
+                          console.log(dishesResponse)
                           this.router.navigate(['restaurant'])
                           this.loading = false
                         },
