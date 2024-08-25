@@ -12,4 +12,16 @@ export class LoginPageComponent {
   emailLogin() {
     this.router.navigate(['/auth/login-email'])
   }
+
+  onClickFaceBook(){
+    //
+  }
+
+  onClickApple(){
+    //
+  }
+
+  onClickGoogle(){
+    //
+  }
 }
